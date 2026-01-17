@@ -230,8 +230,8 @@ img {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: url('../images/nakivale-refugees-growing-their-own-crops.jpg') center/cover no-repeat;
-    opacity: 0.2;
+    background: url('../images/photos/photo_546@15-12-2025_21-54-52.jpg') center/cover no-repeat;
+    opacity: 0.25;
 }
 
 .hero-content {
