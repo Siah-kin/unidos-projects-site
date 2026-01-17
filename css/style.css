@@ -224,8 +224,8 @@ img {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: url('../images/hero-bg.jpg') center/cover no-repeat;
-    opacity: 0.15;
+    background: url('../images/nakivale-refugees-growing-their-own-crops.jpg') center/cover no-repeat;
+    opacity: 0.2;
 }
 
 .hero-content {
@@ -700,8 +700,8 @@ blockquote {
 .page-hero .hero-overlay {
     position: absolute;
     inset: 0;
-    background: url('../images/hero-bg.jpg') center/cover no-repeat;
-    opacity: 0.1;
+    background: url('../images/nakivale-refugees-growing-their-own-crops.jpg') center/cover no-repeat;
+    opacity: 0.15;
 }
 
 .page-hero .container {
