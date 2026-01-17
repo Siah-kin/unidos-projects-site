@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="100" height="130">
-  <!-- Ethervista logo - 3D diamond with 4 colored faces -->
-  <!-- Upper pyramid -->
+  <!-- Ethervista logo - 3D octahedron -->
+  <!-- Upper pyramid (larger, longer legs) -->
   <!-- Top left face (coral/salmon) -->
-  <polygon points="50,0 15,50 50,65" fill="#E8776B"/>
+  <polygon points="50,0 10,70 50,58" fill="#E57373"/>
   <!-- Top right face (green) -->
-  <polygon points="50,0 85,50 50,65" fill="#5DC05D"/>
-  <!-- Lower pyramid -->
+  <polygon points="50,0 90,70 50,58" fill="#66BB6A"/>
+  <!-- Lower pyramid (smaller) -->
   <!-- Bottom left face (blue) -->
-  <polygon points="15,50 50,65 50,130" fill="#4A80C7"/>
+  <polygon points="10,70 50,58 50,130" fill="#4A90D9"/>
   <!-- Bottom right face (tan/olive) -->
-  <polygon points="85,50 50,65 50,130" fill="#B8B070"/>
+  <polygon points="90,70 50,58 50,130" fill="#C5B358"/>
 </svg>
