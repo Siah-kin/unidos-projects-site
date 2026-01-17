@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120">
-  <!-- Ethervista logo - 4-color diamond -->
-  <!-- Top left face (coral/red) -->
-  <polygon points="50,10 20,50 50,60" fill="#E07060"/>
-  <!-- Top right face (green) -->
-  <polygon points="50,10 80,50 50,60" fill="#5DBF5D"/>
-  <!-- Bottom left face (blue) -->
-  <polygon points="50,60 20,50 50,110" fill="#4A7DC4"/>
-  <!-- Bottom right face (yellow/tan) -->
-  <polygon points="50,60 80,50 50,110" fill="#C4B87A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" width="100" height="140">
+  <!-- Ethervista logo - symmetrical 4-color diamond -->
+  <!-- Top left (coral/salmon) -->
+  <polygon points="50,0 50,70 10,45" fill="#E07060"/>
+  <!-- Top right (green) -->
+  <polygon points="50,0 90,45 50,70" fill="#5DBF5D"/>
+  <!-- Bottom left (blue) -->
+  <polygon points="50,70 10,45 50,140" fill="#4A7DC4"/>
+  <!-- Bottom right (tan/yellow) -->
+  <polygon points="50,70 50,140 90,45" fill="#C4B87A"/>
 </svg>
