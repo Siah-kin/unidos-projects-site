@@ -241,6 +241,25 @@
     color: var(--color-primary);
 }
 
+/* Timeline source link */
+.timeline-source {
+    display: inline-block;
+    margin-top: var(--spacing-sm);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    border-radius: 25px;
+    transition: var(--transition);
+}
+
+.timeline-source:hover {
+    color: var(--color-white);
+    background: var(--color-primary);
+}
+
 /* Timeline stats grid */
 .timeline-stats {
     display: flex;
