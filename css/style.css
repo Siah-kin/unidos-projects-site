@@ -1382,3 +1382,81 @@ blockquote {
         max-height: 40px;
     }
 }
+
+/* ========================================
+   Article Pages
+   ======================================== */
+
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-hero-img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+}
+
+.article-content h2 {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.75rem;
+}
+
+.article-content h2:first-of-type {
+    margin-top: 0;
+}
+
+.article-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.article-content ul {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-md);
+}
+
+.article-content ul li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.article-content ul li strong {
+    color: var(--color-dark);
+}
+
+.article-content blockquote {
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-md);
+    background: var(--color-light);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--color-dark);
+}
+
+.article-content blockquote cite {
+    display: block;
+    margin-top: var(--spacing-sm);
+    font-size: 1rem;
+    font-style: normal;
+    color: var(--color-primary);
+}
+
+.article-content .btn {
+    margin-top: var(--spacing-lg);
+}
+
+.article-meta {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: var(--spacing-sm);
+}
