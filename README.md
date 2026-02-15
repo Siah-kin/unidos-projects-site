@@ -1,85 +1,177 @@
-# Unidos Projects Website
+# Unidos Social Innovation Center
 
-A clean, maintainable static website for Unidos Social Innovation Center.
+**Refugee-led organization in Nakivale, Uganda. Since 2018: trained 3,000+ farmers in food forest design, processed 800 kg food waste weekly into worm compost, taught 700 women to grow oyster mushrooms and make organic soap.**
 
-## About
+**Website**: [unidos.ug](https://unidos.ug) (GitHub Pages deployment)
 
-Unidos is a refugee-led organization in Nakivale, Uganda that empowers communities through regenerative agriculture, education, and sustainable livelihoods.
+---
 
-## Structure
+## 📁 Repository Structure (Modeled after Bonzi_v5)
 
 ```
-unidos-projects-site/
-├── index.html          # Main page
-├── css/
-│   └── style.css       # All styles
-├── js/
-│   └── main.js         # JavaScript functionality
-├── images/             # Add your images here
-│   ├── hero-bg.jpg
-│   ├── about-community.jpg
-│   ├── soap-making.jpg
-│   └── impact-bg.jpg
-└── README.md
+/Unidos/
+├── README.md (this file)
+├── CNAME (custom domain config)
+├── static/
+│   ├── index.html, about.html, programs.html, stories.html, etc.
+│   ├── css/ (stylesheets)
+│   ├── js/ (JavaScript)
+│   ├── images/ (photos, assets)
+│   └── video_files/ (video content)
+├── stories/
+│   ├── html/ (9 project pages: mushroom, women-circle, biochar, etc.)
+│   ├── source-documents/ (DOCX/PDF reports from UNHCR, partners)
+│   └── data/ (JSON conversation logs, project diaries)
+├── leadership/
+│   ├── strategy/ (business model, wizard system, content strategy)
+│   ├── operations/ (SOPs, processes, frameworks)
+│   ├── research/ (market research, case studies)
+│   └── scout/ (DAO transformation, competitor analysis, tokenization)
+├── policies/
+│   ├── WATER_PROMPT.md (content style guide)
+│   ├── PQI_SCORING.md (Production Quality Index)
+│   └── COOPERATION_SCORING.md (HEROES behavioral detection)
+└── docs/ (build artifacts)
 ```
 
-## Setup
+---
 
-1. Add images to the `images/` folder
-2. Update social media links in `index.html`
-3. Configure contact form (see below)
+## 🎯 Modularity Principles
 
-## Deployment Options
+### `/static` — Website (Public)
+All website files deployed via GitHub Pages. Apply Water Prompt style guide.
 
-### GitHub Pages (Free)
-1. Push to GitHub
-2. Go to Settings > Pages
-3. Select branch and save
+### `/stories` — Project Content (Public)
+- `/html/` — 9 project pages (mushroom-project, women-circle, biochar, etc.)
+- `/source-documents/` — Original reports, proposals, case studies
+- `/data/` — Conversation logs (🔒 contains sensitive info)
 
-### Netlify (Free)
-1. Connect to GitHub repo
-2. Auto-deploys on push
+### `/leadership` — Strategy & Operations (Internal)
+- `/strategy/` — Business model, revenue projections, wizard design
+- `/operations/` — SOPs, processes (to be populated)
+- `/research/` — Market research (to be populated)
+- `/scout/` — DAO transformation, NGO tokenization, competitor analysis
 
-### Render (Free static hosting)
-1. Create new Static Site
-2. Connect repo
-3. Build command: (leave empty)
-4. Publish directory: `.`
+### `/policies` — Governance (Public/Internal)
+- Content style guide (Water Prompt)
+- Production quality (PQI scoring)
+- Cooperation scoring (HEROES detection)
+- DAO governance rules
 
-## Contact Form
+---
 
-The form currently shows an alert. To make it functional:
+## 🚀 Quick Start
 
-**Option 1: Formspree**
-Replace the form action:
-```html
-<form action="https://formspree.io/f/YOUR_ID" method="POST">
+### View Website
+```bash
+cd static && open index.html
+# or visit https://unidos.ug
 ```
 
-**Option 2: Netlify Forms**
-Add to form tag:
-```html
-<form name="contact" netlify>
+### Update Project Content
+```bash
+cd stories/html
+open women-circle.html  # Edit project page
+# Apply Water Prompt audit (see /policies/WATER_PROMPT.md)
+# Commit and push (auto-deploys via GitHub Pages)
 ```
 
-## Images Needed
-
-Replace placeholder divs with actual images:
-- `hero-bg.jpg` - Community/farming scene
-- `about-community.jpg` - Group working together
-- `soap-making.jpg` - Women making soap
-- `impact-bg.jpg` - Agricultural scene
-
-## Customization
-
-Colors and fonts are CSS variables in `:root`:
-```css
---color-primary: #268575;    /* Teal */
---color-accent: #ffa62b;     /* Orange */
---font-heading: 'Vollkorn';
---font-body: 'Lato';
+### Review Strategic Docs
+```bash
+cd leadership/strategy
+open UNIDOS_BUSINESS_MODEL_2026.md  # Revenue model, PQI scoring
+open UNIDOS_WIZARD_NGO_MANAGEMENT.md  # Wizard system design
+open WEBSITE_IMPROVEMENTS_ANALYSIS.md  # Content strategy
 ```
 
-## License
+### Explore Research
+```bash
+cd leadership/scout
+open REFUGEE_NGO_BUSINESS_MODELS_COMPARISON.md  # 6 organizations analyzed
+open HYPERSKIDS_ANALYSIS.md  # Charity memecoin case study
+open UNIDOS_DAO_TRANSFORMATION_ROADMAP.md  # (🔒 PRIVATE)
+```
 
-Content belongs to Unidos Projects.
+---
+
+## 📊 Key Projects
+
+| Project | Metrics | Page |
+|---------|---------|------|
+| **Mushroom Spawn Lab** | 152 women trained, 4,800 kg/year | [mushroom-project](stories/html/mushroom-project.html) |
+| **Vermicompost** | 501 farmers, 7.8 tons/year | [vermicomposting](stories/html/vermicomposting.html) |
+| **Women's Circle** | 38 participants, 16 sessions | [women-circle](stories/html/women-circle.html) |
+| **Biochar** | 6,100 kg produced (2025) | [biochar](stories/html/biochar.html) |
+| **Arborloo Toilets** | 30% sanitation coverage | [arborloo-toilets](stories/html/arborloo-toilets.html) |
+
+---
+
+## 🎓 Content Style Guide (Water Prompt)
+
+**DO**:
+- ✅ Specific metrics (501 farmers, 4,800 kg, 7.8 tons)
+- ✅ Real people (Furaha Bahati, village names)
+- ✅ Honest challenges ("We only made 4 sites instead of 6")
+
+**DON'T**:
+- ❌ Buzzwords ("innovative", "transformative", "holistic")
+- ❌ Mission statements ("Turning refugees into change makers")
+- ❌ Vague claims ("Creating lasting change")
+
+**See**: `/policies/WATER_PROMPT.md` for full guide
+
+---
+
+## 📈 Strategic Roadmap (2026)
+
+**Q1**: Business model, wizard system, content strategy ✅
+**Q2**: Telegram bot, HEROES detection, first B2B contract
+**Q3**: Euler pool deployment, DAO governance, equipment investment
+**Q4**: Break-even milestone, $193K+ revenue, self-sustaining operations
+
+---
+
+## 🔗 External References
+
+**Bonzi_v5 Framework** (source systems):
+- HIVE_DAO_FRAMEWORK_v3.md — SIAH Protocol governance
+- WATER_PROMPT.md — Content style guide
+- Wizard system — 3-layer triage, HEROES detection
+
+**Research Comparisons**:
+- African Women Rising (26,600 households, regenerative ag)
+- Rwamwanja Rural Foundation (mushroom focus, Lush Prize)
+- SINA (Nakivale, self-sustaining model)
+- MADE51 (3,700 artisans, global fair trade)
+- Village Enterprise (534% ROI, 933% savings)
+- Hyperskids (charity memecoin, Stake2Earn)
+
+---
+
+## 🤝 Contributing
+
+**Public** (safe to share):
+- `/static`, `/stories/html`, `/policies`, most `/leadership/strategy`
+
+**Private** (leadership only):
+- `/leadership/scout/UNIDOS_DAO_TRANSFORMATION_ROADMAP.md` (🔒)
+- `/stories/data/` (conversation logs contain sensitive info)
+
+**Before contributing**:
+1. Read `/policies/WATER_PROMPT.md`
+2. Review `/leadership/README.md`
+3. Test locally before pushing
+
+---
+
+## 📞 Contact
+
+**Unidos Social Innovation Center**
+Nakivale Refugee Settlement, Uganda
+Founded 2018
+[unidos.ug](https://unidos.ug)
+
+---
+
+*Repository structure modeled after Bonzi_v5*
+*Last updated: February 2026*
