@@ -9,26 +9,141 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Vollkorn:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation-redesign.css">
+    <link rel="stylesheet" href="css/language-switcher.css">
     <link rel="icon" type="image/png" href="images/unidos-logo.png">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header with Multilingual Navigation -->
     <header class="header" id="header">
         <div class="container header-container">
+            <!-- Logo -->
             <a href="index.html" class="logo">
                 <img src="images/unidos-logo.png" alt="Unidos" class="logo-img">
                 <span class="logo-text">Unidos Projects</span>
             </a>
+
+            <!-- Navigation with i18n -->
             <nav class="nav" id="nav">
                 <ul class="nav-list">
-                    <li><a href="about.html" class="active">About Us</a></li>
-                    <li><a href="programs.html">Programs</a></li>
-                    <li><a href="stories.html">Stories</a></li>
-                    <li><a href="diary.html">Diary</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <!-- About -->
+                    <li>
+                        <a href="about.html" class="active" data-i18n="nav.about">About Us</a>
+                    </li>
+
+                    <!-- Initiatives Dropdown -->
+                    <li class="has-dropdown">
+                        <a href="#initiatives" data-i18n="nav.initiatives">Initiatives</a>
+                        <div class="dropdown-menu mega-dropdown">
+                            <div class="mega-dropdown-grid">
+                                <!-- REGESOIL -->
+                                <div class="mega-dropdown-section">
+                                    <h3 class="dropdown-section-title">
+                                        <span class="dropdown-section-icon">🌱</span>
+                                        <span data-i18n="regesoil.name">REGESOIL</span>
+                                    </h3>
+                                    <p style="font-size: 0.9rem; color: var(--color-gray); margin-bottom: 1rem; padding: 0 1rem;" data-i18n="regesoil.description">
+                                        Award-winning soil regeneration program
+                                    </p>
+                                    <ul class="dropdown-links">
+                                        <li>
+                                            <a href="regesoil.html" style="font-weight: 700; color: var(--color-primary);">
+                                                📍 <span data-i18n="regesoil.overview_link">REGESOIL Overview</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="programs.html#vermicomposting" data-i18n="regesoil.vermicomposting">
+                                                Permaculture & Vermicomposting
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="programs.html#biochar" data-i18n="regesoil.biochar">
+                                                Biochar Production
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="programs.html#regenerative-agriculture" data-i18n="regesoil.food_forests">
+                                                Food Forest Design
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="programs.html#arborloo" data-i18n="regesoil.arborloo">
+                                                Arborloo Toilets
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="programs.html#education" data-i18n="regesoil.training">
+                                                Farmer Training
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Women's Circle -->
+                                <div class="mega-dropdown-section">
+                                    <h3 class="dropdown-section-title">
+                                        <span class="dropdown-section-icon">👭</span>
+                                        <span data-i18n="womens_circle.name">Women's Circle</span>
+                                    </h3>
+                                    <p style="font-size: 0.9rem; color: var(--color-gray); margin-bottom: 1rem; padding: 0 1rem;" data-i18n="womens_circle.description">
+                                        Supporting women through health & income
+                                    </p>
+                                    <ul class="dropdown-links">
+                                        <li>
+                                            <a href="womens-circle.html" style="font-weight: 700; color: var(--color-accent);">
+                                                📍 <span data-i18n="womens_circle.overview_link">Women's Circle Overview</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="programs.html#womens-circle" data-i18n="womens_circle.health_education">
+                                                Women's Health Education
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="programs.html#mushroom-lab" data-i18n="womens_circle.mushroom_lab">
+                                                Mushroom Cultivation
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="programs.html#womens-empowerment" data-i18n="womens_circle.empowerment">
+                                                Economic Development
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Awards -->
+                    <li>
+                        <a href="awards.html" data-i18n="nav.awards">Awards</a>
+                    </li>
+
+                    <!-- Blog -->
+                    <li>
+                        <a href="blog.html" data-i18n="nav.blog">Blog</a>
+                    </li>
+
+                    <!-- History -->
+                    <li>
+                        <a href="history.html" data-i18n="nav.history">History</a>
+                    </li>
+
+                    <!-- Contact -->
+                    <li>
+                        <a href="contact.html" data-i18n="nav.contact">Contact</a>
+                    </li>
                 </ul>
             </nav>
-            <a href="donate.html" class="btn btn-accent">Donate</a>
+
+            <!-- Language Switcher -->
+            <div id="language-switcher-placeholder"></div>
+
+            <!-- Donate Button -->
+            <a href="donate.html" class="btn btn-accent" data-i18n="nav.donate">Donate</a>
+
+            <!-- Mobile Menu Toggle -->
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -41,8 +156,8 @@
     <section class="page-hero">
         <div class="hero-overlay"></div>
         <div class="container">
-            <h1>About <span class="highlight">Unidos</span></h1>
-            <p>A refugee-led organization turning challenges into opportunities since 2018.</p>
+            <h1 data-i18n="about.page_title">About <span class="highlight">Unidos</span></h1>
+            <p data-i18n="about.page_subtitle">A refugee-led organization turning challenges into opportunities since 2018.</p>
         </div>
     </section>
 
@@ -275,6 +390,19 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <!-- Footer Language Switcher -->
+            <div class="footer-language-switcher">
+                <span class="language-label" data-i18n="common.select_language">Language</span>
+                <div class="language-switcher-buttons">
+                    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 English</button>
+                    <button class="lang-btn" data-lang="sw" onclick="setLanguage('sw')">🇹🇿 Kiswahili</button>
+                    <button class="lang-btn" data-lang="rw" onclick="setLanguage('rw')">🇷🇼 Kinyarwanda</button>
+                    <button class="lang-btn" data-lang="fr" onclick="setLanguage('fr')">🇫🇷 Français</button>
+                    <button class="lang-btn" data-lang="rn" onclick="setLanguage('rn')">🇧🇮 Kirundi</button>
+                    <button class="lang-btn" data-lang="so" onclick="setLanguage('so')">🇸🇴 Soomaali</button>
+                </div>
+            </div>
+
             <div class="footer-grid">
                 <div class="footer-about">
                     <a href="index.html" class="footer-logo-link">
@@ -300,11 +428,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Unidos Projects. All rights reserved.</p>
+                <p data-i18n="footer.copyright">&copy; 2026 Unidos Projects. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script src="js/i18n-enhanced.js"></script>
+    <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
