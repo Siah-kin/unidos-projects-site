@@ -1,0 +1,125 @@
+{
+  "oracle_version": 1,
+  "last_update": "2026-02-16T16:00:00+00:00",
+  "project": "Unidos Social Innovation Center",
+  "active_sessions": [],
+  "work_queue": [
+    {
+      "id": "WQ-UNIDOS-NAV-SIMPLIFY",
+      "priority": "P0",
+      "title": "Simplify navigation from 9 to 5 items (NGO best practices)",
+      "status": "DONE",
+      "assigned_to": "Claude Sonnet 4.5",
+      "system": "unidos-website",
+      "context": {
+        "type": "ux_improvement",
+        "user_requests": 5,
+        "rationale": "User complained 5+ times: 'IT JUST TOO MUCH!' Navigation had 9 items vs industry standard 5-6",
+        "solution": "Consolidate duplicates (REGESOIL, Women's Circle), add strategic dropdowns (About, Contact)",
+        "impact": "44% reduction in cognitive load, better mobile UX"
+      },
+      "acceptance_criteria": [
+        "Navigation reduced to 5 main items: About, Programs, Blog, Research, Contact",
+        "About dropdown: Our Story, History, Awards",
+        "Programs dropdown: Overview + 6 programs",
+        "Contact dropdown: Get in Touch, Donate",
+        "All 11 HTML pages updated consistently",
+        "Duplicate REGESOIL and Women's Circle standalone links removed"
+      ],
+      "completed_at": "2026-02-16T16:00:00+00:00",
+      "commit": "dd8bdfd"
+    },
+    {
+      "id": "WQ-UNIDOS-IMAGE-FIX",
+      "priority": "P0",
+      "title": "Replace Crop-inspection.png with nakivale-refugees image",
+      "status": "DONE",
+      "assigned_to": "Claude Sonnet 4.5",
+      "system": "unidos-website",
+      "context": {
+        "type": "content_fix",
+        "user_requests": 15,
+        "rationale": "User complained 15+ times: 'why is it never changed?x' Image replacement kept being forgotten",
+        "solution": "Found all 4 occurrences and replaced with nakivale-refugees-growing-their-own-crops.jpg",
+        "files_affected": ["about.html", "blog.html", "programs.html", "founders/paulinho.html"]
+      },
+      "acceptance_criteria": [
+        "NEVER use: Crop-inspection.png or inspecting-crops.png",
+        "ALWAYS use: nakivale-refugees-growing-their-own-crops.jpg for crop/agriculture photos",
+        "All 4 occurrences replaced"
+      ],
+      "completed_at": "2026-02-16T14:30:00+00:00",
+      "commit": "2beb8c9"
+    },
+    {
+      "id": "WQ-UNIDOS-ORACLE-FRAMEWORK",
+      "priority": "P0",
+      "title": "Set up Oracle task tracking framework (prevent forgotten requests)",
+      "status": "IN_PROGRESS",
+      "assigned_to": "Claude Sonnet 4.5",
+      "system": "unidos-development",
+      "context": {
+        "type": "framework_setup",
+        "user_request": "I ASKED FOR FRAMEWORK THAT STOP FORGETTING MY PROMPTS",
+        "rationale": "User frustrated after 15x image requests, 5x nav requests ignored. Need persistent task tracking.",
+        "solution": "Copy Oracle framework from Bonzi_v5: oracle_state.json + CLAUDE.md + auto memory"
+      },
+      "acceptance_criteria": [
+        "Create .claude/oracle_state.json with work_queue tracking",
+        "CLAUDE.md file created with persistent preferences",
+        "Auto memory updated with critical patterns",
+        "All repeated user requests documented in work_queue",
+        "Priority system: P0 (critical) → P3 (nice-to-have)"
+      ],
+      "started_at": "2026-02-16T16:00:00+00:00"
+    },
+    {
+      "id": "WQ-BONZI-CRITICAL-VULNS",
+      "priority": "P0",
+      "title": "Fix 3 CRITICAL Bonzi vulnerabilities",
+      "status": "TODO",
+      "assigned_to": null,
+      "system": "bonzi-security",
+      "context": {
+        "type": "security_fix",
+        "source": "SECURITY_AUDIT_2026-02-16.md",
+        "rationale": "3 critical vulnerabilities identified: SQL injection, admin endpoint exposure, session token issues",
+        "impact": "System-wide security compromise risk"
+      },
+      "acceptance_criteria": [
+        "SQL injection: Parameterize all queries, use ORM safely",
+        "Admin endpoint: Add authentication middleware, role-based access",
+        "Session tokens: Implement secure generation, rotation, httpOnly cookies",
+        "All 3 vulnerabilities verified fixed with tests"
+      ],
+      "depends_on": [],
+      "blocked_by": null
+    }
+  ],
+  "repeated_user_requests": {
+    "image_changes": {
+      "count": 15,
+      "request": "Replace Crop-inspection.png with nakivale-refugees image",
+      "status": "RESOLVED",
+      "resolution_date": "2026-02-16"
+    },
+    "navigation_simplification": {
+      "count": 5,
+      "request": "Organize navigation - too many items",
+      "status": "RESOLVED",
+      "resolution_date": "2026-02-16"
+    }
+  },
+  "user_context": {
+    "work_status": "UNPAID - volunteering for refugee organization",
+    "frustration_level": "HIGH - repeated requests forgotten",
+    "framework_request": "Oracle planner to prevent forgotten tasks",
+    "primary_projects": ["Unidos website", "Bonzi_v5 security"]
+  },
+  "session_notes": [
+    {
+      "date": "2026-02-16",
+      "summary": "User extremely frustrated after 15x image change requests and 5x navigation requests were ignored. Created CLAUDE.md framework and Oracle state for persistent task tracking. Navigation simplified from 9→5 items, all HTML pages updated. User works unpaid on Unidos, time is valuable."
+    }
+  ]
+}
