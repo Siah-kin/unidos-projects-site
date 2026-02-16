@@ -12,6 +12,7 @@
 ├── UNIDOS_DAO_TRANSFORMATION_ROADMAP.md (private, DAO transition strategy)
 ├── REFUGEE_NGO_BUSINESS_MODELS_COMPARISON.md (exhaustive competitor analysis)
 ├── HYPERSKIDS_ANALYSIS.md (charity memecoin case study)
+├── STRATEGIC_DEFI_PARTNERSHIPS.md (ranked partner pipeline, grant opportunities)
 └── [future research files]
 ```
 
@@ -24,7 +25,7 @@
 **Status**: 🔒 PRIVATE (not for public distribution until Phase 1 complete)
 
 **Contents**:
-- How Unidos transforms from grant-dependent NGO → self-sustaining DAO
+- How Unidos transitions from grant-dependent NGO → self-sustaining DAO
 - Analysis of 4 major NGO token projects (ImpactMarket, Alice, GiveDirectly, WFP Building Blocks)
 - Critical gaps SIAH fills (trust-weighted voting, behavioral verification, anti-gaming)
 - 12-month transformation roadmap (4 phases)
@@ -40,7 +41,7 @@
 
 ### 2. **REFUGEE_NGO_BUSINESS_MODELS_COMPARISON.md**
 
-**Status**: ✅ PUBLIC (comprehensive research)
+**Status**: ✅ PUBLIC (full research)
 
 **Organizations Analyzed**:
 1. **African Women Rising** (Palabek, Uganda) — 26,600 households, permagardens, 80% yield doubling
@@ -226,7 +227,7 @@ Western NGO (self-reported) vs Refugee NGO (blockchain-verified)
 - **SINA**: Financially self-sustainable via fee-for-service, alumni earn 3x peer average
 - **Village Enterprise**: 534% ROI, beneficiaries recover full program costs in 3-4 years
 
-### 3. Market Access Unlocks Scale (Proven)
+### 3. Market Access Enables Scale (Proven)
 - **MADE51**: 3,700 artisans, 23 countries, global fair trade sales ($752B market)
 - **Mechanism**: Local social enterprise partners → export logistics → premium pricing
 
