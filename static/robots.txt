@@ -1,0 +1,36 @@
+# Unidos Social Innovation Center - Robots.txt
+# Website: https://unidosprojects.com
+# Updated: 2026-02-16
+
+User-agent: *
+Allow: /
+
+# Allow all public pages
+Allow: /index.html
+Allow: /about.html
+Allow: /programs.html
+Allow: /blog.html
+Allow: /history.html
+Allow: /contact.html
+Allow: /donate.html
+Allow: /awards.html
+Allow: /founders/
+Allow: /stories/
+
+# Block research portal (login required)
+Disallow: /research/
+
+# Block development directories
+Disallow: /leadership/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /policies/
+
+# Block markdown files
+Disallow: /*.md$
+
+# Sitemap location
+Sitemap: https://unidosprojects.com/sitemap.xml
+
+# Crawl rate (optional - for respectful crawling)
+Crawl-delay: 1
