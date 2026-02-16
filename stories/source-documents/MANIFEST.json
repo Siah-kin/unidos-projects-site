@@ -1,0 +1,146 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-02-16",
+  "description": "Source document manifest for Unidos numeric claims. Maps claims to verifiable source documents with tamper detection.",
+  "claims": {
+    "501 farmers": {
+      "source": "Case Study_ Regenerate the soil Project (Regesoil).docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "501 farmers trained in vermicomposting (350 women, 151 men)",
+      "hash": "sha256:pending"
+    },
+    "152 women": {
+      "source": "Website Mushroom project contents.docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "152 women trained across 4 groups in mushroom cultivation",
+      "hash": "sha256:pending"
+    },
+    "4800 kg": {
+      "source": "Website Mushroom project contents.docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "4,800 kg mushrooms produced in 2024",
+      "hash": "sha256:pending"
+    },
+    "5000 kg": {
+      "source": "Website Mushroom project contents.docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "5,000 kg agricultural waste recycled monthly",
+      "hash": "sha256:pending"
+    },
+    "7.8 tons": {
+      "source": "Case Study_ Regenerate the soil Project (Regesoil).docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "7.8 tons worm compost produced yearly",
+      "hash": "sha256:pending"
+    },
+    "270 farmers": {
+      "source": "Case Study_ Regenerate the soil Project (Regesoil).docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "270 farmers reported up to 45% productivity increases",
+      "hash": "sha256:pending"
+    },
+    "45%": {
+      "source": "Case Study_ Regenerate the soil Project (Regesoil).docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "Up to 45% productivity increase from vermicompost",
+      "hash": "sha256:pending"
+    },
+    "40%": {
+      "source": "Case Study_ Regenerate the soil Project (Regesoil).docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "40% improvement in soil drainage/water retention",
+      "hash": "sha256:pending"
+    },
+    "800 kg": {
+      "source": "Case Study_ Regenerate the soil Project (Regesoil).docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "800 kg food waste processed weekly",
+      "hash": "sha256:pending"
+    },
+    "340 farmers": {
+      "source": "Case Study_ Regenerate the soil Project (Regesoil).docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "340 farmers adopted food forest methods",
+      "hash": "sha256:pending"
+    },
+    "2024": {
+      "source": "Unidos -End of project report 2024 Refugee Innovation Fund .docx",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "UNHCR partnership year, mushroom project start year",
+      "hash": "sha256:pending"
+    },
+    "gene dewey award": {
+      "source": "UnidosProjects -End of project report 2024 RLo.pdf",
+      "page": 1,
+      "verified_date": "2026-02-16",
+      "note": "Gene Dewey Award received by Unidos",
+      "hash": "sha256:pending"
+    }
+  },
+  "source_documents": {
+    "Case Study_ Regenerate the soil Project (Regesoil).docx": {
+      "path": "stories/source-documents/Case Study_ Regenerate the soil Project (Regesoil).docx",
+      "type": "case_study",
+      "partner": "UNHCR",
+      "year": 2024,
+      "hash": "sha256:pending"
+    },
+    "Website Mushroom project contents.docx": {
+      "path": "stories/source-documents/Website Mushroom project contents.docx",
+      "type": "project_report",
+      "partner": "Re-Alliance",
+      "year": 2024,
+      "hash": "sha256:pending"
+    },
+    "Unidos -End of project report 2024 Refugee Innovation Fund .docx": {
+      "path": "stories/source-documents/Unidos -End of project report 2024 Refugee Innovation Fund .docx",
+      "type": "annual_report",
+      "partner": "UNHCR",
+      "year": 2024,
+      "hash": "sha256:pending"
+    },
+    "UnidosProjects -End of project report 2024 RLo.pdf": {
+      "path": "stories/source-documents/UnidosProjects -End of project report 2024 RLo.pdf",
+      "type": "project_report",
+      "partner": "Refugee Law Project",
+      "year": 2024,
+      "hash": "sha256:pending"
+    },
+    "Annual biochar report.docx": {
+      "path": "stories/source-documents/Annual biochar report.docx",
+      "type": "annual_report",
+      "year": 2024,
+      "hash": "sha256:pending"
+    },
+    "Compost Toilet Proposal for Nakivale Refugee Settlement.docx": {
+      "path": "stories/source-documents/Compost Toilet Proposal for Nakivale Refugee Settlement.docx",
+      "type": "proposal",
+      "year": 2024,
+      "hash": "sha256:pending"
+    },
+    "Website Women Circle Project contents.docx": {
+      "path": "stories/source-documents/Website Women Circle Project contents.docx",
+      "type": "project_report",
+      "year": 2024,
+      "hash": "sha256:pending"
+    }
+  },
+  "notes": [
+    "All claims must have source document references",
+    "Hashes are SHA256 of source files for tamper detection",
+    "Verify dates track when claim was last verified against source",
+    "Claims are normalized (lowercase, no commas in numbers)",
+    "Fuzzy matching supported for number-only lookups"
+  ]
+}
