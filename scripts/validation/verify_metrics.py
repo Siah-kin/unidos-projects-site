@@ -25,14 +25,14 @@ MANIFEST_PATH = REPO_ROOT / "stories" / "source-documents" / "MANIFEST.json"
 
 # Patterns to extract numeric claims from HTML
 METRIC_PATTERNS = [
-    # stat-number divs (e.g., <span class="stat-number">152</span>)
-    r'<span class="stat-number">([0-9,\.]+(?:\s*(?:kg|tons?|people|farmers?|women|men|children|%))?)</span>',
+    # stat-number elements (e.g., <span class="stat-number">152</span> or <div class="stat-number">152</div>)
+    r'class="stat-number">([0-9,\.]+)',
 
-    # Inline metrics (e.g., "501 farmers trained", "4,800 kg produced")
-    r'\b(\d{1,3}(?:,\d{3})*(?:\.\d+)?)\s*(kg|tons?|people|farmers?|women|men|children|%|percent)\b',
+    # Inline metrics with units (e.g., "501 farmers trained", "4,800 kg produced")
+    r'\b(\d{1,3}(?:,\d{3})*(?:\.\d+)?)\s+(kg|tons?|people|farmers?|women|men|children|%|percent)\b',
 
     # Meta description metrics
-    r'<meta name="description" content="[^"]*?(\d{1,3}(?:,\d{3})*(?:\.\d+)?)\s*(kg|tons?|people|farmers?|women|men|children|%)',
+    r'<meta name="description" content="[^"]*?(\d{1,3}(?:,\d{3})*(?:\.\d+)?)\s+(kg|tons?|people|farmers?|women|men|children|%)',
 
     # Award/year claims (e.g., "2024 Gene Dewey Award")
     r'\b(20\d{2})\s+(?:Gene Dewey|UNHCR|Re-?Alliance|award|prize)',
