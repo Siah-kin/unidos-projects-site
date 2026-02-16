@@ -1,6 +1,20 @@
 # Unidos /scout — Research & Strategy Vault
 
+**🔒 SECURITY LEVEL: PRIVATE - INTERNAL USE ONLY**
+
 **Purpose**: Organize all strategic research, competitive analysis, and transformation planning for Unidos NGO → DAO transition.
+
+**⚠️ CONFIDENTIALITY NOTICE**: This document contains strategic planning, competitive intelligence, and transformation roadmaps. Distribution restricted to:
+- Unidos leadership team
+- Trusted advisors (under NDA)
+- Strategic partners (vetted, on need-to-know basis)
+
+**DO NOT**:
+- Share publicly on social media, websites, or public repositories
+- Distribute without explicit approval from Unidos leadership
+- Include in public grant applications (use sanitized public versions instead)
+
+**Public-Safe Documents**: Only share documents explicitly marked "✅ PUBLIC"
 
 ---
 
