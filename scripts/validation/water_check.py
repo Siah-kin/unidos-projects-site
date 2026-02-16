@@ -82,6 +82,8 @@ IGNORE_PATTERNS = [
     "policies/**",  # Policy docs contain examples of violations
     "leadership/**",  # Internal strategy docs
     "docs/analysis/**",  # Internal analysis
+    "docs/AUDIT_REPORT_*.md",  # Audit reports quote violations as examples
+    "docs/BONZI_V5_GAP_ANALYSIS.md",  # Technical spec, not external-facing
     ".git/**",
     "node_modules/**",
     "static/video_files/**",
