@@ -1,0 +1,449 @@
+/* ========================================
+   MODERN NAVIGATION REDESIGN
+   Enhanced UI/UX with dropdown menus
+   ======================================== */
+
+/* Enhanced Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--color-white);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px; /* Increased from 80px for better breathing room */
+    gap: 2rem;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* Navigation */
+.nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 0; /* Remove gap, we'll use padding instead */
+    align-items: center;
+}
+
+.nav-list > li {
+    position: relative;
+}
+
+.nav-list > li > a {
+    display: block;
+    color: var(--color-dark);
+    font-weight: 500;
+    font-size: 1.05rem;
+    padding: 1.75rem 1.5rem; /* Generous padding for better click targets */
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Underline hover effect */
+.nav-list > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 3px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-list > li > a:hover::after,
+.nav-list > li > a.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-list > li > a:hover {
+    color: var(--color-primary);
+}
+
+.nav-list > li > a.active {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Dropdown indicator */
+.nav-list > li.has-dropdown > a::before {
+    content: '▾';
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.nav-list > li.has-dropdown:hover > a::before {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    min-width: 320px;
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    padding: 1rem 0;
+}
+
+.nav-list > li.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Mega dropdown for Initiatives */
+.mega-dropdown {
+    min-width: 600px;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.mega-dropdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+}
+
+.mega-dropdown-section {
+    position: relative;
+}
+
+.mega-dropdown-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -1.25rem;
+    height: 100%;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(38, 133, 117, 0.2) 20%,
+        rgba(38, 133, 117, 0.2) 80%,
+        transparent
+    );
+}
+
+.mega-dropdown-section:last-child::before {
+    display: none;
+}
+
+.dropdown-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dropdown-section-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.dropdown-links li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--color-gray);
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.dropdown-links li a::before {
+    content: '→';
+    position: absolute;
+    left: 0.75rem;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.2s ease;
+    color: var(--color-primary);
+}
+
+.dropdown-links li a:hover {
+    background: rgba(38, 133, 117, 0.08);
+    color: var(--color-primary);
+    padding-left: 2rem;
+}
+
+.dropdown-links li a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Regular dropdown (for About, etc.) */
+.dropdown-links-simple {
+    list-style: none;
+    padding: 0.5rem;
+}
+
+.dropdown-links-simple li a {
+    display: block;
+    padding: 0.875rem 1.25rem;
+    color: var(--color-gray);
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-links-simple li a:hover {
+    background: rgba(38, 133, 117, 0.08);
+    color: var(--color-primary);
+}
+
+/* Donate Button */
+.header .btn-accent {
+    margin-left: 1rem;
+    padding: 0.875rem 2rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(255, 166, 43, 0.3);
+}
+
+.header .btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 166, 43, 0.4);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(38, 133, 117, 0.1);
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile menu active state */
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .nav-list > li > a {
+        padding: 1.75rem 1.25rem;
+        font-size: 1rem;
+    }
+
+    .mega-dropdown {
+        min-width: 500px;
+    }
+}
+
+@media (max-width: 968px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .nav {
+        position: fixed;
+        top: 90px;
+        left: 0;
+        right: 0;
+        background: var(--color-white);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    box-shadow 0.3s ease;
+        box-shadow: none;
+    }
+
+    .nav.active {
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+    }
+
+    .nav-list > li {
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-list > li > a {
+        padding: 1.25rem 2rem;
+    }
+
+    .nav-list > li > a::after {
+        display: none;
+    }
+
+    /* Mobile dropdown */
+    .dropdown-menu,
+    .mega-dropdown {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        min-width: 100%;
+        max-width: 100%;
+        opacity: 1;
+        visibility: visible;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0;
+        background: rgba(38, 133, 117, 0.02);
+    }
+
+    .nav-list > li.has-dropdown.active .dropdown-menu,
+    .nav-list > li.has-dropdown.active .mega-dropdown {
+        max-height: 1000px;
+        padding: 1rem 0;
+    }
+
+    .mega-dropdown-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 2rem;
+    }
+
+    .mega-dropdown-section::before {
+        display: none;
+    }
+
+    .dropdown-section-title {
+        font-size: 1rem;
+    }
+
+    .dropdown-links li a {
+        padding: 0.75rem 1rem;
+    }
+
+    .header .btn-accent {
+        margin: 1rem 2rem;
+        width: calc(100% - 4rem);
+        text-align: center;
+    }
+
+    .nav-list > li.has-dropdown > a::before {
+        position: absolute;
+        right: 2rem;
+    }
+
+    .nav-list > li.has-dropdown.active > a::before {
+        transform: rotate(180deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        height: 75px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    .logo-img {
+        height: 35px;
+    }
+
+    .nav {
+        top: 75px;
+    }
+
+    .nav.active {
+        max-height: calc(100vh - 75px);
+    }
+}

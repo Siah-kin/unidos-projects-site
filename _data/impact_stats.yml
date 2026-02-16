@@ -1,0 +1,20 @@
+# Impact Statistics for Homepage
+# Edit these numbers as your impact grows
+# These will appear in the "Our Impact" section
+
+stats:
+  - number: "3,000+"
+    label: "Refugees Trained"
+    description: "in regenerative agriculture and sustainable farming"
+
+  - number: "700+"
+    label: "Women Empowered"
+    description: "through entrepreneurship and farming programs"
+
+  - number: "5,300+"
+    label: "Community Members"
+    description: "impacted across 7+ nationalities"
+
+  - number: "10,000+"
+    label: "Trees Planted"
+    description: "restoring biodiversity and food forests"

@@ -1,0 +1,269 @@
+================================================================================
+UNIDOS WEBSITE - FILE INVENTORY & LINK AUDIT
+================================================================================
+Date: February 16, 2026
+Total HTML Files: 33
+Broken Links: 192
+
+================================================================================
+STORY FILES - CURRENT LOCATION (WRONG)
+================================================================================
+
+Location: /stories/html/ (ONE LEVEL TOO DEEP)
+
+✅ stories/html/arborloo-toilets.html        (EXISTS but WRONG LOCATION)
+✅ stories/html/biochar.html                 (EXISTS but WRONG LOCATION)
+✅ stories/html/gene-dewey-award.html        (EXISTS but WRONG LOCATION)
+✅ stories/html/mushroom-project.html        (EXISTS but WRONG LOCATION)
+✅ stories/html/permaculture-award.html      (EXISTS but WRONG LOCATION)
+✅ stories/html/permaculture-training.html   (EXISTS but WRONG LOCATION) ⭐ REPORTED 404
+✅ stories/html/vermicomposting.html         (EXISTS but WRONG LOCATION)
+✅ stories/html/women-circle.html            (EXISTS but WRONG LOCATION)
+✅ stories/html/women-empowerment.html       (EXISTS but WRONG LOCATION)
+
+Also:
+⚠️  stories/biochar.html                     (DUPLICATE in wrong place)
+
+Problem: 
+  - blog.html links to:  stories/permaculture-training.html
+  - File is actually at: stories/html/permaculture-training.html
+  - Result: 404 ERROR
+
+================================================================================
+WHERE STORY FILES SHOULD BE (EXPECTED BY LINKS)
+================================================================================
+
+blog.html expects to find:
+❌ stories/gene-dewey-award.html           (MISSING - is at stories/html/gene-dewey-award.html)
+❌ stories/mushroom-project.html           (MISSING - is at stories/html/mushroom-project.html)
+❌ stories/vermicomposting.html            (MISSING - is at stories/html/vermicomposting.html)
+❌ stories/permaculture-award.html         (MISSING - is at stories/html/permaculture-award.html)
+❌ stories/permaculture-training.html      (MISSING - is at stories/html/permaculture-training.html) ⭐
+❌ stories/women-empowerment.html          (MISSING - is at stories/html/women-empowerment.html)
+❌ stories/women-circle.html               (MISSING - is at stories/html/women-circle.html)
+❌ stories/biochar.html                    (MISSING - is at stories/html/biochar.html)
+❌ stories/arborloo-toilets.html           (MISSING - is at stories/html/arborloo-toilets.html)
+
+programs.html expects to find:
+❌ stories/mushroom-project.html
+❌ stories/permaculture-training.html      ⭐
+
+static/stories.html expects to find (relative to static/):
+❌ stories/gene-dewey-award.html
+❌ stories/mushroom-project.html
+❌ stories/vermicomposting.html
+❌ stories/permaculture-award.html
+❌ stories/permaculture-training.html
+❌ stories/women-empowerment.html
+❌ stories/women-circle.html
+❌ stories/biochar.html
+❌ stories/arborloo-toilets.html
+
+static/programs.html expects to find (relative to static/):
+❌ stories/permaculture-training.html
+❌ stories/mushroom-project.html
+❌ stories/women-circle.html
+❌ stories/biochar.html
+❌ stories/arborloo-toilets.html
+
+================================================================================
+STORY FILES - BROKEN INTERNAL LINKS
+================================================================================
+
+Each story file in stories/html/ has 16 broken links:
+(9 files × 16 links = 144 broken links)
+
+Example: stories/html/permaculture-training.html
+
+Broken Resources:
+❌ href="../css/style.css"             → expects /stories/css/style.css (doesn't exist)
+❌ src="../images/unidos-logo.png"     → expects /stories/images/unidos-logo.png (doesn't exist)
+
+Broken Navigation (Header):
+❌ href="../index.html"                → expects /stories/index.html (doesn't exist)
+❌ href="../about.html"                → expects /stories/about.html (doesn't exist)
+❌ href="../programs.html"             → expects /stories/programs.html (doesn't exist)
+❌ href="../stories.html"              → expects /stories/stories.html (doesn't exist)
+❌ href="../diary.html"                → expects /stories/diary.html (doesn't exist)
+❌ href="../contact.html"              → expects /stories/contact.html (doesn't exist)
+❌ href="../donate.html"               → expects /stories/donate.html (doesn't exist)
+
+Broken Navigation (Footer - duplicates):
+❌ href="../index.html"
+❌ href="../about.html"
+❌ href="../programs.html"
+❌ href="../stories.html"
+❌ href="../diary.html"
+❌ href="../donate.html"
+
+Note: stories.html was renamed to blog.html
+Note: diary.html was renamed to history.html
+
+================================================================================
+ROOT DIRECTORY FILES
+================================================================================
+
+✅ index.html
+✅ about.html
+✅ awards.html
+✅ blog.html                    (formerly stories.html)
+✅ history.html                 (formerly diary.html)
+✅ contact.html
+✅ donate.html
+✅ programs.html
+✅ founders/paulinho.html
+✅ founders/maria.html
+✅ research/index.html
+✅ research/login.html
+✅ admin/index.html
+
+================================================================================
+STATIC DIRECTORY FILES (DUPLICATES)
+================================================================================
+
+⚠️  static/index.html           (DUPLICATE of index.html)
+⚠️  static/about.html           (DUPLICATE of about.html)
+⚠️  static/awards.html          (DUPLICATE of awards.html)
+⚠️  static/contact.html         (DUPLICATE of contact.html)
+⚠️  static/donate.html          (DUPLICATE of donate.html)
+⚠️  static/programs.html        (DUPLICATE of programs.html)
+⚠️  static/stories.html         (OLD NAME - now blog.html)
+⚠️  static/stories.html         (OLD NAME - now blog.html)
+⚠️  static/diary.html           (OLD NAME - now history.html)
+✅ static/research/index.html
+✅ static/research/login.html
+
+Issue: 6 files exist in both locations, causing confusion
+
+================================================================================
+RESEARCH PORTAL - BROKEN LINKS
+================================================================================
+
+static/research/index.html expects but doesn't find:
+❌ static/research/introduction.html
+❌ static/research/dao-technology.html
+❌ static/research/funding-funnel.html
+❌ static/research/vetting-funnel.html
+❌ static/research/reputation-staking.html
+❌ static/research/dao-roadmap.html
+
+================================================================================
+LINK BREAKDOWN BY PAGE
+================================================================================
+
+blog.html:
+  - Total links checked: 50+
+  - Broken links: 9 (all to stories/)
+  - Broken: stories/gene-dewey-award.html (appears twice)
+  - Broken: stories/mushroom-project.html
+  - Broken: stories/vermicomposting.html
+  - Broken: stories/permaculture-award.html
+  - Broken: stories/permaculture-training.html ⭐
+  - Broken: stories/women-empowerment.html
+  - Broken: stories/women-circle.html
+  - Broken: stories/arborloo-toilets.html
+
+programs.html:
+  - Total links checked: 40+
+  - Broken links: 2
+  - Broken: stories/mushroom-project.html
+  - Broken: stories/permaculture-training.html ⭐
+
+static/stories.html:
+  - Broken links: 10 (similar to blog.html)
+
+static/programs.html:
+  - Broken links: 5
+
+stories/biochar.html (root level, wrong location):
+  - Broken links: 16 (same issues as stories/html/*.html files)
+
+stories/html/*.html (9 files):
+  - Broken links per file: 16
+  - Total: 144 broken links
+  - Issues: CSS, images, navigation all broken
+
+static/research/index.html:
+  - Broken links: 6 (research portal pages)
+
+================================================================================
+SUMMARY OF ISSUES
+================================================================================
+
+1. PRIMARY ISSUE: Story Files Location
+   - Files are in:  stories/html/
+   - Links expect:  stories/
+   - Impact:        9 pages inaccessible
+   - Broken links:  48 (from various pages linking to stories)
+
+2. SECONDARY ISSUE: Story File Internal Links
+   - Each file has: 16 broken links
+   - Total impact:  144 broken links (9 files × 16)
+   - Cause:         Files too deep in directory structure
+   - Effect:        No CSS, no navigation, no images
+
+3. TERTIARY ISSUE: Duplicate Files
+   - Files duplicated: 6
+   - Locations:        root/ and static/
+   - Impact:           Maintenance confusion, SEO issues
+
+4. MINOR ISSUE: Research Portal
+   - Broken links:  6
+   - Missing pages: All research content pages
+   - Impact:        Limited (portal not heavily used)
+
+5. NAMING ISSUE: Outdated Navigation
+   - Old names:     stories.html, diary.html
+   - New names:     blog.html, history.html
+   - Impact:        Story files still link to old names
+
+================================================================================
+THE FIX
+================================================================================
+
+Step 1: Move files from stories/html/ to stories/
+  Command: mv stories/html/*.html stories/
+
+Step 2: Update navigation in each story file
+  Change: ../stories.html → ../blog.html
+  Change: ../diary.html → ../history.html
+
+Step 3: Remove duplicate
+  Command: rm stories/biochar.html (keep the one that was in html/)
+
+Step 4: Remove empty directory
+  Command: rmdir stories/html
+
+Result: 192 broken links → 0 broken links
+
+================================================================================
+VERIFICATION URLS (After Fix)
+================================================================================
+
+Should all return 200 OK:
+✅ /stories/permaculture-training.html
+✅ /stories/mushroom-project.html
+✅ /stories/gene-dewey-award.html
+✅ /stories/permaculture-award.html
+✅ /stories/vermicomposting.html
+✅ /stories/women-empowerment.html
+✅ /stories/women-circle.html
+✅ /stories/biochar.html
+✅ /stories/arborloo-toilets.html
+
+From blog.html:
+✅ Click any "Read More" link → Should open story page
+✅ Story page should have CSS styling
+✅ Story page logo should display
+✅ Story page navigation should work
+
+From programs.html:
+✅ Click story links → Should work
+
+================================================================================
+END OF INVENTORY
+================================================================================
+For detailed instructions see: QUICK_FIX_GUIDE.md
+For comprehensive analysis see: LINK_AUDIT_REPORT.md
+For visual diagrams see: LINK_STRUCTURE_DIAGRAM.md
+For executive summary see: AUDIT_SUMMARY.md

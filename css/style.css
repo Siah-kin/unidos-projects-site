@@ -815,7 +815,7 @@ blockquote {
 .page-hero .hero-overlay {
     position: absolute;
     inset: 0;
-    background: url('../images/nakivale-refugees-growing-their-own-crops.jpg') center/cover no-repeat;
+    background: url('../images/vermicomposting.jpg') center/cover no-repeat;
     opacity: 0.15;
 }
 
@@ -1568,4 +1568,159 @@ blockquote {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
     margin-top: var(--spacing-sm);
+}
+
+/* ========================================
+   Social Media Feed Section
+   ======================================== */
+
+.social-feed {
+    background: var(--color-light);
+    padding: var(--spacing-lg) 0;
+}
+
+.instagram-feed-wrapper {
+    max-width: var(--max-width);
+    margin: var(--spacing-md) auto 0;
+    padding: 0 var(--spacing-sm);
+}
+
+.instagram-feed-wrapper iframe {
+    display: block;
+    width: 100%;
+    min-height: 600px;
+    border: none;
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+}
+
+/* Instagram placeholder (shown until feed is configured) */
+.instagram-placeholder {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.instagram-placeholder svg {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.instagram-placeholder h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-dark);
+}
+
+.instagram-placeholder p {
+    font-size: 1rem;
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-xs);
+}
+
+.instagram-placeholder a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.instagram-placeholder a:hover {
+    text-decoration: underline;
+}
+
+.instagram-placeholder .setup-note {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: rgba(255, 166, 43, 0.1);
+    border-radius: var(--border-radius);
+}
+
+/* Instagram Grid */
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.instagram-post {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instagram-post:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.instagram-placeholder-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-align: center;
+}
+
+.instagram-placeholder-image svg {
+    opacity: 0.9;
+}
+
+.instagram-placeholder-image span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.instagram-note {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    font-size: 0.9rem;
+    color: var(--color-gray);
+}
+
+.instagram-note a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.instagram-note a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .social-feed {
+        padding: var(--spacing-md) 0;
+    }
+
+    .instagram-feed-wrapper {
+        padding: 0;
+    }
+
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .instagram-grid {
+        grid-template-columns: 1fr;
+    }
 }

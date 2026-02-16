@@ -1,0 +1,171 @@
+# Decap CMS Configuration for Unidos Projects
+# This file defines what content can be edited through the CMS interface
+# Access the CMS at: https://unidos.ug/admin
+
+backend:
+  name: github
+  repo: ginoludikhuyze/Unidos  # Replace with your GitHub username/repo
+  branch: main
+  base_url: https://api.netlify.com  # For GitHub OAuth
+  auth_endpoint: auth
+
+# Enable local development mode
+# Run: npx decap-server
+local_backend: true
+
+# Media files (images, videos)
+media_folder: "images"  # Where uploaded images will be stored
+public_folder: "/images"  # URL path for images
+
+# Enable editorial workflow (Draft -> In Review -> Ready to Publish)
+publish_mode: editorial_workflow
+
+# Content collections that can be edited
+collections:
+  # Homepage Content
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - name: "hero"
+        label: "Hero Section"
+        file: "_data/homepage_hero.yml"
+        fields:
+          - {label: "Title", name: "title", widget: "string", default: "Unidos Social Innovation Center"}
+          - {label: "Subtitle", name: "subtitle", widget: "text"}
+          - {label: "Primary Button Text", name: "primary_button", widget: "string", default: "Our Programs"}
+          - {label: "Secondary Button Text", name: "secondary_button", widget: "string", default: "Support Our Mission"}
+
+      - name: "impact_stats"
+        label: "Impact Statistics"
+        file: "_data/impact_stats.yml"
+        fields:
+          - label: "Statistics"
+            name: "stats"
+            widget: "list"
+            fields:
+              - {label: "Number", name: "number", widget: "string", hint: "e.g., 3,000+"}
+              - {label: "Label", name: "label", widget: "string", hint: "e.g., Refugees Trained"}
+              - {label: "Description", name: "description", widget: "string"}
+
+      - name: "about_section"
+        label: "About Section"
+        file: "_data/about_section.yml"
+        fields:
+          - {label: "Section Label", name: "label", widget: "string", default: "Who We Are"}
+          - {label: "Title", name: "title", widget: "string", default: "Unidos Social Innovation Center"}
+          - label: "Paragraphs"
+            name: "paragraphs"
+            widget: "list"
+            field: {label: "Paragraph", name: "text", widget: "text"}
+
+  # Programs
+  - name: "programs"
+    label: "Programs"
+    folder: "_data/programs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Program Name", name: "title", widget: "string"}
+      - {label: "Icon Code", name: "icon", widget: "text", hint: "SVG code for icon", required: false}
+      - {label: "Short Description", name: "description", widget: "text"}
+      - {label: "Long Description", name: "long_description", widget: "markdown", required: false}
+      - {label: "Metrics", name: "metrics", widget: "text", hint: "e.g., 152 women trained, 4,800 kg/year", required: false}
+      - {label: "Order", name: "order", widget: "number", default: 1, value_type: "int"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+
+  # Stories/Testimonials
+  - name: "stories"
+    label: "Stories"
+    folder: "_data/stories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Person Name", name: "name", widget: "string"}
+      - {label: "Role/Title", name: "role", widget: "string"}
+      - {label: "Country of Origin", name: "country", widget: "string", required: false}
+      - {label: "Quote", name: "quote", widget: "text"}
+      - {label: "Story Content", name: "content", widget: "markdown"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Display on Homepage", name: "featured", widget: "boolean", default: false}
+      - {label: "Order", name: "order", widget: "number", default: 1, value_type: "int"}
+
+  # Awards & Recognition
+  - name: "awards"
+    label: "Awards & Recognition"
+    folder: "_data/awards"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    fields:
+      - {label: "Award Name", name: "title", widget: "string"}
+      - {label: "Awarding Organization", name: "organization", widget: "string"}
+      - {label: "Year", name: "year", widget: "number", value_type: "int"}
+      - {label: "Amount/Prize", name: "prize", widget: "string", required: false, hint: "e.g., £25,000"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Logo", name: "logo", widget: "image", required: false}
+      - {label: "Award Page URL", name: "url", widget: "string", required: false}
+      - {label: "Display on Homepage", name: "featured", widget: "boolean", default: true}
+      - {label: "Order", name: "order", widget: "number", default: 1, value_type: "int"}
+
+  # Founder Profiles
+  - name: "founders"
+    label: "Founder Profiles"
+    folder: "_data/founders"
+    create: false  # Only edit existing profiles
+    slug: "{{slug}}"
+    fields:
+      - {label: "Full Name", name: "name", widget: "string"}
+      - {label: "Role/Title", name: "role", widget: "string"}
+      - {label: "Program Focus", name: "program", widget: "string", hint: "e.g., REGESOIL, Women's Circle"}
+      - {label: "Bio", name: "bio", widget: "markdown"}
+      - {label: "Key Achievements", name: "achievements", widget: "list", field: {label: "Achievement", name: "item", widget: "string"}}
+      - {label: "Profile Photo", name: "photo", widget: "image"}
+      - {label: "Awards", name: "awards", widget: "list", field: {label: "Award", name: "award", widget: "string"}, required: false}
+      - {label: "Quote", name: "quote", widget: "text", required: false}
+
+  # Partners
+  - name: "partners"
+    label: "Partners"
+    folder: "_data/partners"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Partner Name", name: "name", widget: "string"}
+      - {label: "Partner Type", name: "type", widget: "select", options: ["Funder", "NGO", "Corporate", "Foundation", "Government", "Other"]}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Logo", name: "logo", widget: "image"}
+      - {label: "Website URL", name: "url", widget: "string", required: false}
+      - {label: "Display on Homepage", name: "featured", widget: "boolean", default: true}
+      - {label: "Order", name: "order", widget: "number", default: 1, value_type: "int"}
+
+  # Site Settings
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "contact"
+        label: "Contact Information"
+        file: "_data/contact.yml"
+        fields:
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Location", name: "location", widget: "text"}
+          - {label: "Instagram URL", name: "instagram", widget: "string", required: false}
+          - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
+          - {label: "Twitter/X URL", name: "twitter", widget: "string", required: false}
+          - {label: "LinkedIn URL", name: "linkedin", widget: "string", required: false}
+
+      - name: "navigation"
+        label: "Navigation Menu"
+        file: "_data/navigation.yml"
+        fields:
+          - label: "Main Navigation"
+            name: "main_nav"
+            widget: "list"
+            fields:
+              - {label: "Link Text", name: "text", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "Order", name: "order", widget: "number", value_type: "int"}
+
+# Enable media library (for uploading images)
+media_library:
+  name: uploadcare
+  config:
+    publicKey: YOUR_UPLOADCARE_PUBLIC_KEY

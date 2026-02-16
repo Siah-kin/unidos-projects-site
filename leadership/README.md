@@ -11,12 +11,18 @@
 ```
 /leadership/
 ├── README.md (this file)
+├── UMBRELLA_RESEARCH_FRAMEWORK.md (Dynamic SWOT, Oracle 6 adaptation, 30K words)
+├── oracle/
+│   ├── BRIDGE_AGENT_DEFINITION.md (Unidos-Bonzi vertical agent, 8 verticals + AI spec)
+│   └── BONZI_V5_INTEGRATION_REQUEST.md (formal request to Oracle Planner)
 ├── strategy/
 │   ├── UNIDOS_BUSINESS_MODEL_2026.md (revenue model, PQI scoring, projections)
 │   ├── UNIDOS_WIZARD_NGO_MANAGEMENT.md (Bonzi wizard adapted for NGOs)
 │   ├── WEBSITE_IMPROVEMENTS_ANALYSIS.md (Water Prompt content strategy)
 │   ├── MULTI_YEAR_FUNDING_FUNNEL.md (umbrella NGO model, vulnerable project support)
-│   └── VETTING_FUNNEL.md (fraud prevention, $500/month threshold, pan-African incubation)
+│   ├── VETTING_FUNNEL.md (fraud prevention, $500/month threshold, pan-African incubation)
+│   ├── REPUTATION_STAKING.md (award-based reputation, vetting authority thresholds)
+│   └── MEMBERSHIP_DATA_COMMONS_STRATEGY.md (ZK data commons, incubation flywheel)
 ├── operations/
 │   └── [operational frameworks, SOPs, processes]
 └── research/
@@ -24,6 +30,37 @@
 ```
 
 **Note**: Exhaustive research moved to `/scout` folder (DAO transformation, competitor analysis, tokenization models)
+
+---
+
+## 🤖 Oracle Documents
+
+### BRIDGE_AGENT_DEFINITION.md
+
+**Category**: Oracle (Integration Agent)
+**Status**: ✅ Active (Q2-Q4 2026 roadmap)
+
+**Contents**:
+- **BRIDGE agent**: Coordination role owning 8 verticals between Unidos and Bonzi toolset
+- **8 verticals**: Behavioral KYC, Data Farming, Barter Economy, Cooperation Governance, Multi-Chain, LEAN Mobile, Euler Pool, Soulbound Identity
+- **Oracle 6 decision authority**: What BRIDGE decides alone vs DAO vote vs human leadership
+- **Operational workflows**: Daily monitoring, weekly decisions, event-driven escalation
+- **AI agent specification**: Claude Code + Telegram bot deployment plan (human mode → hybrid mode)
+- **Success metrics**: 3 tiers (pipeline health, economy health, impact)
+- **Risk registry**: 10 risks with mitigation and Oracle owners
+
+**Key Role**: Single point of accountability for all Unidos-Bonzi integration
+
+**Use Case**: Agent onboarding, operational manual, AI agent configuration
+
+---
+
+### BONZI_V5_INTEGRATION_REQUEST.md
+
+**Category**: Oracle (External Communication)
+**Status**: ✅ Submitted to Oracle Planner
+
+**Contents**: Formal request to integrate Data-as-Collateral research into bonzivista.org, including Oracle 6 categorization, visual asset requests, SEO keywords, and timeline.
 
 ---
 
@@ -145,6 +182,26 @@
 **Key Insight**: "Unidos cannot vet others until it proves itself first" — Earn credibility via cryptographic self-verification before scaling vetting network
 
 **Use Case**: Umbrella NGO partner selection, fraud prevention protocols, donor trust building
+
+---
+
+### 6. **MEMBERSHIP_DATA_COMMONS_STRATEGY.md**
+
+**Category**: Strategy (BRIDGE Vertical 9)
+**Status**: ✅ Active (Q2 2026 membership launch, Q3 ZK proofs, Q4 incubation pilot)
+
+**Contents**:
+- **Membership tiers**: Seed (free) → Grower (2 UNIDOS) → Cultivator (5) → Steward (10) — paid in earned tokens, not cash
+- **ZK Data Commons**: Semaphore-based zero-knowledge proofs verify impact claims ("501 trained", "100t CO2") without revealing individual data
+- **Grant pipeline acceleration**: ZK-verified applications increase approval rates 2-3x ($100-150K additional annual grant revenue)
+- **Regenerative business incubation**: Cultivator members eligible for $200-500 seed funding, 8-week Paulinho/Maria mentorship, behavioral credit (cooperation score as collateral)
+- **Flywheel**: Members → data → ZK proofs → grants → incubation → more members
+- **Year 1 projection**: $246-346K total revenue (data + grants + incubated businesses)
+- **Year 3 projection**: $832-932K total revenue (2,000 members, 50 businesses)
+
+**Key Innovation**: ZK proofs multiply data value 2.7x (buyers pay premium for cryptographically verified data vs self-reported)
+
+**Use Case**: Membership program design, grant applications, incubation program launch, data buyer negotiations
 
 ---
 
