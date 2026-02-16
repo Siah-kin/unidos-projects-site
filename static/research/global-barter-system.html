@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Refugee Barter System - Unidos Research</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-back:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-signout {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-signout:hover {
+            background: #c0392b;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero .tagline {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            margin: 2rem auto;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .section h3 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .module-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .module-card h4 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-card p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .module-card .tech-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .flow-diagram {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px dashed #667eea;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .flow-step .step-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .flow-step .step-content {
+            flex: 1;
+        }
+
+        .flow-step .step-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            color: #667eea;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .comparison-table .highlight {
+            background: #d4edda;
+            font-weight: bold;
+        }
+
+        .global-map {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            color: white;
+        }
+
+        .settlement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .settlement-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .settlement-card h5 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .settlement-card .country {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .settlement-card .refugees {
+            font-weight: bold;
+            color: #ffd700;
+            margin-top: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .roadmap {
+            margin: 2rem 0;
+        }
+
+        .roadmap-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .roadmap-year {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 120px;
+            text-align: center;
+            font-weight: bold;
+            height: fit-content;
+        }
+
+        .roadmap-content {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .roadmap-content h5 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-content ul {
+            margin-left: 1.5rem;
+            color: #555;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .code-block .comment {
+            color: #6a9955;
+        }
+
+        .code-block .keyword {
+            color: #569cd6;
+        }
+
+        .code-block .function {
+            color: #dcdcaa;
+        }
+
+        .code-block .string {
+            color: #ce9178;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .cta-box h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #667eea;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-item {
+                flex-direction: column;
+            }
+
+            .roadmap-year {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>🌍 Global Refugee Barter System</h1>
+            <div class="header-nav">
+                <span id="userEmail" style="color: #666; margin-right: 1rem;"></span>
+                <a href="index.html" class="btn btn-back">← Back to Research</a>
+                <button id="signOutBtn" class="btn btn-signout">Sign Out</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h2>Data-as-Collateral Barter System</h2>
+            <p>How refugees can "farm" blockchain transaction fees by contributing behavioral data, creating KYC-free banking with zero out-of-pocket costs.</p>
+            <div class="tagline">
+                First model where refugees farm transaction fees by contributing behavioral data
+            </div>
+        </div>
+
+        <!-- Impact Stats -->
+        <div class="section">
+            <h3>Impact at Scale (Year 5 Projection)</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">100,000</div>
+                    <div class="stat-label">Refugees with KYC-Free Banking</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">96%</div>
+                    <div class="stat-label">Cheaper than Traditional Banking</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">180x</div>
+                    <div class="stat-label">Fee Coverage (Data Revenue vs Costs)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">13</div>
+                    <div class="stat-label">Settlements Across 5 Countries</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8 Core Modules -->
+        <div class="section">
+            <h3>8 Core Modules (Modular Architecture)</h3>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <h4>1. Behavioral KYC</h4>
+                    <p>Replace national ID with cooperation score. HEROES detection classifies Helper, Educator, Organizer behaviors.</p>
+                    <span class="tech-tag">HEROESDetection.sol</span>
+                    <span class="tech-tag">CooperationScore.sol</span>
+                </div>
+
+                <div class="module-card">
+                    <h4>2. Data-as-Collateral</h4>
+                    <p>Earn $3.50-6.50/month contributing behavioral data. Covers blockchain fees 180x over.</p>
+                    <span class="tech-tag">DataContribution.sol</span>
+                    <span class="tech-tag">RevenueDistribution.sol</span>
+                </div>
+
+                <div class="module-card">
+                    <h4>3. Onchain Local Banking</h4>
+                    <p>Data/ETH collateral backs UNIDOS barter tokens. Hold, send, spend, save without KYC.</p>
+                    <span class="tech-tag">UnidosLocalBank.sol</span>
+                    <span class="tech-tag">BarterToken.sol</span>
+                </div>
+
+                <div class="module-card">
+                    <h4>4. Multi-Chain Infrastructure</h4>
+                    <p>Celo primary (phone wallets, USSD), BASE bridge (fiat on-ramps), Polygon DAO, Ethereum vault.</p>
+                    <span class="tech-tag">Celo Mainnet</span>
+                    <span class="tech-tag">LayerZero Bridge</span>
+                </div>
+
+                <div class="module-card">
+                    <h4>5. Cooperation Governance</h4>
+                    <p>Trust-weighted voting. Helpers earn governance power, not buy it. Anti-plutocracy design.</p>
+                    <span class="tech-tag">CooperationGovernance.sol</span>
+                    <span class="tech-tag">Snapshot Voting</span>
+                </div>
+
+                <div class="module-card">
+                    <h4>6. Internal Marketplace</h4>
+                    <p>80% spending loop. Mushroom spawn, transport, training. Value circulates internally, no bank extraction.</p>
+                    <span class="tech-tag">Marketplace.sol</span>
+                    <span class="tech-tag">InternalSpending.sol</span>
+                </div>
+
+                <div class="module-card">
+                    <h4>7. Euler Pool Distribution</h4>
+                    <p>O(1) gas distribution. Mint UNIDOS tokens to 500+ users simultaneously without per-user fees.</p>
+                    <span class="tech-tag">UnidosEulerDistribution.sol</span>
+                    <span class="tech-tag">ThanksPoolEuler.sol</span>
+                </div>
+
+                <div class="module-card">
+                    <h4>8. Soulbound Identity</h4>
+                    <p>Non-transferable credentials. Awards, training completion, cooperation milestones as ERC-8004 NFTs.</p>
+                    <span class="tech-tag">SoulboundCredentials.sol</span>
+                    <span class="tech-tag">ERC-5192 Standard</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onchain Banking Architecture -->
+        <div class="section">
+            <h3>Onchain Local Banking Architecture</h3>
+            <p style="margin-bottom: 1rem;">How Data/ETH collateral backs UNIDOS barter tokens for KYC-free local bank accounts:</p>
+
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">User Contributes Behavioral Data</div>
+                        <div>HEROES AI detects Helper, Educator, Organizer behaviors. Assigns USD value ($0.05-5.00 per action).</div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Unidos Sells Data Ethically</div>
+                        <div>CGIAR agriculture research, Microsoft Climate carbon verification. Revenue: $3.50-6.50/user/month.</div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Buy ETH & Lock in Vault</div>
+                        <div>Convert USD revenue to ETH. Deposit in Ethereum Mainnet CollateralVault (Gnosis Safe multi-sig).</div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Mint UNIDOS Tokens (150% Backed)</div>
+                        <div>1 UNIDOS = $1 value. Overcollateralized 150% (e.g., $5.25 ETH backs $3.50 UNIDOS).</div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow">↓</div>
+
+                <div class="flow-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">User Spends in Marketplace</div>
+                        <div>80% internal (mushroom spawn, transport, training). 20% cash-out (convert to UGX, 2% fee).</div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 2rem; color: #667eea;">Smart Contract: UnidosLocalBank.sol</h4>
+            <div class="code-block">
+<span class="comment">// SPDX-License-Identifier: MIT</span>
+<span class="keyword">contract</span> UnidosLocalBank <span class="keyword">is</span> ERC20, AccessControl {
+    <span class="keyword">address</span> <span class="keyword">public</span> <span class="keyword">immutable</span> collateralVault; <span class="comment">// Ethereum Mainnet</span>
+    <span class="keyword">uint256</span> <span class="keyword">public</span> <span class="keyword">constant</span> COLLATERAL_RATIO = <span class="string">150</span>; <span class="comment">// 150% overcollateralized</span>
+
+    <span class="comment">// Mint UNIDOS from data contribution</span>
+    <span class="keyword">function</span> <span class="function">mintFromDataContribution</span>(<span class="keyword">address</span> user, <span class="keyword">uint256</span> dataValueUSD)
+        <span class="keyword">external</span> onlyRole(MINTER_ROLE)
+    {
+        <span class="keyword">uint256</span> requiredCollateral = (dataValueUSD * COLLATERAL_RATIO) / <span class="string">100</span>;
+        <span class="keyword">require</span>(getCollateralValue() >= requiredCollateral, <span class="string">"Insufficient collateral"</span>);
+
+        <span class="keyword">uint256</span> tokensToMint = dataValueUSD * <span class="string">1e18</span>; <span class="comment">// 1 UNIDOS = $1</span>
+        _mint(user, tokensToMint);
+    }
+
+    <span class="comment">// Internal marketplace spending (0 fees)</span>
+    <span class="keyword">function</span> <span class="function">internalSpend</span>(<span class="keyword">address</span> to, <span class="keyword">uint256</span> amount, <span class="keyword">string</span> category)
+        <span class="keyword">external</span>
+    {
+        _transfer(msg.sender, to, amount);
+        accounts[msg.sender].totalSpent += amount;
+    }
+
+    <span class="comment">// Cash out to fiat (2% fee)</span>
+    <span class="keyword">function</span> <span class="function">requestCashOut</span>(<span class="keyword">uint256</span> amount) <span class="keyword">external</span> {
+        <span class="keyword">require</span>(cooperationScore[msg.sender] >= <span class="string">101</span>, <span class="string">"Score too low"</span>);
+        <span class="keyword">uint256</span> fee = (amount * <span class="string">200</span>) / <span class="string">10000</span>; <span class="comment">// 2% fee</span>
+        _burn(msg.sender, amount);
+    }
+}
+            </div>
+        </div>
+
+        <!-- Global Applicability -->
+        <div class="section">
+            <h3>Global Applicability: 13 Settlements, 5 Countries</h3>
+            <p>KYC-free, phone-based, behaviorally verified design works for refugees worldwide. Minor localization enables multi-country deployment.</p>
+
+            <div class="global-map">
+                <h4 style="margin-bottom: 1rem;">Target Refugee Settlements (Year 1-5)</h4>
+                <div class="settlement-grid">
+                    <div class="settlement-card">
+                        <h5>🇺🇬 Nakivale</h5>
+                        <div class="country">Uganda</div>
+                        <div class="refugees">120,000 refugees</div>
+                    </div>
+                    <div class="settlement-card">
+                        <h5>🇺🇬 Bidibidi</h5>
+                        <div class="country">Uganda</div>
+                        <div class="refugees">280,000 refugees</div>
+                    </div>
+                    <div class="settlement-card">
+                        <h5>🇰🇪 Kakuma</h5>
+                        <div class="country">Kenya</div>
+                        <div class="refugees">200,000 refugees</div>
+                    </div>
+                    <div class="settlement-card">
+                        <h5>🇰🇪 Dadaab</h5>
+                        <div class="country">Kenya</div>
+                        <div class="refugees">220,000 refugees</div>
+                    </div>
+                    <div class="settlement-card">
+                        <h5>🇹🇿 Nyarugusu</h5>
+                        <div class="country">Tanzania</div>
+                        <div class="refugees">145,000 refugees</div>
+                    </div>
+                    <div class="settlement-card">
+                        <h5>🇲🇼 Dzaleka</h5>
+                        <div class="country">Malawi</div>
+                        <div class="refugees">50,000 refugees</div>
+                    </div>
+                    <div class="settlement-card">
+                        <h5>🇷🇼 Gihembe</h5>
+                        <div class="country">Rwanda</div>
+                        <div class="refugees">17,000 refugees</div>
+                    </div>
+                    <div class="settlement-card">
+                        <h5>+ 6 More Settlements</h5>
+                        <div class="country">Multi-Region</div>
+                        <div class="refugees">368,000 refugees</div>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; text-align: center; font-size: 1.2rem; font-weight: bold;">
+                    Total Reach: 1.4 Million Refugees by Year 5
+                </p>
+            </div>
+
+            <h4 style="margin-top: 2rem; color: #667eea;">Why It Works Globally</h4>
+            <ul style="margin-left: 2rem; margin-top: 1rem; color: #555;">
+                <li><strong>KYC-Free Design:</strong> No national ID required (works for stateless refugees)</li>
+                <li><strong>Phone-Based:</strong> USSD gateway works on feature phones (70% of refugees)</li>
+                <li><strong>Behavioral Verification:</strong> HEROES detection works regardless of nationality</li>
+                <li><strong>Portable:</strong> Wallet + cooperation score travels with refugee if they relocate</li>
+                <li><strong>Network Effects:</strong> Settlement-to-settlement trade creates 4.8x value multiplier</li>
+            </ul>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="section">
+            <h3>Cost Comparison: Unidos vs Traditional Banking</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Traditional Bank</th>
+                        <th>Mobile Money (MTN)</th>
+                        <th>Unidos Local Bank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>KYC Required</strong></td>
+                        <td>Yes (national ID, proof of address)</td>
+                        <td>Yes (ID or registration)</td>
+                        <td class="highlight">No (behavioral KYC only)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minimum Balance</strong></td>
+                        <td>$50-200</td>
+                        <td>$0</td>
+                        <td class="highlight">$0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly Fees</strong></td>
+                        <td>$5-10</td>
+                        <td>$1-2</td>
+                        <td class="highlight">$0 (data farming covers costs)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>P2P Transfers</strong></td>
+                        <td>$0.50-1.00/tx</td>
+                        <td>$0.20-0.50/tx</td>
+                        <td class="highlight">$0 (internal transfers)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cash-Out Fee</strong></td>
+                        <td>0%</td>
+                        <td>1-3%</td>
+                        <td class="highlight">2%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Credit/Loans</strong></td>
+                        <td>No (refugees excluded)</td>
+                        <td>No</td>
+                        <td class="highlight">Yes (cooperation score ≥101)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Annual Cost</strong></td>
+                        <td>$75/year</td>
+                        <td>$12.50/year</td>
+                        <td class="highlight">$3.20/year (96% cheaper)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Implementation Roadmap -->
+        <div class="section">
+            <h3>Implementation Roadmap (5-Year Plan)</h3>
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <div class="roadmap-year">
+                        Year 1<br>2026
+                    </div>
+                    <div class="roadmap-content">
+                        <h5>Uganda Pilot (3 Settlements, 5,000 Users)</h5>
+                        <ul>
+                            <li>Launch Nakivale pilot (500 users) → scale to 2,000</li>
+                            <li>Expand to Rwamwanja, Kyangwali (1,500 each)</li>
+                            <li>Deploy UnidosLocalBank.sol on Celo mainnet</li>
+                            <li>Lock first ETH collateral ($50K) in Ethereum vault</li>
+                            <li>Revenue: $210K data sales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-year">
+                        Year 2<br>2027
+                    </div>
+                    <div class="roadmap-content">
+                        <h5>East Africa Expansion (8 Settlements, 20,000 Users)</h5>
+                        <ul>
+                            <li>Kenya: Kakuma (5,000), Dadaab (5,000)</li>
+                            <li>Tanzania: Nyarugusu (3,000)</li>
+                            <li>Malawi: Dzaleka (2,000)</li>
+                            <li>Rwanda: Gihembe, Mahama (3,000)</li>
+                            <li>Integrate M-Pesa, FlutterWave for multi-country cash-out</li>
+                            <li>Revenue: $840K, Collateral: $200K ETH</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-year">
+                        Year 3<br>2028
+                    </div>
+                    <div class="roadmap-content">
+                        <h5>Multi-Region Scale (13 Settlements, 50,000 Users)</h5>
+                        <ul>
+                            <li>Uganda: Bidibidi (10,000)</li>
+                            <li>Cameroon: Minawao (5,000)</li>
+                            <li>Mauritania: M'Bera (5,000)</li>
+                            <li>Chad: Iridimi/Touloum (3,000)</li>
+                            <li>Launch settlement-to-settlement trade platform</li>
+                            <li>Revenue: $2.1M, Collateral: $500K ETH</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-year">
+                        Year 4-5<br>2029-2030
+                    </div>
+                    <div class="roadmap-content">
+                        <h5>Global Refugee Standard (100,000 Users)</h5>
+                        <ul>
+                            <li>Scale all 13 settlements to capacity</li>
+                            <li>UNHCR official endorsement (policy change)</li>
+                            <li>Central Bank pilots (Uganda/Kenya CBDC integration)</li>
+                            <li>Academic: 5+ peer-reviewed papers, 100+ citations</li>
+                            <li>Media: TechCrunch, MIT Technology Review, Wired</li>
+                            <li>Revenue: $4.2M, Collateral: $1.2M ETH, Trade: $2M</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Localization Requirements -->
+        <div class="section">
+            <h3>Localization Requirements (Per Settlement)</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Local Currency Display</th>
+                        <th>Mobile Money Integration</th>
+                        <th>Regulatory Strategy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Uganda</strong></td>
+                        <td>1 UNIDOS = 3,700 UGX</td>
+                        <td>MTN Mobile Money, Airtel Money</td>
+                        <td>Partner with UNHCR, "digital barter vouchers"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kenya</strong></td>
+                        <td>1 UNIDOS = 129 KES</td>
+                        <td>M-Pesa (Safaricom)</td>
+                        <td>Financial inclusion tool, UNHCR Kenya pilot</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tanzania</strong></td>
+                        <td>1 UNIDOS = 2,500 TZS</td>
+                        <td>M-Pesa (Vodacom), Tigo Pesa</td>
+                        <td>100% internal economy (no cash-out, avoid crypto ban)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Malawi</strong></td>
+                        <td>1 UNIDOS = 1,700 MWK</td>
+                        <td>Airtel Money, TNM Mpamba</td>
+                        <td>NGO voucher system, local NGO partnerships</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rwanda</strong></td>
+                        <td>1 UNIDOS = 1,300 RWF</td>
+                        <td>MTN Mobile Money, Airtel Money</td>
+                        <td>Fintech innovation, UNHCR Rwanda partnership</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Network Effects -->
+        <div class="section">
+            <h3>Network Effects: Value Grows Exponentially</h3>
+            <p style="margin-bottom: 1.5rem;">As more settlements join Unidos network, value increases (Metcalfe's Law: n² growth).</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Settlements</th>
+                        <th>Total Users</th>
+                        <th>Data Revenue/Year</th>
+                        <th>Cross-Settlement Trade</th>
+                        <th>Network Value Multiplier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 (Nakivale)</td>
+                        <td>5,000</td>
+                        <td>$210K</td>
+                        <td>$0</td>
+                        <td>1x (baseline)</td>
+                    </tr>
+                    <tr>
+                        <td>3 (Uganda)</td>
+                        <td>15,000</td>
+                        <td>$630K</td>
+                        <td>$50K</td>
+                        <td>1.3x</td>
+                    </tr>
+                    <tr>
+                        <td>8 (East Africa)</td>
+                        <td>50,000</td>
+                        <td>$2.1M</td>
+                        <td>$500K</td>
+                        <td>2.5x</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>13 (Multi-Region)</td>
+                        <td>100,000</td>
+                        <td>$4.2M</td>
+                        <td>$2M</td>
+                        <td><strong>4.8x</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top: 2rem; color: #667eea;">4 Network Effects Driving Value</h4>
+            <div class="modules-grid" style="margin-top: 1rem;">
+                <div class="module-card">
+                    <h4>Cross-Settlement Trade</h4>
+                    <p>Nakivale produces mushroom spawn (surplus), Kakuma needs it (shortage). Trade via UNIDOS tokens, 0 fees.</p>
+                </div>
+                <div class="module-card">
+                    <h4>Shared Data Buyers</h4>
+                    <p>CGIAR pays premium for multi-settlement datasets ($10/user vs $5 for single settlement).</p>
+                </div>
+                <div class="module-card">
+                    <h4>Diaspora Remittances</h4>
+                    <p>Send UNIDOS peer-to-peer between settlements (0 fees) vs Western Union ($5-10/tx).</p>
+                </div>
+                <div class="module-card">
+                    <h4>DAO Governance</h4>
+                    <p>Multi-settlement DAO votes on Euler pool distributions (70% producers, 20% reinvest, 10% solidarity fund).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h4>Ready to Join the Research?</h4>
+            <p>Explore full documentation, smart contract code, and academic papers (13,000+ words, 48 citations)</p>
+            <div class="cta-buttons">
+                <a href="index.html" class="cta-btn">View All Research Documents</a>
+                <a href="#" class="cta-btn" onclick="alert('Contact: contact@unidos.ug'); return false;">Contact Research Team</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Check authentication state
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                // Not logged in, redirect to login page
+                window.location.href = 'login.html';
+            } else {
+                // User is logged in, display email
+                document.getElementById('userEmail').textContent = user.email;
+            }
+        });
+
+        // Sign out functionality
+        document.getElementById('signOutBtn').addEventListener('click', async () => {
+            try {
+                await auth.signOut();
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error('Sign out error:', error);
+                alert('Error signing out: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

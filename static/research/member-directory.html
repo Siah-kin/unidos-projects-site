@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Directory - Unidos Research Community</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-signout {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-signout:hover {
+            background: #c0392b;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .page-header h2 {
+            color: #2a5934;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+        }
+
+        .filter-bar {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-controls input,
+        .filter-controls select {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .filter-controls input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .member-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2a5934;
+            margin-bottom: 0.25rem;
+        }
+
+        .member-location {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2a5934;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .member-bio {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .member-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .interest-badge {
+            background: #f0f0f0;
+            color: #555;
+            padding: 0.25rem 0.5rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+        }
+
+        .member-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: #2a5934;
+            font-size: 1.1rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .data-vault-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+
+        .empty-state .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-controls {
+                flex-direction: column;
+            }
+
+            .filter-controls input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>👥 Member Directory</h1>
+            <div class="header-nav">
+                <span id="userEmail" style="color: rgba(255,255,255,0.8); margin-right: 1rem;"></span>
+                <a href="index.html" class="btn btn-back">← Research Portal</a>
+                <button id="signOutBtn" class="btn btn-signout">Sign Out</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h2>Unidos Research Community Members</h2>
+            <p>Connect with researchers, practitioners, refugees, and innovators shaping the future of refugee-led development</p>
+        </div>
+
+        <div class="filter-bar">
+            <div class="filter-controls">
+                <input type="text" id="searchInput" placeholder="🔍 Search by name, location, or interests...">
+                <select id="roleFilter">
+                    <option value="">All Roles</option>
+                    <option value="refugee">Refugees/Displaced</option>
+                    <option value="ngo-staff">NGO Staff</option>
+                    <option value="researcher">Researchers</option>
+                    <option value="donor">Donors</option>
+                    <option value="technologist">Technologists</option>
+                    <option value="policymaker">Policymakers</option>
+                </select>
+                <select id="interestFilter">
+                    <option value="">All Interests</option>
+                    <option value="dao-governance">DAO Governance</option>
+                    <option value="behavioral-kyc">Behavioral KYC</option>
+                    <option value="data-sovereignty">Data Sovereignty</option>
+                    <option value="financial-inclusion">Financial Inclusion</option>
+                    <option value="microfinance">Microfinance</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="membersGrid" class="members-grid">
+            <!-- Members will be loaded here dynamically -->
+        </div>
+
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <div class="icon">🔍</div>
+            <h3>No members found</h3>
+            <p>Try adjusting your search filters</p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        let allMembers = [];
+
+        // Check authentication
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = 'login.html';
+            } else {
+                document.getElementById('userEmail').textContent = user.email;
+                loadMembers();
+            }
+        });
+
+        // Sign out
+        document.getElementById('signOutBtn').addEventListener('click', async () => {
+            try {
+                await auth.signOut();
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error('Sign out error:', error);
+            }
+        });
+
+        // Load members from Firestore
+        async function loadMembers() {
+            try {
+                const snapshot = await db.collection('members')
+                    .where('profileVisible', '==', true)
+                    .orderBy('joinedAt', 'desc')
+                    .get();
+
+                allMembers = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+
+                renderMembers(allMembers);
+            } catch (error) {
+                console.error('Error loading members:', error);
+                // Fallback: Show demo members
+                loadDemoMembers();
+            }
+        }
+
+        // Demo members (for testing before Firestore is set up)
+        function loadDemoMembers() {
+            allMembers = [
+                {
+                    id: '1',
+                    fullName: 'Paulinho Ginoludikhuyze',
+                    location: 'Nakivale, Uganda',
+                    role: 'refugee',
+                    organization: 'Unidos Social Innovation Center',
+                    bio: 'Founder of Unidos. Refugee from DRC, now leading regenerative agriculture and blockchain innovation in Nakivale. UNHCR Gene Dewey Award 2024 recipient. Building data-as-collateral models for refugee financial inclusion.',
+                    interests: ['dao-governance', 'data-sovereignty', 'regenerative-ag', 'microfinance'],
+                    cooperationScore: 250,
+                    dataVault: true
+                },
+                {
+                    id: '2',
+                    fullName: 'Dr. Sarah Kimani',
+                    location: 'Nairobi, Kenya',
+                    role: 'researcher',
+                    organization: 'University of Nairobi',
+                    bio: 'Research fellow studying refugee entrepreneurship and financial inclusion in East Africa. PhD in Development Economics. Interested in how blockchain can reduce transaction costs for displaced populations.',
+                    interests: ['financial-inclusion', 'refugee-entrepreneurship', 'microfinance'],
+                    cooperationScore: 180,
+                    dataVault: true
+                },
+                {
+                    id: '3',
+                    fullName: 'Marcus Chen',
+                    location: 'San Francisco, USA',
+                    role: 'technologist',
+                    organization: 'Ethereum Foundation',
+                    bio: 'Smart contract developer focused on humanitarian technology. Working on zero-knowledge proof systems for identity. Excited to help build the Bonzi Credit Union infrastructure.',
+                    interests: ['blockchain-tech', 'zk-privacy', 'dao-governance'],
+                    cooperationScore: 120,
+                    dataVault: false
+                },
+                {
+                    id: '4',
+                    fullName: 'Amina Hassan',
+                    location: 'Dadaab, Kenya',
+                    role: 'refugee',
+                    organization: 'Dadaab Women Cooperative',
+                    bio: 'Refugee from Somalia, entrepreneur running tailoring business in Dadaab camp. Interested in learning about data sovereignty and how we can use blockchain to access microloans without traditional credit scores.',
+                    interests: ['financial-inclusion', 'refugee-entrepreneurship', 'cooperative-economics', 'microfinance'],
+                    cooperationScore: 95,
+                    dataVault: true
+                },
+                {
+                    id: '5',
+                    fullName: 'Jean-Paul Mukendi',
+                    location: 'Kigali, Rwanda',
+                    role: 'ngo-staff',
+                    organization: 'UNHCR Rwanda',
+                    bio: 'Innovation specialist at UNHCR focusing on livelihoods and financial inclusion. Evaluating behavioral KYC models for refugee access to financial services. Former refugee from DRC.',
+                    interests: ['behavioral-kyc', 'financial-inclusion', 'data-sovereignty'],
+                    cooperationScore: 160,
+                    dataVault: true
+                }
+            ];
+
+            renderMembers(allMembers);
+        }
+
+        function renderMembers(members) {
+            const grid = document.getElementById('membersGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            if (members.length === 0) {
+                grid.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            emptyState.style.display = 'none';
+
+            grid.innerHTML = members.map(member => {
+                const initials = member.fullName.split(' ').map(n => n[0]).join('').toUpperCase();
+                const roleLabels = {
+                    'refugee': 'Refugee/Displaced',
+                    'ngo-staff': 'NGO Staff',
+                    'researcher': 'Researcher',
+                    'donor': 'Donor',
+                    'technologist': 'Technologist',
+                    'policymaker': 'Policymaker'
+                };
+
+                return `
+                    <div class="member-card" onclick="viewMemberProfile('${member.id}')">
+                        <div class="member-header">
+                            <div class="member-avatar">${initials}</div>
+                            <div class="member-info">
+                                <div class="member-name">${member.fullName}</div>
+                                <div class="member-location">📍 ${member.location}</div>
+                                <span class="member-role">${roleLabels[member.role] || member.role}</span>
+                            </div>
+                        </div>
+
+                        ${member.organization ? `<div style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">🏢 ${member.organization}</div>` : ''}
+
+                        <div class="member-bio">${member.bio}</div>
+
+                        <div class="member-interests">
+                            ${member.interests.slice(0, 3).map(interest =>
+                                `<span class="interest-badge">${interest.replace(/-/g, ' ')}</span>`
+                            ).join('')}
+                            ${member.interests.length > 3 ? `<span class="interest-badge">+${member.interests.length - 3} more</span>` : ''}
+                        </div>
+
+                        <div class="member-stats">
+                            <div class="stat">
+                                <div class="stat-value">${member.cooperationScore || 0}</div>
+                                <div class="stat-label">Cooperation Score</div>
+                            </div>
+                            ${member.dataVault ? `
+                                <div class="stat">
+                                    <div class="stat-value">✓</div>
+                                    <div class="stat-label">Data Vault</div>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        ${member.dataVault ? '<div class="data-vault-badge">🔐 Data Vault Member</div>' : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter functionality
+        function filterMembers() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const roleFilter = document.getElementById('roleFilter').value;
+            const interestFilter = document.getElementById('interestFilter').value;
+
+            const filtered = allMembers.filter(member => {
+                const matchesSearch = !searchTerm ||
+                    member.fullName.toLowerCase().includes(searchTerm) ||
+                    member.location.toLowerCase().includes(searchTerm) ||
+                    member.bio.toLowerCase().includes(searchTerm) ||
+                    member.interests.some(i => i.includes(searchTerm));
+
+                const matchesRole = !roleFilter || member.role === roleFilter;
+                const matchesInterest = !interestFilter || member.interests.includes(interestFilter);
+
+                return matchesSearch && matchesRole && matchesInterest;
+            });
+
+            renderMembers(filtered);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', filterMembers);
+        document.getElementById('roleFilter').addEventListener('change', filterMembers);
+        document.getElementById('interestFilter').addEventListener('change', filterMembers);
+
+        // View member profile (placeholder)
+        function viewMemberProfile(memberId) {
+            // In production, this would open a detailed profile modal or page
+            alert(`Profile view coming soon! Member ID: ${memberId}`);
+        }
+
+        // Initialize
+        loadDemoMembers(); // Start with demo data
+    </script>
+</body>
+</html>

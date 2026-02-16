@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidos Framework - SIAH Protocol & Oracle 6</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-signout {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .framework-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .framework-tab {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .framework-tab:hover,
+        .framework-tab.active {
+            background: white;
+            color: #667eea;
+            border-color: white;
+        }
+
+        .framework-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .framework-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .oracle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .oracle-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .oracle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--oracle-color);
+        }
+
+        .oracle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .oracle-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .oracle-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--oracle-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .oracle-role {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .oracle-strengths {
+            margin: 1.5rem 0;
+        }
+
+        .oracle-strengths h4 {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .strength-tag {
+            display: inline-block;
+            background: var(--oracle-light);
+            color: var(--oracle-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin: 0.25rem;
+        }
+
+        .siah-architecture {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .siah-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .siah-layer {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid var(--layer-color);
+            transition: all 0.3s;
+        }
+
+        .siah-layer:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .layer-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .layer-number {
+            background: var(--layer-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .layer-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--layer-color);
+        }
+
+        .layer-components {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .component-badge {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .data-flow {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .flow-step:hover {
+            background: #e9ecef;
+            transform: scale(1.02);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: #667eea;
+            margin: 0.5rem 0;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .action-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .action-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .action-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2a5934;
+        }
+
+        .action-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-action:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .stats-banner {
+            background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .oracle-grid,
+            .action-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>🔮 Unidos Framework</h1>
+            <div class="header-nav">
+                <span id="userEmail" style="color: rgba(255,255,255,0.8); margin-right: 1rem;"></span>
+                <a href="index.html" class="btn btn-back">← Research Portal</a>
+                <button id="signOutBtn" class="btn btn-signout">Sign Out</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h2>The Unidos Framework</h2>
+            <p>SIAH Protocol + Oracle 6 Intelligence = First Refugee-Led DAO with Data-as-Collateral Banking</p>
+            <div class="framework-nav">
+                <div class="framework-tab active" onclick="showFramework('oracle')">🎯 Oracle 6</div>
+                <div class="framework-tab" onclick="showFramework('siah')">⚡ SIAH Protocol</div>
+                <div class="framework-tab" onclick="showFramework('data-flow')">💰 Data-as-Collateral</div>
+                <div class="framework-tab" onclick="showFramework('action')">🚀 Take Action</div>
+            </div>
+        </div>
+
+        <!-- Oracle 6 Framework -->
+        <div id="oracle" class="framework-section active">
+            <div class="siah-architecture">
+                <h2 style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;">Oracle 6 Decision Framework</h2>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">
+                    Six specialized intelligence agents that guide Unidos strategy, research, and operations. Each Oracle brings unique expertise to solve complex refugee innovation challenges.
+                </p>
+
+                <div class="oracle-grid">
+                    <!-- Strategist -->
+                    <div class="oracle-card" style="--oracle-color: #667eea; --oracle-light: #e7f3ff;">
+                        <div class="oracle-icon">🎯</div>
+                        <div class="oracle-name">Strategist</div>
+                        <div class="oracle-role">"The Visionary"</div>
+                        <p>Designs long-term transformation roadmaps, identifies strategic opportunities, and ensures alignment with Unidos mission.</p>
+                        <div class="oracle-strengths">
+                            <h4>Core Strengths</h4>
+                            <span class="strength-tag">Vision</span>
+                            <span class="strength-tag">Planning</span>
+                            <span class="strength-tag">Roadmaps</span>
+                            <span class="strength-tag">Positioning</span>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;"><strong>Example:</strong> "Recommend integrating Global Barter System into bonzivista.org Research page. Cross-link with SIAH, Euler, Cooperation pages."</p>
+                    </div>
+
+                    <!-- Innovator -->
+                    <div class="oracle-card" style="--oracle-color: #f093fb; --oracle-light: #fce4ff;">
+                        <div class="oracle-icon">💡</div>
+                        <div class="oracle-name">Innovator</div>
+                        <div class="oracle-role">"The Breakthrough Artist"</div>
+                        <p>Generates novel solutions, identifies untapped opportunities, and combines disparate concepts into groundbreaking models.</p>
+                        <div class="oracle-strengths">
+                            <h4>Core Strengths</h4>
+                            <span class="strength-tag">Creativity</span>
+                            <span class="strength-tag">Synthesis</span>
+                            <span class="strength-tag">Novel Ideas</span>
+                            <span class="strength-tag">Disruption</span>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;"><strong>Example:</strong> "Data-as-collateral is novel breakthrough. Highlight as featured research (hero section on Research landing page)."</p>
+                    </div>
+
+                    <!-- Analyst -->
+                    <div class="oracle-card" style="--oracle-color: #4facfe; --oracle-light: #dff6ff;">
+                        <div class="oracle-icon">📊</div>
+                        <div class="oracle-name">Analyst</div>
+                        <div class="oracle-role">"The Truth Seeker"</div>
+                        <p>Validates assumptions with data, builds financial models, and provides evidence-based recommendations.</p>
+                        <div class="oracle-strengths">
+                            <h4>Core Strengths</h4>
+                            <span class="strength-tag">Data Analysis</span>
+                            <span class="strength-tag">Modeling</span>
+                            <span class="strength-tag">Validation</span>
+                            <span class="strength-tag">Metrics</span>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;"><strong>Example:</strong> "Revenue projections validated. $3.50/user/month data value covers blockchain fees 180x over."</p>
+                    </div>
+
+                    <!-- Guardian -->
+                    <div class="oracle-card" style="--oracle-color: #43e97b; --oracle-light: #e0f9e8;">
+                        <div class="oracle-icon">🛡️</div>
+                        <div class="oracle-name">Guardian</div>
+                        <div class="oracle-role">"The Ethical Compass"</div>
+                        <p>Ensures data sovereignty, user consent, and ethical practices. Protects refugee dignity and privacy.</p>
+                        <div class="oracle-strengths">
+                            <h4>Core Strengths</h4>
+                            <span class="strength-tag">Ethics</span>
+                            <span class="strength-tag">Privacy</span>
+                            <span class="strength-tag">Compliance</span>
+                            <span class="strength-tag">Protection</span>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;"><strong>Example:</strong> "Ethics section strong (informed consent, anonymization, revocation rights). Recommend adding GDPR compliance checklist."</p>
+                    </div>
+
+                    <!-- Connector -->
+                    <div class="oracle-card" style="--oracle-color: #fa709a; --oracle-light: #ffe8f0;">
+                        <div class="oracle-icon">🤝</div>
+                        <div class="oracle-name">Connector</div>
+                        <div class="oracle-role">"The Network Weaver"</div>
+                        <p>Identifies partnerships, opens doors to funders, and builds coalitions across refugee innovation ecosystem.</p>
+                        <div class="oracle-strengths">
+                            <h4>Core Strengths</h4>
+                            <span class="strength-tag">Partnerships</span>
+                            <span class="strength-tag">Networks</span>
+                            <span class="strength-tag">Fundraising</span>
+                            <span class="strength-tag">Coalitions</span>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;"><strong>Example:</strong> "Suggest partnership outreach: CGIAR (agriculture data), Microsoft Climate (carbon data), Celo Foundation (USSD gateway)."</p>
+                    </div>
+
+                    <!-- Operator -->
+                    <div class="oracle-card" style="--oracle-color: #ff6b6b; --oracle-light: #ffe0e0;">
+                        <div class="oracle-icon">⚙️</div>
+                        <div class="oracle-name">Operator</div>
+                        <div class="oracle-role">"The Execution Engine"</div>
+                        <p>Implements systems, deploys infrastructure, and ensures day-to-day operations run smoothly.</p>
+                        <div class="oracle-strengths">
+                            <h4>Core Strengths</h4>
+                            <span class="strength-tag">Execution</span>
+                            <span class="strength-tag">Systems</span>
+                            <span class="strength-tag">Operations</span>
+                            <span class="strength-tag">Deployment</span>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;"><strong>Example:</strong> "Deploy UnidosLocalBank.sol on Celo mainnet. Set up Firebase Authentication for member registration."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIAH Protocol -->
+        <div id="siah" class="framework-section">
+            <div class="siah-architecture">
+                <h2 style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;">SIAH Protocol Architecture</h2>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">
+                    <strong>S</strong>ocial <strong>I</strong>mpact <strong>A</strong>ggregation <strong>H</strong>ub — A 5-layer stack that enables trust-weighted governance, behavioral KYC, and data-as-collateral banking for refugees.
+                </p>
+
+                <div class="siah-layers">
+                    <!-- Layer 1: Identity -->
+                    <div class="siah-layer" style="--layer-color: #667eea;">
+                        <div class="layer-header">
+                            <div class="layer-number">1</div>
+                            <div class="layer-name">Identity Layer</div>
+                        </div>
+                        <p>Behavioral KYC replaces national ID. HEROES detection classifies actions (Helper, Educator, Organizer), builds cooperation score, creates soulbound credentials.</p>
+                        <div class="layer-components">
+                            <div class="component-badge">🎭 HEROES Detection</div>
+                            <div class="component-badge">🔐 Soulbound NFTs (ERC-8004)</div>
+                            <div class="component-badge">📱 Phone Number Wallets (Celo)</div>
+                            <div class="component-badge">🤝 Community Vouching</div>
+                        </div>
+                    </div>
+
+                    <!-- Layer 2: Data Sovereignty -->
+                    <div class="siah-layer" style="--layer-color: #f093fb;">
+                        <div class="layer-header">
+                            <div class="layer-number">2</div>
+                            <div class="layer-name">Data Sovereignty Layer</div>
+                        </div>
+                        <p>Users own their data. Anonymized contributions (surveys, carbon reports, HEROES actions) monetized ethically. 80% revenue to users, 10% to vault, 10% to Credit Union.</p>
+                        <div class="layer-components">
+                            <div class="component-badge">🔒 Zero-Knowledge Privacy</div>
+                            <div class="component-badge">📊 Data Contribution Tracking</div>
+                            <div class="component-badge">💰 Revenue Distribution (80/10/10)</div>
+                            <div class="component-badge">📤 Data Portability</div>
+                        </div>
+                    </div>
+
+                    <!-- Layer 3: Financial Inclusion -->
+                    <div class="siah-layer" style="--layer-color: #4facfe;">
+                        <div class="layer-header">
+                            <div class="layer-number">3</div>
+                            <div class="layer-name">Financial Inclusion Layer</div>
+                        </div>
+                        <p>Data/ETH collateral backs UNIDOS barter tokens. KYC-free local bank accounts. Cooperation score = creditworthiness for microloans (0-5% interest, no collateral).</p>
+                        <div class="layer-components">
+                            <div class="component-badge">💳 UnidosLocalBank.sol</div>
+                            <div class="component-badge">⚖️ 150% Overcollateralization</div>
+                            <div class="component-badge">🏦 Bonzi Credit Union</div>
+                            <div class="component-badge">📈 Cooperation Score = Credit Score</div>
+                        </div>
+                    </div>
+
+                    <!-- Layer 4: Governance -->
+                    <div class="siah-layer" style="--layer-color: #43e97b;">
+                        <div class="layer-header">
+                            <div class="layer-number">4</div>
+                            <div class="layer-name">Governance Layer</div>
+                        </div>
+                        <p>Cooperation-weighted voting (not token-weighted). Helpers earn governance power by contributing, not buying. Anti-plutocracy design with graduated sanctions.</p>
+                        <div class="layer-components">
+                            <div class="component-badge">🗳️ Snapshot Voting</div>
+                            <div class="component-badge">⚖️ Quadratic Voting</div>
+                            <div class="component-badge">🛡️ EigenTrust (Sybil Resistance)</div>
+                            <div class="component-badge">📉 Graduated Sanctions</div>
+                        </div>
+                    </div>
+
+                    <!-- Layer 5: Economics -->
+                    <div class="siah-layer" style="--layer-color: #fa709a;">
+                        <div class="layer-header">
+                            <div class="layer-number">5</div>
+                            <div class="layer-name">Economic Layer</div>
+                        </div>
+                        <p>Euler Pool distributes B2B revenue (mushroom spawn, biochar sales) with O(1) gas. 70% to producers, 20% reinvest, 10% Credit Union. Compounding quadruple loop.</p>
+                        <div class="layer-components">
+                            <div class="component-badge">🌀 Euler Pool (O(1) Gas)</div>
+                            <div class="component-badge">🔁 Compounding Loops (4x)</div>
+                            <div class="component-badge">🛒 Internal Marketplace</div>
+                            <div class="component-badge">💸 80% Spending Loop</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data-as-Collateral Flow -->
+        <div id="data-flow" class="framework-section">
+            <div class="data-flow">
+                <h2 style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;">Data-as-Collateral Flow</h2>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">
+                    How refugees "farm" blockchain transaction fees by contributing behavioral data, creating KYC-free banking with zero out-of-pocket costs.
+                </p>
+
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="step-icon">👤</div>
+                        <div class="step-content">
+                            <h4>1. User Contributes Behavioral Data</h4>
+                            <p>Complete surveys (+10 cooperation score), HEROES actions (help others +1-5), attend training (+20), report carbon production (+5). Data assigned USD value ($0.05-5.00 per action).</p>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="step-icon">🔬</div>
+                        <div class="step-content">
+                            <h4>2. Unidos Sells Data Ethically to Research Partners</h4>
+                            <p>CGIAR (agriculture insights $0.10-1.00/month), Microsoft Climate (carbon verification $5.00/month), AI training datasets ($0.05-0.30/action). Average revenue: $3.50-6.50/user/month.</p>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="step-icon">💎</div>
+                        <div class="step-content">
+                            <h4>3. Buy ETH & Lock in Collateral Vault</h4>
+                            <p>Convert USD revenue to ETH. Deposit in Ethereum Mainnet CollateralVault (Gnosis Safe multi-sig). 150% overcollateralization (e.g., $5.25 ETH backs $3.50 UNIDOS tokens).</p>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="step-icon">🪙</div>
+                        <div class="step-content">
+                            <h4>4. Mint UNIDOS Barter Tokens (150% Backed)</h4>
+                            <p>UnidosLocalBank.sol mints tokens (1 UNIDOS = $1 value) backed by ETH collateral. User receives tokens in Celo wallet (phone number-based, no seed phrases needed).</p>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <div class="flow-step">
+                        <div class="step-icon">🛒</div>
+                        <div class="step-content">
+                            <h4>5. Spend in Internal Marketplace (80% Loop)</h4>
+                            <p>Buy mushroom spawn (5 UNIDOS), vermicompost (10 UNIDOS), tricycle transport (10 UNIDOS), training slots (50 UNIDOS). 80% spending stays internal, 20% cash-out for external bills (2% fee).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-banner" style="margin-top: 3rem;">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Impact at Scale (Year 5 Projection)</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">100K</div>
+                            <div class="stat-label">Refugees with KYC-Free Banking</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">180x</div>
+                            <div class="stat-label">Fee Coverage (Data Revenue vs Costs)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">96%</div>
+                            <div class="stat-label">Cheaper than Traditional Banking</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$4.2M</div>
+                            <div class="stat-label">Data Revenue (Annual)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Take Action -->
+        <div id="action" class="framework-section">
+            <div class="siah-architecture">
+                <h2 style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem; text-align: center;">Take Action: Join the Movement</h2>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem; text-align: center;">
+                    Whether you're a refugee, researcher, technologist, or donor — there's a role for you in building the first refugee-led DAO.
+                </p>
+
+                <div class="action-grid">
+                    <!-- Join as Member -->
+                    <div class="action-card">
+                        <div class="action-icon">👥</div>
+                        <div class="action-title">Become a Member</div>
+                        <div class="action-description">
+                            Complete 4-step registration, share your interests, opt into Data Vault, start earning cooperation score. First 100 members get early access to Credit Union.
+                        </div>
+                        <a href="member-registration.html" class="btn-action">Register Now</a>
+                    </div>
+
+                    <!-- Join Data Vault -->
+                    <div class="action-card">
+                        <div class="action-icon">🔐</div>
+                        <div class="action-title">Join Data Vault</div>
+                        <div class="action-description">
+                            Earn $3.50-6.50/month by contributing behavioral data ethically. 80% revenue to you, 10% to Credit Union, 10% to ETH collateral. Zero-knowledge privacy guaranteed.
+                        </div>
+                        <a href="member-registration.html#step4" class="btn-action">Opt In</a>
+                    </div>
+
+                    <!-- Apply for Microloan -->
+                    <div class="action-card">
+                        <div class="action-icon">💰</div>
+                        <div class="action-title">Apply for Microloan</div>
+                        <div class="action-description">
+                            Cooperation score ≥101? Qualify for $500 microloans at 0-5% interest (vs 15-30% traditional MFIs). No collateral, no national ID required. DAO-approved.
+                        </div>
+                        <a href="#" onclick="alert('Credit Union launches Q4 2026! Build your cooperation score now.'); return false;" class="btn-action">Coming Q4 2026</a>
+                    </div>
+
+                    <!-- Participate in Research -->
+                    <div class="action-card">
+                        <div class="action-icon">🔬</div>
+                        <div class="action-title">Participate in Research</div>
+                        <div class="action-description">
+                            Complete surveys (15 min, +10 cooperation score), join 30-min perspective interviews (+50 score), contribute to academic papers shaping refugee innovation.
+                        </div>
+                        <a href="member-directory.html" class="btn-action">View Community</a>
+                    </div>
+
+                    <!-- Partner with Unidos -->
+                    <div class="action-card">
+                        <div class="action-icon">🤝</div>
+                        <div class="action-title">Partner with Unidos</div>
+                        <div class="action-description">
+                            Data buyers (CGIAR, Microsoft Climate), funders (MasterCard Foundation), researchers (Harvard, Oxford), technologists (Celo, Ethereum Foundation).
+                        </div>
+                        <a href="mailto:contact@unidos.ug" class="btn-action">Contact Us</a>
+                    </div>
+
+                    <!-- Explore Documentation -->
+                    <div class="action-card">
+                        <div class="action-icon">📚</div>
+                        <div class="action-title">Explore Research</div>
+                        <div class="action-description">
+                            Access 13+ research documents (80,000+ words): Global Barter System, Credit Union Model, Data-as-Collateral, SIAH Protocol, Member Onboarding. All members-only.
+                        </div>
+                        <a href="index.html" class="btn-action">Research Portal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Check authentication
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = 'login.html';
+            } else {
+                document.getElementById('userEmail').textContent = user.email;
+            }
+        });
+
+        // Sign out
+        document.getElementById('signOutBtn').addEventListener('click', async () => {
+            try {
+                await auth.signOut();
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error('Sign out error:', error);
+            }
+        });
+
+        // Framework tab switching
+        function showFramework(framework) {
+            // Hide all sections
+            document.querySelectorAll('.framework-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.framework-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(framework).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
