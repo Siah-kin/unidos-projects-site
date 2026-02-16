@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Portal - Unidos DAO</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .header { background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%); color: white; padding: 24px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo h1 { font-size: 24px; margin-bottom: 4px; }
+        .logo p { font-size: 14px; opacity: 0.9; }
+        .user-info { display: flex; align-items: center; gap: 16px; }
+        .btn-logout { background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.3); padding: 8px 16px; border-radius: 6px; cursor: pointer; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 24px; }
+        .page-title { font-size: 32px; color: #2a5934; margin-bottom: 12px; }
+        .page-subtitle { font-size: 18px; color: #666; margin-bottom: 40px; }
+        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 48px; }
+        .research-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; cursor: pointer; }
+        .research-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
+        .card-icon { font-size: 36px; margin-bottom: 16px; }
+        .card-title { font-size: 20px; font-weight: 600; color: #2a5934; margin-bottom: 12px; }
+        .card-description { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 16px; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .badge-private { background: #fee; color: #c33; }
+        .badge-status { background: #efe; color: #3a3; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>🔬 Unidos Research Portal</h1>
+                <p>DAO Transformation Research</p>
+            </div>
+            <div class="user-info">
+                <span id="userEmail"></span>
+                <button class="btn-logout" onclick="logout()">Sign Out</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Research Portal</h1>
+        <p class="page-subtitle">DAO transformation research for Nakivale refugee settlement</p>
+
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="card-icon">📖</div>
+                <h3 class="card-title">Introduction to DAO Transformation</h3>
+                <p class="card-description">Overview of the research project: background, vision, methodology, and expected outcomes.</p>
+                <span class="badge badge-private">🔒 Members Only</span>
+                <span class="badge badge-status">✅ Complete</span>
+            </div>
+
+            <div class="research-card">
+                <div class="card-icon">💡</div>
+                <h3 class="card-title">DAO Technology Significance</h3>
+                <p class="card-description">Why DAO technology matters for refugee-led NGOs: trust, transparency, governance, sustainability.</p>
+                <span class="badge badge-private">🔒 Members Only</span>
+                <span class="badge badge-status">✅ Complete</span>
+            </div>
+
+            <div class="research-card">
+                <div class="card-icon">🌱</div>
+                <h3 class="card-title">Multi-Year Funding Funnel</h3>
+                <p class="card-description">Strategy for helping vulnerable refugee projects survive funding gaps and achieve self-sustainability.</p>
+                <span class="badge badge-private">🔒 Members Only</span>
+                <span class="badge badge-status">✅ Complete</span>
+            </div>
+
+            <div class="research-card">
+                <div class="card-icon">🔍</div>
+                <h3 class="card-title">Vetting Funnel Framework</h3>
+                <p class="card-description">Fraud prevention system for pan-African NGO incubation: 5-stage vetting, $500/month sustainability threshold.</p>
+                <span class="badge badge-private">🔒 Members Only</span>
+                <span class="badge badge-status">✅ Complete</span>
+            </div>
+
+            <div class="research-card">
+                <div class="card-icon">🏆</div>
+                <h3 class="card-title">Reputation Staking Model</h3>
+                <p class="card-description">How award-winning NGOs can stake their on-chain reputation to vet newcomer projects across Africa.</p>
+                <span class="badge badge-private">🔒 Members Only</span>
+                <span class="badge badge-status">✅ Complete</span>
+            </div>
+
+            <div class="research-card">
+                <div class="card-icon">🗺️</div>
+                <h3 class="card-title">DAO Transformation Roadmap</h3>
+                <p class="card-description">12-month implementation plan: Telegram bot, HEROES detection, Euler pool, governance launch.</p>
+                <span class="badge badge-private">🔒 Members Only</span>
+                <span class="badge badge-status">⏳ In Progress</span>
+            </div>
+        </div>
+
+        <div style="background: white; border-radius: 12px; padding: 32px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);">
+            <h2 style="font-size: 24px; color: #2a5934; margin-bottom: 16px;">📚 Research Summary</h2>
+            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 16px;">
+                This research documents Unidos' transformation from traditional NGO into a DAO-governed, self-sustaining social enterprise.
+            </p>
+            <p style="font-size: 16px; line-height: 1.8;">
+                If successful, this model can replicate to 100+ refugee-led NGOs across Africa by 2030.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Check auth
+        if (!sessionStorage.getItem('unidosAuth')) {
+            window.location.href = 'login.html';
+        }
+
+        // Display user email
+        document.getElementById('userEmail').textContent = sessionStorage.getItem('userEmail') || '';
+
+        // Logout
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

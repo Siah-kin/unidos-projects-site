@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Portal Login - Unidos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 440px;
+            width: 100%;
+            padding: 48px 40px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .logo h1 {
+            color: #2a5934;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .logo p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #2a5934;
+            box-shadow: 0 0 0 4px rgba(42, 89, 52, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: #2a5934;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #1f4327;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(42, 89, 52, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 12px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .toggle-link {
+            text-align: center;
+            margin-top: 24px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .toggle-link a {
+            color: #2a5934;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .toggle-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .success-message {
+            background: #efe;
+            color: #3a3;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .member-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 32px 24px;
+            }
+
+            .logo h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <div class="member-badge">🔒 MEMBERS ONLY</div>
+            <h1>Unidos Research Portal</h1>
+            <p>DAO Transformation Research Access</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email Address</label>
+                <input type="email" id="loginEmail" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn" id="loginBtn">Sign In</button>
+        </form>
+
+        <div class="divider"><span>OR</span></div>
+
+        <!-- Sign Up Form (Hidden by default) -->
+        <form id="signupForm" style="display: none;">
+            <div class="form-group">
+                <label for="signupEmail">Email Address</label>
+                <input type="email" id="signupEmail" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" id="signupPassword" name="password" placeholder="Min. 8 characters" required minlength="8">
+            </div>
+            <div class="form-group">
+                <label for="signupName">Full Name (Optional)</label>
+                <input type="text" id="signupName" name="name" placeholder="Your name">
+            </div>
+            <button type="submit" class="btn" id="signupBtn">Create Account</button>
+        </form>
+
+        <div class="toggle-link">
+            <span id="toggleText">Need an account?</span>
+            <a href="#" id="toggleForm">Sign up here</a>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <script>
+        // Firebase configuration (REPLACE WITH YOUR CONFIG)
+        // Get this from Firebase Console: Project Settings > Your apps > Firebase SDK snippet
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Check if user is already logged in
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // User is logged in, redirect to research portal
+                window.location.href = '/research/index.html';
+            }
+        });
+
+        // Toggle between login and signup forms
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const toggleLink = document.getElementById('toggleForm');
+        const toggleText = document.getElementById('toggleText');
+        let isLoginMode = true;
+
+        toggleLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            isLoginMode = !isLoginMode;
+
+            if (isLoginMode) {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                toggleText.textContent = 'Need an account?';
+                toggleLink.textContent = 'Sign up here';
+            } else {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                toggleText.textContent = 'Already have an account?';
+                toggleLink.textContent = 'Sign in here';
+            }
+
+            clearMessages();
+        });
+
+        // Login handler
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearMessages();
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const btn = document.getElementById('loginBtn');
+
+            btn.disabled = true;
+            btn.textContent = 'Signing in...';
+
+            try {
+                await auth.signInWithEmailAndPassword(email, password);
+                // Redirect handled by onAuthStateChanged
+            } catch (error) {
+                showError(getErrorMessage(error.code));
+                btn.disabled = false;
+                btn.textContent = 'Sign In';
+            }
+        });
+
+        // Signup handler
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearMessages();
+
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const name = document.getElementById('signupName').value;
+            const btn = document.getElementById('signupBtn');
+
+            btn.disabled = true;
+            btn.textContent = 'Creating account...';
+
+            try {
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+
+                // Update profile with name if provided
+                if (name) {
+                    await userCredential.user.updateProfile({ displayName: name });
+                }
+
+                showSuccess('Account created successfully! Redirecting...');
+                // Redirect handled by onAuthStateChanged
+            } catch (error) {
+                showError(getErrorMessage(error.code));
+                btn.disabled = false;
+                btn.textContent = 'Create Account';
+            }
+        });
+
+        // Helper functions
+        function showError(message) {
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+        }
+
+        function showSuccess(message) {
+            const successEl = document.getElementById('successMessage');
+            successEl.textContent = message;
+            successEl.style.display = 'block';
+        }
+
+        function clearMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        function getErrorMessage(errorCode) {
+            const messages = {
+                'auth/email-already-in-use': 'This email is already registered. Please sign in instead.',
+                'auth/invalid-email': 'Please enter a valid email address.',
+                'auth/operation-not-allowed': 'Email/password accounts are not enabled. Contact support.',
+                'auth/weak-password': 'Password should be at least 8 characters.',
+                'auth/user-disabled': 'This account has been disabled. Contact support.',
+                'auth/user-not-found': 'No account found with this email.',
+                'auth/wrong-password': 'Incorrect password. Please try again.',
+                'auth/too-many-requests': 'Too many failed attempts. Please try again later.',
+                'auth/network-request-failed': 'Network error. Please check your internet connection.'
+            };
+
+            return messages[errorCode] || 'An error occurred. Please try again.';
+        }
+    </script>
+</body>
+</html>

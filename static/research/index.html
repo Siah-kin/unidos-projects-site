@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Portal - Unidos DAO Transformation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%);
+            color: white;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .logo p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-email {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .btn-logout {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            color: #2a5934;
+            margin-bottom: 12px;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .research-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .research-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2a5934;
+            margin-bottom: 12px;
+        }
+
+        .card-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-private {
+            background: #fee;
+            color: #c33;
+        }
+
+        .badge-status {
+            background: #efe;
+            color: #3a3;
+        }
+
+        .footer {
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            padding: 32px 24px;
+            margin-top: 80px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>🔬 Unidos Research Portal</h1>
+                <p>DAO Transformation Research • Members Only</p>
+            </div>
+            <div class="user-info">
+                <span class="user-email" id="userEmail"></span>
+                <button class="btn-logout" id="logoutBtn">Sign Out</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Welcome to the Research Portal</h1>
+        <p class="page-subtitle">Access comprehensive research on transforming a multi-award winning refugee NGO into a DAO</p>
+
+        <div class="research-grid">
+            <!-- Introduction Document -->
+            <div class="research-card" onclick="window.location.href='introduction.html'">
+                <div class="card-icon">📖</div>
+                <h3 class="card-title">Introduction to DAO Transformation</h3>
+                <p class="card-description">
+                    Comprehensive overview of the research project: background, vision, methodology, and expected outcomes.
+                </p>
+                <div class="card-meta">
+                    <span class="badge badge-private">🔒 Members Only</span>
+                    <span class="badge badge-status">✅ Complete</span>
+                </div>
+            </div>
+
+            <!-- DAO Technology Significance -->
+            <div class="research-card" onclick="window.location.href='dao-technology.html'">
+                <div class="card-icon">💡</div>
+                <h3 class="card-title">DAO Technology Significance</h3>
+                <p class="card-description">
+                    Deep dive into why DAO technology matters for refugee-led NGOs: trust, transparency, governance, and sustainability.
+                </p>
+                <div class="card-meta">
+                    <span class="badge badge-private">🔒 Members Only</span>
+                    <span class="badge badge-status">✅ Complete</span>
+                </div>
+            </div>
+
+            <!-- Multi-Year Funding Funnel -->
+            <div class="research-card" onclick="window.location.href='funding-funnel.html'">
+                <div class="card-icon">🌱</div>
+                <h3 class="card-title">Multi-Year Funding Funnel</h3>
+                <p class="card-description">
+                    Strategy for helping vulnerable refugee projects survive funding gaps and achieve self-sustainability.
+                </p>
+                <div class="card-meta">
+                    <span class="badge badge-private">🔒 Members Only</span>
+                    <span class="badge badge-status">✅ Complete</span>
+                </div>
+            </div>
+
+            <!-- Vetting Funnel -->
+            <div class="research-card" onclick="window.location.href='vetting-funnel.html'">
+                <div class="card-icon">🔍</div>
+                <h3 class="card-title">Vetting Funnel Framework</h3>
+                <p class="card-description">
+                    Fraud prevention system for pan-African NGO incubation: 5-stage vetting, $500/month sustainability threshold.
+                </p>
+                <div class="card-meta">
+                    <span class="badge badge-private">🔒 Members Only</span>
+                    <span class="badge badge-status">✅ Complete</span>
+                </div>
+            </div>
+
+            <!-- Reputation Staking -->
+            <div class="research-card" onclick="window.location.href='reputation-staking.html'">
+                <div class="card-icon">🏆</div>
+                <h3 class="card-title">Reputation Staking Model</h3>
+                <p class="card-description">
+                    How award-winning NGOs can stake their on-chain reputation to vet newcomer projects across Africa.
+                </p>
+                <div class="card-meta">
+                    <span class="badge badge-private">🔒 Members Only</span>
+                    <span class="badge badge-status">✅ Complete</span>
+                </div>
+            </div>
+
+            <!-- DAO Transformation Roadmap -->
+            <div class="research-card" onclick="window.location.href='dao-roadmap.html'">
+                <div class="card-icon">🗺️</div>
+                <h3 class="card-title">DAO Transformation Roadmap</h3>
+                <p class="card-description">
+                    12-month technical implementation plan: Telegram bot, HEROES detection, Euler pool, governance launch.
+                </p>
+                <div class="card-meta">
+                    <span class="badge badge-private">🔒 Members Only</span>
+                    <span class="badge badge-status">⏳ In Progress</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: white; border-radius: 12px; padding: 32px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);">
+            <h2 style="font-size: 24px; color: #2a5934; margin-bottom: 16px;">📚 Research Summary</h2>
+            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 16px;">
+                This research project documents Unidos Social Innovation Center's transformation from a traditional grant-dependent NGO
+                into a DAO-governed, self-sustaining social enterprise. The research explores 5 critical questions:
+            </p>
+            <ol style="font-size: 15px; line-height: 1.8; margin-left: 24px; color: #555;">
+                <li><strong>Low-connectivity DAO governance</strong>: Can Telegram-first onboarding work in refugee settlements?</li>
+                <li><strong>Cooperation-weighted voting</strong>: Can meritocracy replace plutocracy (earn votes by helping, not buying)?</li>
+                <li><strong>Cryptographic verification</strong>: Can HEROES + PQI replace expensive WFTO certification ($0 vs $2K/year)?</li>
+                <li><strong>Reputation staking</strong>: Can award-winning NGOs vet newcomers via on-chain credibility transfer?</li>
+                <li><strong>Commercial self-sustainability</strong>: Can B2B revenue + Euler pool achieve break-even by Year 3?</li>
+            </ol>
+            <p style="font-size: 16px; line-height: 1.8; margin-top: 16px;">
+                If successful, this model can replicate to 100+ refugee-led NGOs across Africa by 2030. The research contributes
+                to DAO governance theory (Global South DAOs), refugee entrepreneurship literature, and blockchain for impact practice.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Unidos Social Innovation Center • Nakivale Refugee Settlement, Uganda</p>
+        <p style="margin-top: 8px; opacity: 0.7;">Research Portal • Members Only • Last Updated February 2026</p>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <script>
+        // Firebase configuration (MUST MATCH login.html)
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Check authentication state
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                // Not logged in, redirect to login page
+                window.location.href = '/research/login.html';
+            } else {
+                // Display user email
+                document.getElementById('userEmail').textContent = user.email;
+            }
+        });
+
+        // Logout handler
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            try {
+                await auth.signOut();
+                // Redirect handled by onAuthStateChanged
+            } catch (error) {
+                console.error('Logout error:', error);
+                alert('Error signing out. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

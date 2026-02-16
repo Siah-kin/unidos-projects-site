@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Portal Login - Unidos</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 440px;
+            width: 100%;
+            padding: 48px 40px;
+        }
+        .logo { text-align: center; margin-bottom: 32px; }
+        .logo h1 { color: #2a5934; font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .logo p { color: #666; font-size: 14px; }
+        .form-group { margin-bottom: 24px; }
+        label { display: block; color: #333; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+            border-color: #2a5934;
+            box-shadow: 0 0 0 4px rgba(42, 89, 52, 0.1);
+        }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: #2a5934;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover { background: #1f4327; transform: translateY(-1px); }
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+        .member-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .info-text { text-align: center; margin-top: 24px; font-size: 13px; color: #666; }
+        .info-text a { color: #2a5934; text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <div class="member-badge">🔒 MEMBERS ONLY</div>
+            <h1>Unidos Research Portal</h1>
+            <p>DAO Transformation Research</p>
+        </div>
+        <div class="error-message" id="errorMessage"></div>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+        </form>
+        <div class="info-text">
+            Demo: <strong>demo@unidos.org</strong> / <strong>demo123</strong><br>
+            <a href="../index.html">← Back</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            if (email === 'demo@unidos.org' && password === 'demo123') {
+                sessionStorage.setItem('unidosAuth', 'true');
+                sessionStorage.setItem('userEmail', email);
+                window.location.href = 'index.html';
+            } else {
+                const err = document.getElementById('errorMessage');
+                err.textContent = 'Invalid credentials. Use: demo@unidos.org / demo123';
+                err.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
