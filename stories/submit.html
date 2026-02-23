@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share your story with Unidos Projects - Tell the world about your journey, your work, and your impact in Nakivale and beyond.">
+    <title>Share Your Story | Unidos Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Vollkorn:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../images/unidos-logo.png">
+    <style>
+        .story-hero { background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%); color: white; padding: 60px 0; text-align: center; }
+        .story-hero h1 { font-family: 'Vollkorn', serif; font-size: 2.5rem; margin-bottom: 12px; }
+        .story-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .stories-section { padding: 60px 0; }
+        .featured-stories { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px; }
+        .story-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.3s; }
+        .story-card:hover { transform: translateY(-4px); }
+        .story-card-image { height: 200px; background: #e8f5e9; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+        .story-card-body { padding: 24px; }
+        .story-card-body h3 { font-family: 'Vollkorn', serif; color: #2a5934; margin-bottom: 8px; }
+        .story-card-body .role { font-size: 14px; color: #268575; font-weight: 600; margin-bottom: 12px; }
+        .story-card-body p { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 16px; }
+        .story-card-body a { color: #268575; font-weight: 600; text-decoration: none; }
+        .story-card-body a:hover { text-decoration: underline; }
+        .story-card .social-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-top: 8px; }
+        .story-card .social-link:hover { color: #268575; }
+        .submit-section { background: #f8f9fa; border-radius: 8px; padding: 48px; max-width: 700px; margin: 0 auto; }
+        .submit-section h2 { font-family: 'Vollkorn', serif; color: #2a5934; margin-bottom: 8px; }
+        .submit-section .subtitle { color: #666; margin-bottom: 32px; }
+        .submit-options { display: grid; gap: 16px; margin-bottom: 32px; }
+        .submit-option { background: white; border: 2px solid #e0e0e0; border-radius: 8px; padding: 24px; text-decoration: none; color: inherit; transition: border-color 0.2s; display: block; }
+        .submit-option:hover { border-color: #268575; }
+        .submit-option h3 { color: #2a5934; margin-bottom: 8px; font-size: 18px; }
+        .submit-option p { color: #666; font-size: 14px; line-height: 1.5; margin: 0; }
+        .submit-option .method-tag { display: inline-block; background: #e8f5e9; color: #2e7d32; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
+        .how-it-works { max-width: 700px; margin: 48px auto 0; }
+        .how-it-works h2 { font-family: 'Vollkorn', serif; color: #2a5934; margin-bottom: 24px; text-align: center; }
+        .steps { display: grid; gap: 16px; }
+        .step { display: flex; gap: 16px; align-items: flex-start; }
+        .step-number { background: #268575; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+        .step-content h4 { color: #2a5934; margin-bottom: 4px; }
+        .step-content p { color: #666; font-size: 14px; }
+        .update-note { background: #fff3cd; border-left: 4px solid #856404; padding: 16px 20px; border-radius: 8px; margin-top: 32px; }
+        .update-note p { color: #856404; font-size: 14px; margin: 0; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../images/unidos-logo.png" alt="Unidos" class="logo-img">
+                <span class="logo-text">Unidos Projects</span>
+            </a>
+            <nav class="nav" id="nav">
+                <ul class="nav-list">
+                    <li>
+                        <a href="../about.html">About</a>
+                        <div class="nav-dropdown">
+                            <a href="../about.html">Our Story</a>
+                            <a href="../history.html">History</a>
+                            <a href="../awards.html">Awards</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="../programs.html">Programs</a>
+                        <div class="nav-dropdown">
+                            <a href="../programs.html">Overview</a>
+                            <a href="../programs.html#biochar">Biochar</a>
+                            <a href="../programs.html#mushroom-project">Mushroom Lab</a>
+                            <a href="../programs.html#regesoil">REGESOIL</a>
+                            <a href="../programs.html#womens-empowerment">Women's Empowerment</a>
+                            <a href="../programs.html#regenerative-agriculture">Regenerative Agriculture</a>
+                            <a href="../programs.html#education">Education & Training</a>
+                        </div>
+                    </li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../research/login.html">Research</a></li>
+                    <li>
+                        <a href="../contact.html">Contact</a>
+                        <div class="nav-dropdown">
+                            <a href="../contact.html">Get in Touch</a>
+                            <a href="../donate.html">Donate</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <a href="../donate.html" class="btn btn-accent">Donate</a>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <div class="story-hero">
+        <div class="container">
+            <h1>Share Your <span style="color: #ffa62b;">Story</span></h1>
+            <p>Your journey matters. Whether you are a farmer, a mother, a student, or a community leader - your experience at Unidos can inspire others.</p>
+        </div>
+    </div>
+
+    <!-- Featured Stories -->
+    <section class="stories-section">
+        <div class="container">
+            <div class="section-header centered">
+                <span class="section-label">Voices from Nakivale</span>
+                <h2>Featured Stories</h2>
+            </div>
+
+            <div class="featured-stories">
+                <!-- Paulinho -->
+                <div class="story-card">
+                    <div class="story-card-image" style="background-image: url('../images/paulinho-portrait.jpg'); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="story-card-body">
+                        <h3>Paulinho Muzaliwa</h3>
+                        <div class="role">Founder & Executive Director</div>
+                        <p>"When food rations were cut in 2018, we had two choices: wait for help or grow our own food. We chose to grow. Started with 15 people learning permaculture. Now we train 500+ farmers a year."</p>
+                        <a href="../founders/paulinho.html">Read full story</a>
+                        <br>
+                        <a href="https://www.instagram.com/paulinhomz/" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            @paulinhomz
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Maria -->
+                <div class="story-card">
+                    <div class="story-card-image" style="background-image: url('../images/maria-portrait.jpg'); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="story-card-body">
+                        <h3>Maria Antoine</h3>
+                        <div class="role">Co-Founder & Program Manager</div>
+                        <p>"I teach women to make organic soap and grow mushrooms. But what I really teach is that they can build something of their own. 152 women trained so far - each one teaches the next."</p>
+                        <a href="../founders/maria.html">Read full story</a>
+                        <br>
+                        <a href="https://www.instagram.com/mari_marie225/" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            @mari_marie225
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Your Story -->
+                <div class="story-card" style="border: 2px dashed #268575;">
+                    <div class="story-card-image" style="background: #e8f5e9; font-size: 48px; display: flex; align-items: center; justify-content: center;">
+                        &#43;
+                    </div>
+                    <div class="story-card-body">
+                        <h3>Your Story</h3>
+                        <div class="role">Community Member</div>
+                        <p>Are you part of the Unidos community? Have our programs changed your work, your farm, or your family? We want to hear from you - in your own words, in any language.</p>
+                        <a href="#submit">Submit your story below</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Section -->
+            <div class="submit-section" id="submit">
+                <h2>Tell Us Your Story</h2>
+                <p class="subtitle">Choose the way that works best for you. All stories are reviewed by the Unidos team before publishing. You keep ownership of your words and photos.</p>
+
+                <div class="submit-options">
+                    <a href="mailto:info@unidosprojects.org?subject=My%20Unidos%20Story&body=Hi%20Unidos%20Team%2C%0A%0AMy%20name%20is%3A%20%0AMy%20role%20or%20program%3A%20%0A%0AMy%20story%3A%0A%0A(Write%20as%20much%20or%20as%20little%20as%20you%20like.%20Any%20language%20is%20fine.)%0A%0APhoto%20attached%3A%20yes%20%2F%20no%0AInstagram%20handle%20(optional)%3A%20%0A%0AThank%20you!" class="submit-option">
+                        <span class="method-tag">Email</span>
+                        <h3>Send by Email</h3>
+                        <p>Write your story in an email to info@unidosprojects.org. Attach photos if you have them. Write in English, French, Swahili, Kinyarwanda, or Kirundi - we will translate.</p>
+                    </a>
+
+                    <a href="https://wa.me/+256789000000?text=Hi%20Unidos%2C%20I%20want%20to%20share%20my%20story.%20My%20name%20is%20" class="submit-option" target="_blank" rel="noopener noreferrer">
+                        <span class="method-tag">WhatsApp</span>
+                        <h3>Send by WhatsApp</h3>
+                        <p>Send a voice note, text message, or photos on WhatsApp. This is the easiest option if you are in Nakivale or have limited internet. We will write it up for you.</p>
+                    </a>
+
+                    <a href="https://www.instagram.com/unidosprojects/" class="submit-option" target="_blank" rel="noopener noreferrer">
+                        <span class="method-tag">Instagram</span>
+                        <h3>Tag Us on Instagram</h3>
+                        <p>Post your story on Instagram and tag @unidosprojects. We will feature the best community posts on the website and in our reports.</p>
+                    </a>
+
+                    <div class="submit-option" style="cursor: default;">
+                        <span class="method-tag">In Person</span>
+                        <h3>Tell Us at the Center</h3>
+                        <p>Visit Unidos Social Innovation Center in Nakivale. We can record your story together - on video, voice, or written - during any program session or open hours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="how-it-works">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>You share</h4>
+                            <p>Send your story by email, WhatsApp, Instagram, or in person. Any language. Any length. Photos and voice notes welcome.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>We review together</h4>
+                            <p>The Unidos team reads your story, translates if needed, and sends you a draft. Nothing gets published without your approval.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>You approve</h4>
+                            <p>You see exactly what will be published. You can change anything - your name, your photo, your words. You decide what the world sees.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Your story goes live</h4>
+                            <p>Published on the Unidos website with your name (or anonymous if you prefer). Linked to your Instagram if you want. You can request updates or removal any time.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="update-note">
+                    <p><strong>Want to update your published story?</strong> Email info@unidosprojects.org or message us on WhatsApp with your changes. We update within 48 hours. You can also request removal at any time - your story, your choice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="../index.html" class="footer-logo-link">
+                        <img src="../images/unidos-logo.png" alt="Unidos" class="footer-logo-img">
+                        <span class="footer-logo">Unidos</span>
+                    </a>
+                    <p>A refugee-led organization turning refugees into change makers through regenerative approaches since 2018.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../programs.html">Programs</a></li>
+                        <li><a href="../founders/paulinho.html">REGESOIL</a></li>
+                        <li><a href="../founders/maria.html">Women's Circle</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../awards.html">Awards</a></li>
+                        <li><a href="../research/login.html">Research</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                        <li><a href="../donate.html">Donate</a></li>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>Nakivale Refugee Settlement<br>Isingiro District, Uganda</p>
+                    <p><a href="mailto:info@unidosprojects.org">info@unidosprojects.org</a></p>
+                    <div class="social-links" style="margin-top: 12px;">
+                        <a href="https://www.instagram.com/unidosprojects/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="https://www.youtube.com/@unidosprojects" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Unidos Projects. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
