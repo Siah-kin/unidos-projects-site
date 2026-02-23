@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>DEMO - Story Submission System | Unidos Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Vollkorn:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lato', -apple-system, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+
+        /* Demo banner */
+        .demo-banner { background: #856404; color: white; padding: 12px 24px; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; position: sticky; top: 0; z-index: 100; }
+
+        .header { background: linear-gradient(135deg, #268575 0%, #176255 100%); color: white; padding: 24px; }
+        .header-content { max-width: 1000px; margin: 0 auto; }
+        .header h1 { font-family: 'Vollkorn', serif; font-size: 28px; margin-bottom: 4px; }
+        .header p { font-size: 14px; opacity: 0.85; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 32px 24px; }
+
+        /* Section labels */
+        .section-label { display: inline-block; background: #268575; color: white; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 3px; margin-bottom: 12px; }
+        .section-label.admin { background: #856404; }
+        .section-label.visitor { background: #1877F2; }
+
+        h2 { font-family: 'Vollkorn', serif; color: #268575; font-size: 22px; margin-bottom: 16px; }
+        h3 { font-family: 'Vollkorn', serif; color: #268575; font-size: 18px; margin-bottom: 8px; }
+
+        /* Flow diagram */
+        .flow { display: flex; align-items: center; gap: 0; margin: 24px 0 40px; flex-wrap: wrap; justify-content: center; }
+        .flow-step { background: white; border: 2px solid #268575; border-radius: 8px; padding: 16px 20px; text-align: center; min-width: 160px; }
+        .flow-step .who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #268575; margin-bottom: 4px; }
+        .flow-step .what { font-size: 14px; color: #444; }
+        .flow-step.highlight { background: #268575; border-color: #268575; }
+        .flow-step.highlight .who, .flow-step.highlight .what { color: white; }
+        .flow-arrow { font-size: 24px; color: #268575; padding: 0 8px; font-weight: 700; }
+
+        /* Demo form */
+        .demo-form { background: white; border-radius: 10px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 32px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 6px; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 15px; font-family: 'Lato', sans-serif; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #268575; outline: none; }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group .hint { font-size: 12px; color: #999; margin-top: 4px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .btn-submit { background: #268575; color: white; border: none; padding: 12px 32px; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Lato', sans-serif; }
+        .btn-submit:hover { background: #176255; }
+        .photo-upload { border: 2px dashed #ddd; border-radius: 6px; padding: 24px; text-align: center; cursor: pointer; }
+        .photo-upload:hover { border-color: #268575; }
+        .photo-upload p { color: #999; font-size: 14px; }
+
+        /* Admin panel mockup */
+        .admin-panel { background: white; border-radius: 10px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 32px; border: 2px solid #856404; }
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 16px; }
+        .admin-table th { text-align: left; padding: 10px 12px; background: #f8f9fa; color: #333; font-weight: 600; border-bottom: 2px solid #ddd; }
+        .admin-table td { padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: middle; }
+        .status-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+        .status-badge.pending { background: #fff3cd; color: #856404; }
+        .status-badge.approved { background: #e0f2ef; color: #268575; }
+        .status-badge.published { background: #268575; color: white; }
+        .btn-small { padding: 4px 10px; border-radius: 4px; border: none; font-size: 12px; font-weight: 600; cursor: pointer; }
+        .btn-approve { background: #268575; color: white; }
+        .btn-edit { background: #eee; color: #333; }
+
+        /* Published stories grid */
+        .stories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 20px; }
+        .story-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+        .story-card-image { height: 180px; background-size: cover; background-position: center; background-color: #e0f2ef; }
+        .story-card-body { padding: 20px; }
+        .story-card-body h3 { font-size: 16px; margin-bottom: 4px; }
+        .story-card-body .role { font-size: 13px; color: #268575; font-weight: 600; margin-bottom: 8px; }
+        .story-card-body .lang { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .story-card-body p { font-size: 14px; color: #666; margin-bottom: 12px; }
+        .story-card-body a { color: #268575; font-weight: 600; text-decoration: none; font-size: 14px; }
+
+        /* Share widget */
+        .share-bar { display: flex; gap: 6px; margin-top: 12px; padding-top: 10px; border-top: 1px solid #eee; align-items: center; }
+        .share-label { font-size: 11px; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .share-icon { width: 28px; height: 28px; border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+        .share-icon svg { width: 14px; height: 14px; fill: white; }
+        .share-icon.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .share-icon.fb { background: #1877F2; }
+        .share-icon.tw { background: #000; }
+        .share-icon.sc { background: #FFFC00; }
+        .share-icon.sc svg { fill: #000; }
+
+        /* Language selector */
+        .lang-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .lang-tab { padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; border: 2px solid #ddd; background: white; cursor: pointer; color: #666; }
+        .lang-tab.active { border-color: #268575; background: #268575; color: white; }
+
+        /* Divider */
+        .divider { border: none; border-top: 2px dashed #ddd; margin: 48px 0; }
+
+        /* Annotation */
+        .annotation { background: #fff3cd; border-left: 4px solid #856404; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #856404; }
+
+        @media (max-width: 600px) {
+            .flow { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+            .form-row { grid-template-columns: 1fr; }
+            .admin-table { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-banner">Demo - Not Public - Layout Preview Only</div>
+
+    <div class="header">
+        <div class="header-content">
+            <h1>Unidos Story System</h1>
+            <p>How community members submit stories and how admins approve them</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ============================== -->
+        <!-- FLOW OVERVIEW -->
+        <!-- ============================== -->
+        <h2>How it works</h2>
+        <div class="flow">
+            <div class="flow-step">
+                <div class="who">Community member</div>
+                <div class="what">Fills out form</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+                <div class="who">System</div>
+                <div class="what">Lands in Google Sheet</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step highlight">
+                <div class="who">Unidos admin</div>
+                <div class="what">Reviews + approves</div>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+                <div class="who">Auto-publish</div>
+                <div class="what">Story goes live on site</div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- ============================== -->
+        <!-- STEP 1: SUBMISSION FORM -->
+        <!-- ============================== -->
+        <span class="section-label visitor">Step 1 - What the community member sees</span>
+        <h2>Share Your Story</h2>
+        <p style="color: #666; margin-bottom: 24px;">Tell us about your journey in your own words. Any language is welcome.</p>
+
+        <div class="demo-form">
+            <div class="lang-tabs">
+                <div class="lang-tab active">English</div>
+                <div class="lang-tab">Francais</div>
+                <div class="lang-tab">Kiswahili</div>
+                <div class="lang-tab">Kinyarwanda</div>
+                <div class="lang-tab">Kirundi</div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Your name</label>
+                    <input type="text" placeholder="e.g. Jean-Pierre Habimana" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Your role or program</label>
+                    <select disabled>
+                        <option>Mushroom farmer</option>
+                        <option>Soap maker</option>
+                        <option>Vermicompost producer</option>
+                        <option>Biochar producer</option>
+                        <option>Student / trainee</option>
+                        <option>Community leader</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Your story</label>
+                <textarea placeholder="Write as much or as little as you want. What changed for you? What did you learn? What would you tell someone starting out?" disabled></textarea>
+                <div class="hint">Voice notes and video links also accepted - paste a WhatsApp or YouTube link</div>
+            </div>
+
+            <div class="form-group">
+                <label>Photo (optional)</label>
+                <div class="photo-upload">
+                    <p>Tap to upload a photo of yourself, your farm, or your work</p>
+                    <p style="font-size: 12px; margin-top: 4px;">JPG, PNG, or HEIC - max 10 MB</p>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Instagram handle (optional)</label>
+                    <input type="text" placeholder="@yourname" disabled>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp number (optional)</label>
+                    <input type="text" placeholder="+256..." disabled>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Language of your story</label>
+                <select disabled>
+                    <option>English</option>
+                    <option>Francais</option>
+                    <option>Kiswahili</option>
+                    <option>Kinyarwanda</option>
+                    <option>Kirundi</option>
+                    <option>Somali</option>
+                    <option>Luganda</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <button class="btn-submit" disabled>Submit Your Story</button>
+        </div>
+
+        <div class="annotation">This form would be a Google Form embedded on the site. Submissions go directly to a Google Sheet that the Unidos team controls. No coding needed to view or manage submissions.</div>
+
+        <hr class="divider">
+
+        <!-- ============================== -->
+        <!-- STEP 2: ADMIN PANEL -->
+        <!-- ============================== -->
+        <span class="section-label admin">Step 2 - What the Unidos admin sees (Google Sheet)</span>
+        <h2>Admin Review Panel</h2>
+        <p style="color: #666; margin-bottom: 8px;">This is the Google Sheet where all submissions land. Any Unidos team member with the sheet link can review.</p>
+
+        <div class="admin-panel">
+            <h3>Story Submissions</h3>
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Language</th>
+                        <th>Preview</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Feb 23</td>
+                        <td>Jean-Pierre H.</td>
+                        <td>Francais</td>
+                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">"Quand j'ai commence a cultiver les champignons..."</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>
+                            <button class="btn-small btn-approve" disabled>Approve</button>
+                            <button class="btn-small btn-edit" disabled>Edit</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Feb 22</td>
+                        <td>Amina K.</td>
+                        <td>Kiswahili</td>
+                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">"Nilifundishwa kutengeneza sabuni na sasa..."</td>
+                        <td><span class="status-badge approved">Approved</span></td>
+                        <td>
+                            <button class="btn-small btn-edit" disabled>Edit</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Feb 20</td>
+                        <td>Paulinho M.</td>
+                        <td>English</td>
+                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">"When food rations were cut in 2018..."</td>
+                        <td><span class="status-badge published">Published</span></td>
+                        <td>
+                            <button class="btn-small btn-edit" disabled>Edit</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Feb 19</td>
+                        <td>Maria A.</td>
+                        <td>Francais</td>
+                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">"J'enseigne aux femmes a fabriquer du savon..."</td>
+                        <td><span class="status-badge published">Published</span></td>
+                        <td>
+                            <button class="btn-small btn-edit" disabled>Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="annotation">Admin clicks "Approve" in the Google Sheet. A scheduled script checks for new approvals and auto-publishes them to the website. No code, no GitHub - just a spreadsheet column.</div>
+
+        <hr class="divider">
+
+        <!-- ============================== -->
+        <!-- STEP 3: PUBLISHED STORIES -->
+        <!-- ============================== -->
+        <span class="section-label">Step 3 - What visitors see on the website</span>
+        <h2>Community Stories</h2>
+
+        <div class="lang-tabs" style="margin-bottom: 20px;">
+            <div class="lang-tab active">All</div>
+            <div class="lang-tab">English</div>
+            <div class="lang-tab">Francais</div>
+            <div class="lang-tab">Kiswahili</div>
+            <div class="lang-tab">Kinyarwanda</div>
+        </div>
+
+        <div class="stories-grid">
+            <div class="story-card">
+                <div class="story-card-image" style="background-image: url('../images/paulinho-portrait.jpg');"></div>
+                <div class="story-card-body">
+                    <h3>Paulinho Muzaliwa</h3>
+                    <div class="role">Founder - Permaculture Educator</div>
+                    <div class="lang">English</div>
+                    <p>"When food rations were cut in 2018, we had two choices: wait for help or grow our own food. We chose to grow."</p>
+                    <a href="#">Read full story</a>
+                    <div class="share-bar">
+                        <span class="share-label">Share</span>
+                        <div class="share-icon ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+                        <div class="share-icon fb"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                        <div class="share-icon tw"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+                        <div class="share-icon sc"><svg viewBox="0 0 24 24"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.923-.24.164-.075.343-.105.502-.105.446 0 .776.27.776.69 0 .72-.957 1.11-1.594 1.305-.164.045-.389.105-.571.165-.494.149-.689.195-.781.435-.045.121-.03.27.015.404.135.39.39.84.645 1.29.329.59.72 1.245 1.035 1.695.195.27.42.54.66.795.36.36.54.63.54.945 0 .525-.6.795-1.17.945-.375.09-.72.165-1.185.24-.16.03-.33.06-.51.09-.239.03-.36.345-.45.72-.06.21-.18.72-.72.72-.12 0-.27-.03-.45-.06-.51-.12-1.185-.27-2.175-.27-1.02 0-1.665.15-2.235.27-.18.06-.33.06-.45.06-.48 0-.66-.39-.72-.72-.09-.375-.21-.69-.45-.72-.18-.03-.36-.06-.51-.09-.464-.075-.81-.15-1.185-.24-.57-.12-1.17-.42-1.17-.945 0-.315.18-.585.54-.945.24-.255.465-.525.66-.795.315-.45.705-1.11 1.035-1.695.255-.45.51-.9.645-1.29.045-.135.06-.284.015-.404-.09-.24-.285-.285-.78-.435-.181-.06-.406-.12-.57-.165-.63-.195-1.594-.585-1.594-1.305 0-.42.33-.69.776-.69.159 0 .338.03.502.105.264.12.624.224.923.24.198 0 .327-.045.4-.09-.007-.165-.017-.33-.029-.51l-.004-.06c-.104-1.628-.229-3.654.3-4.847C7.847 1.069 11.216.793 12.206.793z"/></svg></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-card-image" style="background-image: url('../images/maria-portrait.jpg');"></div>
+                <div class="story-card-body">
+                    <h3>Maria Antoine</h3>
+                    <div class="role">Co-Founder - Soap & Mushrooms</div>
+                    <div class="lang">Francais (translated)</div>
+                    <p>"J'enseigne aux femmes a fabriquer du savon et a cultiver des champignons. Mais ce que j'enseigne vraiment, c'est qu'elles peuvent construire quelque chose qui leur appartient."</p>
+                    <a href="#">Read full story</a>
+                    <div class="share-bar">
+                        <span class="share-label">Share</span>
+                        <div class="share-icon ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+                        <div class="share-icon fb"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                        <div class="share-icon tw"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+                        <div class="share-icon sc"><svg viewBox="0 0 24 24"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.923-.24.164-.075.343-.105.502-.105.446 0 .776.27.776.69 0 .72-.957 1.11-1.594 1.305-.164.045-.389.105-.571.165-.494.149-.689.195-.781.435-.045.121-.03.27.015.404.135.39.39.84.645 1.29.329.59.72 1.245 1.035 1.695.195.27.42.54.66.795.36.36.54.63.54.945 0 .525-.6.795-1.17.945-.375.09-.72.165-1.185.24-.16.03-.33.06-.51.09-.239.03-.36.345-.45.72-.06.21-.18.72-.72.72-.12 0-.27-.03-.45-.06-.51-.12-1.185-.27-2.175-.27-1.02 0-1.665.15-2.235.27-.18.06-.33.06-.45.06-.48 0-.66-.39-.72-.72-.09-.375-.21-.69-.45-.72-.18-.03-.36-.06-.51-.09-.464-.075-.81-.15-1.185-.24-.57-.12-1.17-.42-1.17-.945 0-.315.18-.585.54-.945.24-.255.465-.525.66-.795.315-.45.705-1.11 1.035-1.695.255-.45.51-.9.645-1.29.045-.135.06-.284.015-.404-.09-.24-.285-.285-.78-.435-.181-.06-.406-.12-.57-.165-.63-.195-1.594-.585-1.594-1.305 0-.42.33-.69.776-.69.159 0 .338.03.502.105.264.12.624.224.923.24.198 0 .327-.045.4-.09-.007-.165-.017-.33-.029-.51l-.004-.06c-.104-1.628-.229-3.654.3-4.847C7.847 1.069 11.216.793 12.206.793z"/></svg></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-card-image" style="background-color: #e0f2ef;"></div>
+                <div class="story-card-body">
+                    <h3>Jean-Pierre Habimana</h3>
+                    <div class="role">Mushroom Farmer</div>
+                    <div class="lang">Francais (original)</div>
+                    <p>"Quand j'ai commence a cultiver les champignons, je gagnais 2,000 UGX par jour. Maintenant, avec les prix du marche sur le telephone, je vends directement. 8,000 UGX par jour."</p>
+                    <a href="#">Read full story</a>
+                    <div class="share-bar">
+                        <span class="share-label">Share</span>
+                        <div class="share-icon ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+                        <div class="share-icon fb"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                        <div class="share-icon tw"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+                        <div class="share-icon sc"><svg viewBox="0 0 24 24"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.923-.24.164-.075.343-.105.502-.105.446 0 .776.27.776.69 0 .72-.957 1.11-1.594 1.305-.164.045-.389.105-.571.165-.494.149-.689.195-.781.435-.045.121-.03.27.015.404.135.39.39.84.645 1.29.329.59.72 1.245 1.035 1.695.195.27.42.54.66.795.36.36.54.63.54.945 0 .525-.6.795-1.17.945-.375.09-.72.165-1.185.24-.16.03-.33.06-.51.09-.239.03-.36.345-.45.72-.06.21-.18.72-.72.72-.12 0-.27-.03-.45-.06-.51-.12-1.185-.27-2.175-.27-1.02 0-1.665.15-2.235.27-.18.06-.33.06-.45.06-.48 0-.66-.39-.72-.72-.09-.375-.21-.69-.45-.72-.18-.03-.36-.06-.51-.09-.464-.075-.81-.15-1.185-.24-.57-.12-1.17-.42-1.17-.945 0-.315.18-.585.54-.945.24-.255.465-.525.66-.795.315-.45.705-1.11 1.035-1.695.255-.45.51-.9.645-1.29.045-.135.06-.284.015-.404-.09-.24-.285-.285-.78-.435-.181-.06-.406-.12-.57-.165-.63-.195-1.594-.585-1.594-1.305 0-.42.33-.69.776-.69.159 0 .338.03.502.105.264.12.624.224.923.24.198 0 .327-.045.4-.09-.007-.165-.017-.33-.029-.51l-.004-.06c-.104-1.628-.229-3.654.3-4.847C7.847 1.069 11.216.793 12.206.793z"/></svg></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-card">
+                <div class="story-card-image" style="background-color: #e0f2ef;"></div>
+                <div class="story-card-body">
+                    <h3>Amina Kabera</h3>
+                    <div class="role">Soap Maker - Women's Circle</div>
+                    <div class="lang">Kiswahili (original)</div>
+                    <p>"Nilifundishwa kutengeneza sabuni na sasa ninauza sabuni nne kwa wiki. Watoto wangu wanakwenda shule. Kitu kimoja kidogo kilbadilisha kila kitu."</p>
+                    <a href="#">Read full story</a>
+                    <div class="share-bar">
+                        <span class="share-label">Share</span>
+                        <div class="share-icon ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+                        <div class="share-icon fb"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                        <div class="share-icon tw"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+                        <div class="share-icon sc"><svg viewBox="0 0 24 24"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.923-.24.164-.075.343-.105.502-.105.446 0 .776.27.776.69 0 .72-.957 1.11-1.594 1.305-.164.045-.389.105-.571.165-.494.149-.689.195-.781.435-.045.121-.03.27.015.404.135.39.39.84.645 1.29.329.59.72 1.245 1.035 1.695.195.27.42.54.66.795.36.36.54.63.54.945 0 .525-.6.795-1.17.945-.375.09-.72.165-1.185.24-.16.03-.33.06-.51.09-.239.03-.36.345-.45.72-.06.21-.18.72-.72.72-.12 0-.27-.03-.45-.06-.51-.12-1.185-.27-2.175-.27-1.02 0-1.665.15-2.235.27-.18.06-.33.06-.45.06-.48 0-.66-.39-.72-.72-.09-.375-.21-.69-.45-.72-.18-.03-.36-.06-.51-.09-.464-.075-.81-.15-1.185-.24-.57-.12-1.17-.42-1.17-.945 0-.315.18-.585.54-.945.24-.255.465-.525.66-.795.315-.45.705-1.11 1.035-1.695.255-.45.51-.9.645-1.29.045-.135.06-.284.015-.404-.09-.24-.285-.285-.78-.435-.181-.06-.406-.12-.57-.165-.63-.195-1.594-.585-1.594-1.305 0-.42.33-.69.776-.69.159 0 .338.03.502.105.264.12.624.224.923.24.198 0 .327-.045.4-.09-.007-.165-.017-.33-.029-.51l-.004-.06c-.104-1.628-.229-3.654.3-4.847C7.847 1.069 11.216.793 12.206.793z"/></svg></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- ============================== -->
+        <!-- SETUP REQUIREMENTS -->
+        <!-- ============================== -->
+        <h2>What we need to make this live</h2>
+        <div class="demo-form" style="padding: 24px;">
+            <table style="width: 100%; font-size: 14px; border-collapse: collapse;">
+                <tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 10px 0; font-weight: 600; width: 40%;">Google account for the form</td>
+                    <td style="padding: 10px 0; color: #666;">Any Gmail - creates the submission form + spreadsheet</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 10px 0; font-weight: 600;">Who are the admins?</td>
+                    <td style="padding: 10px 0; color: #666;">Email addresses of team members who can approve stories</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 10px 0; font-weight: 600;">WhatsApp number</td>
+                    <td style="padding: 10px 0; color: #666;">For the "submit via WhatsApp" option (currently placeholder)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 0; font-weight: 600;">Translation approach</td>
+                    <td style="padding: 10px 0; color: #666;">Does the team translate manually, or should we auto-translate?</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>
