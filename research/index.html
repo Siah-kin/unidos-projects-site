@@ -3,67 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Portal - Unidos DAO</title>
+    <title>Research - Unidos Projects</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
-        .header { background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%); color: white; padding: 24px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
-        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo h1 { font-size: 24px; margin-bottom: 4px; }
-        .logo p { font-size: 14px; opacity: 0.9; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.7; }
+        .header { background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%); color: white; padding: 24px; }
+        .header-content { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo h1 { font-size: 22px; margin-bottom: 4px; }
+        .logo p { font-size: 13px; opacity: 0.85; }
         .user-info { display: flex; align-items: center; gap: 16px; }
-        .btn-logout { background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.3); padding: 8px 16px; border-radius: 6px; cursor: pointer; }
-        .btn-logout:hover { background: rgba(255, 255, 255, 0.3); }
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 24px; }
-        .page-title { font-size: 32px; color: #2a5934; margin-bottom: 12px; }
-        .page-subtitle { font-size: 18px; color: #666; margin-bottom: 40px; }
-        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 48px; }
-        .research-card { background: white; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; }
-        .research-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
-        .research-card a { text-decoration: none; color: inherit; }
-        .card-icon { font-size: 36px; margin-bottom: 16px; }
-        .card-title { font-size: 20px; font-weight: 600; color: #2a5934; margin-bottom: 12px; }
-        .card-description { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 12px; }
-        .card-details { font-size: 13px; color: #888; line-height: 1.5; margin-bottom: 16px; border-left: 3px solid #e0e0e0; padding-left: 12px; }
-        .badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-right: 6px; margin-bottom: 6px; }
-        .badge-private { background: #fee; color: #c33; }
-        .badge-public { background: #e8f5e9; color: #2e7d32; }
-        .badge-status { background: #efe; color: #3a3; }
-        .badge-progress { background: #fff3e0; color: #e65100; }
-        .badge-journal { background: #e3f2fd; color: #1565c0; }
-        .section-title { font-size: 24px; color: #2a5934; margin-bottom: 8px; }
-        .section-subtitle { font-size: 15px; color: #666; margin-bottom: 24px; }
-        .connections-box { background: white; border-radius: 12px; padding: 32px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); margin-bottom: 48px; }
-        .connection-diagram { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; margin-top: 24px; }
-        .connection-core { background: linear-gradient(135deg, #2a5934, #1a3d24); color: white; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; justify-content: center; }
-        .connection-core h3 { font-size: 18px; margin-bottom: 12px; }
-        .connection-core p { font-size: 14px; opacity: 0.9; line-height: 1.6; }
-        .connection-layers { display: flex; flex-direction: column; gap: 12px; }
-        .connection-layer { background: #f8f9fa; border-radius: 8px; padding: 16px; border-left: 4px solid; }
-        .connection-layer h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-        .connection-layer p { font-size: 13px; color: #666; }
-        .layer-governance { border-color: #1565c0; }
-        .layer-governance h4 { color: #1565c0; }
-        .layer-identity { border-color: #6a1b9a; }
-        .layer-identity h4 { color: #6a1b9a; }
-        .layer-trust { border-color: #e65100; }
-        .layer-trust h4 { color: #e65100; }
-        .layer-implementation { border-color: #2e7d32; }
-        .layer-implementation h4 { color: #2e7d32; }
-        .layer-market { border-color: #c62828; }
-        .layer-market h4 { color: #c62828; }
-        .summary-box { background: white; border-radius: 12px; padding: 32px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); margin-bottom: 48px; }
-        .summary-box h2 { font-size: 24px; color: #2a5934; margin-bottom: 16px; }
-        .summary-box p { font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
-        .citation-list { font-size: 14px; color: #666; list-style: none; padding: 0; }
-        .citation-list li { padding: 8px 0; border-bottom: 1px solid #eee; }
-        .citation-list li:last-child { border-bottom: none; }
-        .social-bar { display: flex; gap: 16px; align-items: center; margin-top: 24px; }
-        .social-bar a { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #2a5934; font-size: 14px; font-weight: 500; padding: 8px 16px; background: #e8f5e9; border-radius: 8px; transition: background 0.2s; }
+        .btn-logout { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+        .btn-logout:hover { background: rgba(255,255,255,0.3); }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 24px; }
+        h1.page-title { font-size: 30px; color: #2a5934; margin-bottom: 8px; }
+        .page-subtitle { font-size: 17px; color: #555; margin-bottom: 36px; max-width: 700px; }
+
+        /* Cards */
+        .research-card { background: white; border-radius: 10px; padding: 32px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); margin-bottom: 32px; }
+        .research-card h2 { font-size: 22px; color: #2a5934; margin-bottom: 16px; }
+        .research-card h3 { font-size: 17px; color: #2a5934; margin: 24px 0 8px; }
+        .research-card p { font-size: 15px; color: #444; margin-bottom: 12px; }
+        .research-card .lead { font-size: 16px; color: #333; font-weight: 500; }
+
+        /* Gauge visual */
+        .gauge-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+        .gauge-table th { text-align: left; padding: 10px 12px; background: #2a5934; color: white; font-weight: 600; }
+        .gauge-table td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+        .gauge-table tr:last-child td { border-bottom: none; }
+        .gauge-0 { color: #c62828; font-weight: 700; }
+        .gauge-5 { color: #e65100; font-weight: 700; }
+        .gauge-10 { color: #2e7d32; font-weight: 700; }
+        .gauge-25 { color: #1565c0; font-weight: 700; }
+        .gauge-100 { color: #6a1b9a; font-weight: 700; }
+        .gauge-500 { color: #2a5934; font-weight: 700; }
+
+        /* Compounding table */
+        .compound-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+        .compound-table th { text-align: left; padding: 10px 12px; background: #f0f7f0; color: #2a5934; font-weight: 600; border-bottom: 2px solid #2a5934; }
+        .compound-table td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+        .compound-table .highlight-row { background: #f0f7f0; font-weight: 600; }
+
+        /* Loop diagram */
+        .loop-box { background: #f8f9fa; border-radius: 8px; padding: 24px; margin: 20px 0; border-left: 4px solid #2a5934; }
+        .loop-box p { font-size: 14px; color: #555; margin-bottom: 8px; }
+        .loop-box .arrow { color: #2a5934; font-weight: 700; }
+
+        /* SMART targets */
+        .smart-grid { display: grid; grid-template-columns: 100px 1fr; gap: 0; margin: 20px 0; font-size: 14px; }
+        .smart-label { background: #2a5934; color: white; padding: 12px; font-weight: 700; display: flex; align-items: center; }
+        .smart-value { background: #f8f9fa; padding: 12px; border-bottom: 1px solid #e0e0e0; }
+
+        /* Honest audit */
+        .audit-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+        .audit-table th { text-align: left; padding: 10px 12px; background: #fff3cd; color: #856404; font-weight: 600; }
+        .audit-table td { padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .status-yes { color: #2e7d32; font-weight: 600; }
+        .status-test { color: #e65100; font-weight: 600; }
+        .status-no { color: #c62828; font-weight: 600; }
+
+        /* Stats */
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 24px 0; }
+        .stat-box { text-align: center; padding: 16px; background: #f0f7f0; border-radius: 8px; }
+        .stat-box .num { font-size: 26px; font-weight: 700; color: #2a5934; }
+        .stat-box .label { font-size: 12px; color: #666; margin-top: 4px; }
+
+        /* Social bar */
+        .social-bar { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .social-bar a { display: flex; align-items: center; gap: 6px; text-decoration: none; color: #2a5934; font-size: 13px; font-weight: 500; padding: 6px 14px; background: #e8f5e9; border-radius: 6px; }
         .social-bar a:hover { background: #c8e6c9; }
-        @media (max-width: 768px) {
-            .connection-diagram { grid-template-columns: 1fr; }
-            .research-grid { grid-template-columns: 1fr; }
+
+        /* Callout */
+        .callout { background: #fff3cd; border-left: 4px solid #856404; padding: 16px 20px; border-radius: 8px; margin-bottom: 32px; }
+        .callout p { color: #856404; font-size: 14px; margin: 0; }
+
+        @media (max-width: 600px) {
+            .smart-grid { grid-template-columns: 1fr; }
+            .gauge-table, .compound-table, .audit-table { font-size: 13px; }
         }
     </style>
 </head>
@@ -71,8 +86,8 @@
     <div class="header">
         <div class="header-content">
             <div class="logo">
-                <h1>Unidos Research Portal</h1>
-                <p>DAO Transformation Research - Nakivale, Uganda</p>
+                <h1>Unidos Research</h1>
+                <p>Nakivale Refugee Settlement, Uganda</p>
             </div>
             <div class="user-info">
                 <span id="userEmail"></span>
@@ -82,211 +97,299 @@
     </div>
 
     <div class="container">
-        <h1 class="page-title">Research Portal</h1>
-        <p class="page-subtitle">Documenting the transformation of a refugee-led NGO into a DAO - with real data from 501 farmers, 8 years of field work, and 6 international awards.</p>
+        <h1 class="page-title">Can $10 a month change a life?</h1>
+        <p class="page-subtitle">Two research projects. One question. We are testing whether a small, steady income - combined with coaching, cooperation, and good data - can help a refugee build a livelihood from scratch.</p>
 
-        <div style="background: #fff3cd; border-left: 4px solid #856404; padding: 16px 20px; margin-bottom: 32px; border-radius: 8px;">
-            <p style="color: #856404; font-size: 15px; line-height: 1.6; margin: 0;">
-                <strong>Research Phase:</strong> Full datasets and methodology are disclosed to members as papers reach peer review submission. Below: 6 research tracks, their status, and how they connect to each other and to the broader academic literature.
-            </p>
+        <div class="callout">
+            <p><strong>Research Phase:</strong> We are running these studies with real farmers in Nakivale. Results are shared with members as data comes in. What you see below is the framework, the math, and the honest gaps we still need to close.</p>
         </div>
 
-        <!-- Research Papers Grid -->
-        <h2 class="section-title">Research Papers</h2>
-        <p class="section-subtitle">Each paper addresses a specific gap in the literature on refugee financial inclusion, DAO governance, and behavioral trust.</p>
+        <!-- ============================================ -->
+        <!-- RESEARCH 1: The $10 Threshold -->
+        <!-- ============================================ -->
+        <div class="research-card">
+            <h2>Research 1: The $10 Threshold</h2>
+            <p class="lead">We believe $10 per month in passive income is the minimum amount that shifts a person from survival mode into investment mode. We call this the activation threshold.</p>
 
-        <div class="research-grid">
-            <!-- Paper 1: Data-as-Collateral -->
-            <div class="research-card">
-                <div class="card-icon">📄</div>
-                <h3 class="card-title">Data-as-Collateral Barter Tokenization</h3>
-                <p class="card-description">Core academic paper. Proposes that refugees can "farm" blockchain transaction fees by contributing behavioral data (cooperation patterns, agricultural knowledge, carbon verification) as collateral for ETH-backed barter tokens.</p>
-                <div class="card-details">
-                    <strong>Gap addressed:</strong> No existing model solves KYC-free access + zero transaction costs + data sovereignty simultaneously.<br>
-                    <strong>Method:</strong> Mixed-methods pilot with 500 refugees in Nakivale. HEROES behavioral detection for identity, data monetization for costs, 150% overcollateralized barter tokens.<br>
-                    <strong>Key finding:</strong> Refugees can earn $1.50-3.50/month in data value - enough to cover blockchain fees (180x cost coverage) while building portable on-chain reputation.
-                </div>
-                <span class="badge badge-private">Members Only</span>
-                <span class="badge badge-status">Peer Review Draft</span>
-                <span class="badge badge-journal">Target: Journal of Humanitarian Technology</span>
-            </div>
+            <h3>The E-motional Gauge</h3>
+            <p>This is not just about money. It is about what becomes possible at each level. Below $10, a person spends everything on staying alive. At $10, they can start building something.</p>
 
-            <!-- Paper 2: DAO Governance -->
-            <div class="research-card">
-                <div class="card-icon">🏛️</div>
-                <h3 class="card-title">DAO Governance for Refugee NGOs</h3>
-                <p class="card-description">Can decentralized governance work in low-connectivity refugee settlements? Tests whether cooperation scores can replace token-weighted voting, and whether cryptographic verification can replace expensive third-party audits.</p>
-                <div class="card-details">
-                    <strong>5 research questions:</strong> Telegram-first governance, meritocratic voting, cryptographic certification, reputation staking, self-sustainability.<br>
-                    <strong>Grounded in:</strong> 8 years of Unidos field data, Ostrom commons governance principles, Mondragon cooperative model.<br>
-                    <strong>Timeline:</strong> 4-phase roadmap (Q1 2026 Foundation through Q3 2027 Launch).
-                </div>
-                <span class="badge badge-private">Members Only</span>
-                <span class="badge badge-status">Complete</span>
-                <span class="badge badge-journal">Target: Journal of Business Ethics</span>
-            </div>
+            <table class="gauge-table">
+                <thead>
+                    <tr><th>Monthly Income</th><th>What it feels like</th><th>What becomes possible</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="gauge-0">$0</td>
+                        <td>Stuck. Dependent on food rations. No choices.</td>
+                        <td>Nothing. Wait for help or go without.</td>
+                    </tr>
+                    <tr>
+                        <td class="gauge-5">$5</td>
+                        <td>Surviving, not building. Can eat but not invest.</td>
+                        <td>Buy food. Maybe medicine. No surplus.</td>
+                    </tr>
+                    <tr>
+                        <td class="gauge-10">$10</td>
+                        <td>The turning point. Enough to plant a seed.</td>
+                        <td>Buy $8 of mushroom spawn + $2 compost materials. Or buy medicine to get healthy enough to work. Or buy clothes for a job interview. The first real choice.</td>
+                    </tr>
+                    <tr>
+                        <td class="gauge-25">$25</td>
+                        <td>Building momentum. Reinvesting surplus.</td>
+                        <td>Scale production. Start a second crop. Help a neighbor get started.</td>
+                    </tr>
+                    <tr>
+                        <td class="gauge-100">$100</td>
+                        <td>Community anchor. Others look to you.</td>
+                        <td>Hire help. Pool orders for better prices. Teach what you know.</td>
+                    </tr>
+                    <tr>
+                        <td class="gauge-500">$500</td>
+                        <td>Graduated. Ready for formal credit.</td>
+                        <td>Open a savings group account. Apply for a microfinance loan. No longer dependent on aid.</td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <!-- Paper 3: Multi-Agent Governance -->
-            <div class="research-card">
-                <div class="card-icon">🔬</div>
-                <h3 class="card-title">Multi-Agent Governance (RACI-V Protocol)</h3>
-                <p class="card-description">Live experiment testing structured AI coordination vs unstructured "chaos" using 3 real Telegram accounts. Addresses 7 of 8 failure modes identified by Hadfield & Koh (arXiv:2509.01063) in multi-agent economic systems.</p>
-                <div class="card-details">
-                    <strong>Literature anchor:</strong> Hadfield & Koh identify 8 AI governance problems theoretically - zero experiments. This is the first live test.<br>
-                    <strong>Method:</strong> Within-subjects design. Same 3 actors, same questions, two conditions (chaos vs RACI-V). Oracle validation rate as primary metric. All Telegram message IDs logged for independent verification.<br>
-                    <strong>Hypothesis:</strong> RACI-V produces higher answer quality (d=0.42 in simulation) and lower variance than chaos, even with identical underlying LLMs.
-                </div>
-                <span class="badge badge-private">Members Only</span>
-                <span class="badge badge-progress">Live Experiment</span>
-                <span class="badge badge-journal">Target: ACM EC / AAAI / ICAIF</span>
-            </div>
+            <h3>The compounding cycle</h3>
+            <p>Can someone who gets $10/month passively compound it into $500 in savings within a year? Here is how the math works in Nakivale, using mushroom cultivation as the example:</p>
 
-            <!-- Paper 4: HEROES Detection -->
-            <div class="research-card">
-                <div class="card-icon">🛡️</div>
-                <h3 class="card-title">HEROES Behavioral Detection</h3>
-                <p class="card-description">5-stage fraud prevention framework using 13 behavioral indicators (cooperation patterns, not identity documents). Combined with ZK proofs, enables KYC-free identity that protects refugees from surveillance while proving trustworthiness.</p>
-                <div class="card-details">
-                    <strong>Why behavioral, not biometric:</strong> Video/iris verification risks government surveillance of displaced populations. Behavioral data (do they help others? do they follow through?) measures trust without exposing identity.<br>
-                    <strong>32 CPI signals</strong> across 10 dimensions, longitudinally tracked. Early modeling: $500/month sustainability threshold per community.<br>
-                    <strong>Literature gap:</strong> Existing systems (Proof of Humanity, Gitcoin Passport) use input-based credentials, not behavior-based trust.
-                </div>
-                <span class="badge badge-private">Members Only</span>
-                <span class="badge badge-status">Complete</span>
-            </div>
+            <table class="compound-table">
+                <thead>
+                    <tr><th>Month</th><th>Invest</th><th>Action</th><th>Revenue</th><th>Saved</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>$10</td>
+                        <td>Buy 3 spawn bags ($7.50) + compost prep ($2.50)</td>
+                        <td>15kg mushrooms at $0.95/kg = $14</td>
+                        <td>$14</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>$10 + $4 reinvest</td>
+                        <td>Buy 5 spawn bags, expand growing area</td>
+                        <td>25kg = $24</td>
+                        <td>$38</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>$10 + $14 reinvest</td>
+                        <td>9 bags + start selling compost on the side</td>
+                        <td>$43</td>
+                        <td>$81</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>$10 + $20 reinvest</td>
+                        <td>12 bags, two revenue streams</td>
+                        <td>$57</td>
+                        <td>$138</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>$10 + compound</td>
+                        <td>Add biochar production. Hire a neighbor.</td>
+                        <td>~$70/mo</td>
+                        <td>$280</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>$10 + compound</td>
+                        <td>Three products, one operation</td>
+                        <td>~$90/mo</td>
+                        <td>$430</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>12</td>
+                        <td>$10 + compound</td>
+                        <td>Established operation. Selling to buyers directly.</td>
+                        <td>~$100/mo</td>
+                        <td><strong>$550+</strong></td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <!-- Paper 5: Reputation Staking -->
-            <div class="research-card">
-                <div class="card-icon">🏆</div>
-                <h3 class="card-title">Reputation Staking Model</h3>
-                <p class="card-description">Award-winning NGOs stake their on-chain reputation to vet newcomer projects across Africa. Unidos' 6 awards (UNHCR, Ockenden, Lush, UNHCR Innovation Fund) become verifiable trust signals that transfer to vetted organizations.</p>
-                <div class="card-details">
-                    <strong>Mechanism:</strong> Awards = external jury validation = on-chain reputation points. Unidos stakes reputation when vouching for new NGOs. If vetted NGO fails, Unidos' score decreases (graduated slashing, 5-100%).<br>
-                    <strong>Scale target:</strong> 100+ refugee-led organizations across Africa by 2030, each vetting the next generation.<br>
-                    <strong>Innovation:</strong> Social capital becomes programmable. Trust compounds like soil health - annually, measurably.
-                </div>
-                <span class="badge badge-private">Members Only</span>
-                <span class="badge badge-status">Complete</span>
-                <span class="badge badge-journal">Target: Stanford Social Innovation Review</span>
-            </div>
+            <h3>Why this works in Nakivale</h3>
+            <p><strong>Land</strong> is allocated by UNHCR - not purchased. <strong>Compost</strong> is made from organic waste - free. <strong>Water</strong> is available at settlement boreholes. <strong>Training</strong> - Unidos already taught 501 people exactly these techniques. The bottleneck was never knowledge. It was the first $10 to buy inputs.</p>
 
-            <!-- Paper 6: Refugee Data Marketplace -->
-            <div class="research-card">
-                <div class="card-icon">📊</div>
-                <h3 class="card-title">Refugee Data Marketplace</h3>
-                <p class="card-description">Survey-as-a-service model where refugees are paid directly for data contributions ($5/response) rather than intermediaries ($10/response via consultants). Targets NGO research budgets: UNHCR $50M+/year, IRC $15M/year in research spending.</p>
-                <div class="card-details">
-                    <strong>Revenue model:</strong> 80% grants + 15% Euler yield + 5% data fees = $21/month per participant (above $10/month sustainability target).<br>
-                    <strong>Data types:</strong> Agricultural knowledge (soil, yield, techniques), carbon sequestration verification, cooperation behavioral patterns, market price data.<br>
-                    <strong>Privacy:</strong> ZK-verified data commons - buyers access aggregate insights, never individual identities.
-                </div>
-                <span class="badge badge-private">Members Only</span>
-                <span class="badge badge-progress">In Progress</span>
+            <h3>What kills it without help</h3>
+            <p>A wholesaler drives in, offers half the market price. The farmer has no price reference. Accepts. Revenue drops 43%. Or: the farmer has surplus mushrooms but no buyer. They spoil in 2 days. Total loss. Or: a health emergency wipes savings back to zero.</p>
+            <p>This is why the compounding cycle needs three things beyond the $10: <strong>price information</strong> (what are mushrooms actually selling for today?), <strong>buyer connections</strong> (who needs 25kg this week?), and <strong>a safety floor</strong> (the passive $10 that prevents total reset after a bad month).</p>
+
+            <h3>The pilot: 10 people, 12 months</h3>
+            <p>We want to coach 10 farmers through this cycle and track everything: what they plant, what they harvest, what they sell, what they save, and what goes wrong. Not a controlled experiment in a lab - a real test with real people facing real problems.</p>
+
+            <div class="smart-grid">
+                <div class="smart-label">Specific</div>
+                <div class="smart-value">10 coached farmers in Nakivale. Mushroom cultivation as primary crop. Bot-assisted price information and buyer matching.</div>
+                <div class="smart-label">Measurable</div>
+                <div class="smart-value">Gauge level ($0-$500), kilograms harvested, sale prices achieved, savings accumulated, cooperation activity logged.</div>
+                <div class="smart-label">Achievable</div>
+                <div class="smart-value">Unidos already trained 501 farmers. Spawn bags cost $2-3. Harvest cycle is 3-4 weeks. The skills and inputs exist.</div>
+                <div class="smart-label">Relevant</div>
+                <div class="smart-value">130,000 people in Nakivale. 67% live on $1-2/day casual labor. 82% are unbanked. This is the population the research serves.</div>
+                <div class="smart-label">Time-bound</div>
+                <div class="smart-value">12 months. Checkpoints: month 3 ($120 saved), month 6 ($280 saved), month 12 ($500+ saved).</div>
             </div>
         </div>
 
-        <!-- Research Connections -->
-        <div class="connections-box">
-            <h2 class="section-title">How the Research Connects</h2>
-            <p class="section-subtitle">Each paper addresses a different layer of the same problem: can the middle class finance itself without intermediaries?</p>
+        <!-- ============================================ -->
+        <!-- RESEARCH 2: Data as Collateral -->
+        <!-- ============================================ -->
+        <div class="research-card">
+            <h2>Research 2: Turning helpful data into economic opportunity</h2>
+            <p class="lead">When a farmer uses a tool to check prices, list products, or answer a neighbor's question about compost - that activity generates data. We are researching whether that data can serve as a form of collateral to unlock small loans, better prices, and community credit - without needing a bank account or government ID.</p>
 
-            <div class="connection-diagram">
-                <div class="connection-core">
-                    <h3>Core Paper</h3>
-                    <p><strong>Data-as-Collateral</strong> is the central thesis. Every other paper provides a building block that makes the model work.</p>
-                    <p style="margin-top: 12px; font-size: 13px; opacity: 0.8;">The academic paper needs each layer to function. Without behavioral identity, there is no KYC-free access. Without governance, there is no accountability. Without reputation, there is no trust bridge to new communities.</p>
-                </div>
-                <div class="connection-layers">
-                    <div class="connection-layer layer-governance">
-                        <h4>Governance Layer - RACI-V Protocol</h4>
-                        <p>Provides the coordination mechanism. Hadfield & Koh (2025) identify 8 ways multi-agent systems fail. RACI-V addresses 7 of them with structured roles (Responsible, Accountable, Consulted, Informed, Verified). Live experiment running on Telegram.</p>
-                    </div>
-                    <div class="connection-layer layer-identity">
-                        <h4>Identity Layer - HEROES Detection</h4>
-                        <p>Provides KYC-free behavioral identity. 13 cooperation indicators measured over time replace document-based verification. ZK proofs protect privacy while proving trustworthiness to data buyers and governance systems.</p>
-                    </div>
-                    <div class="connection-layer layer-trust">
-                        <h4>Trust Layer - Reputation Staking</h4>
-                        <p>Provides the bridge between established NGOs and newcomers. Unidos' 6 international awards become programmable trust that can be staked, transferred, and verified on-chain. Graduated slashing prevents rubber-stamping.</p>
-                    </div>
-                    <div class="connection-layer layer-implementation">
-                        <h4>Implementation Layer - DAO Governance</h4>
-                        <p>Provides the 4-phase roadmap from traditional NGO to decentralized governance. Tested against Ostrom's 8 principles for governing the commons and Mondragon's 70-year cooperative track record.</p>
-                    </div>
-                    <div class="connection-layer layer-market">
-                        <h4>Market Layer - Data Marketplace</h4>
-                        <p>Provides the revenue engine. Refugees contribute data, earn income, fund the system. $50M+ in annual NGO research spending is the addressable market. Community retains sovereignty over its own data.</p>
-                    </div>
-                </div>
+            <h3>How cooperation becomes trust</h3>
+            <p>The farmer is already doing the work - planting, harvesting, answering a neighbor's question about compost ratios, reporting what mushrooms sold for at the market this week. We track patterns in that activity:</p>
+            <ul style="margin: 12px 0 12px 24px; font-size: 15px; color: #444;">
+                <li><strong>Frequency</strong> - How often does this person contribute useful information?</li>
+                <li><strong>Quality</strong> - Do their price reports match what other users report? Do their answers help?</li>
+                <li><strong>Consistency</strong> - Do they show up week after week, or only when they need something?</li>
+                <li><strong>Reciprocity</strong> - Do they help others as much as they ask for help?</li>
+            </ul>
+            <p>Over time, these patterns produce a <strong>trust profile</strong>. Not a credit score from a bank - a behavioral record built from real activity the person already does.</p>
+
+            <h3>What a trust profile unlocks</h3>
+            <p>The principle: your own behavior already proved you are trustworthy. Here is what that unlocks:</p>
+            <ul style="margin: 12px 0 12px 24px; font-size: 15px; color: #444;">
+                <li><strong>Better prices</strong> - Trusted sellers get priority in listings. Buyers see their track record before negotiating.</li>
+                <li><strong>Input credit</strong> - A farmer with 30 verified interactions gets spawn bags on credit. Someone with 5 does not. The threshold is transparent.</li>
+                <li><strong>Peer vouching</strong> - A trusted farmer can vouch for a newcomer. If the newcomer defaults, both records reflect it. Trust is shared, not just individual.</li>
+                <li><strong>Bulk access</strong> - Farmers with consistent records pool orders for fertilizer or transport, cutting costs that no individual can negotiate alone.</li>
+            </ul>
+
+            <h3>The closed loop</h3>
+            <p>What makes this different from other research: the data is the product AND the proof. The farmer is not filling out surveys for researchers. They are using a tool that helps them sell mushrooms - and the usage data itself becomes three things at once:</p>
+
+            <div class="loop-box">
+                <p><span class="arrow">1.</span> <strong>Their credit record</strong> - proving trustworthiness without a bank ID</p>
+                <p><span class="arrow">2.</span> <strong>A research dataset</strong> - agricultural knowledge, market prices, cooperation patterns (anonymized, never individual identities exposed)</p>
+                <p><span class="arrow">3.</span> <strong>A revenue stream</strong> - organizations pay for aggregate insights, and that revenue funds the next farmer's spawn bags</p>
+                <p style="margin-top: 12px; font-style: italic; color: #666;">Three outputs from one activity. That is the closed loop.</p>
             </div>
+
+            <h3>The bigger picture: data as collateral for community loans</h3>
+            <p>We collect anonymized, privacy-protected data in a shared pool. This pool becomes a form of collateral - proof that a community is productive, cooperative, and creditworthy. Against that collateral, we can issue small loans to give new projects a kick-start budget. When the farmer repays after harvest, the repayment adds to their trust profile, which unlocks better terms next time.</p>
+            <p>The long-term vision: these cooperation patterns, tracked over years, become a kind of heritage. A lineage of trustworthy behavior that compounds across seasons and across generations. The community builds something that belongs to them - not to a bank, not to an NGO, not to a platform.</p>
+
+            <h3>What we can prove today vs what we still need to test</h3>
+            <table class="audit-table">
+                <thead>
+                    <tr><th>Claim</th><th>Evidence</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$10/month crosses the activation threshold</td>
+                        <td>10 coached participants, 6-month tracking</td>
+                        <td class="status-no">Theoretical - needs the pilot</td>
+                    </tr>
+                    <tr>
+                        <td>Compounding cycle reaches $500 in 12 months</td>
+                        <td>Harvest logs, sales receipts, savings tracking</td>
+                        <td class="status-no">Theoretical - needs the pilot</td>
+                    </tr>
+                    <tr>
+                        <td>Price information eliminates wholesaler markup</td>
+                        <td>Compare assisted vs unassisted sale prices</td>
+                        <td class="status-test">Testable now - Unidos has 501 trained farmers</td>
+                    </tr>
+                    <tr>
+                        <td>Cooperative behavior correlates with economic outcomes</td>
+                        <td>Trust profile at start vs income 6 months later</td>
+                        <td class="status-no">Needs bot deployment</td>
+                    </tr>
+                    <tr>
+                        <td>Data-as-collateral accepted by microfinance institutions</td>
+                        <td>Pilot with local savings groups using bot records</td>
+                        <td class="status-no">Needs partnership</td>
+                    </tr>
+                    <tr>
+                        <td>Heritage value compounds across generations</td>
+                        <td>Multi-year longitudinal study</td>
+                        <td class="status-no">Future</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <!-- Academic Context -->
-        <div class="summary-box">
-            <h2>Academic Context and Key References</h2>
-            <p>This research sits at the intersection of three fields: refugee financial inclusion, decentralized governance, and AI coordination. Below are the primary sources that ground each research track.</p>
-            <ul class="citation-list">
-                <li><strong>Hadfield & Koh (2025)</strong> - "An Economy of AI Agents" (arXiv:2509.01063). Taxonomy of 8 failure modes in multi-agent economic systems. Theoretical only - our RACI-V experiment provides the first live test.</li>
-                <li><strong>Betts et al. (2022)</strong> - Systematic exclusion of refugees from financial services. Survey of 5,000 refugees: 94% want bank accounts, 18% succeed. Regulatory barriers, not discrimination.</li>
-                <li><strong>Pentland et al. (2023)</strong> - "New Deal on Data." Users valued data privacy at $5-20/month in Kenya pilot. Foundation for our data-as-collateral pricing model.</li>
-                <li><strong>Lanier & Weyl (2018)</strong> - Data dignity movement. Collective bargaining yields $20-50/user/year vs individual negotiation. Informs our community-level data marketplace design.</li>
-                <li><strong>Ruddick et al. (2015)</strong> - Community Inclusion Currencies in Kenya: 15% trade increase, 22% food security improvement over 4 years with 10,000 users. Paper-based limitation we solve with blockchain.</li>
-                <li><strong>Ostrom (1990)</strong> - 8 design principles for governing commons. Our DAO governance model maps directly to each principle.</li>
-                <li><strong>Mondragon Cooperative (1956-present)</strong> - 70+ years of cooperative governance with 80,000+ worker-owners. Our benchmark for long-term viability.</li>
+        <!-- ============================================ -->
+        <!-- FIELD DATA -->
+        <!-- ============================================ -->
+        <div class="research-card">
+            <h2>The ground truth: Unidos field data (2018-2026)</h2>
+            <p>This research is not theoretical. It builds on 8 years of hands-on work in Nakivale Refugee Settlement. These are the numbers behind everything above.</p>
+
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="num">501</div>
+                    <div class="label">Farmers trained</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">45%</div>
+                    <div class="label">Yield increase</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">40%</div>
+                    <div class="label">Soil improvement</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">7.8t</div>
+                    <div class="label">Compost/year</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">6</div>
+                    <div class="label">Awards</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">82%</div>
+                    <div class="label">Unbanked</div>
+                </div>
+            </div>
+
+            <p style="font-size: 14px; color: #666; margin-top: 8px;">Awards include UNHCR Gene Dewey Award (2024), Ockenden International Prize (2024), Lush Spring Prize (2023), and UNHCR Innovation Fund (2022). Yield increase measured on vermicompost-treated plots vs control. Unbanked figure from Central Bank of Uganda KYC compliance data.</p>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- REFERENCES -->
+        <!-- ============================================ -->
+        <div class="research-card">
+            <h2>Academic references</h2>
+            <p>The two research projects above are grounded in existing peer-reviewed work. These are the primary sources:</p>
+            <ul style="font-size: 14px; color: #555; list-style: none; padding: 0;">
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Betts et al. (2022)</strong> - Exclusion of refugees from financial services. Survey of 5,000 refugees across 3 countries: 94% want bank accounts, 18% succeed. The barrier is paperwork, not willingness.</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Pentland et al. (2023)</strong> - "New Deal on Data." Pilot in Kenya showed users valued their own data at $5-20/month. Foundation for our data-as-collateral pricing.</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Ruddick et al. (2015)</strong> - Community currencies in Kenya: 15% increase in local trade, 22% improvement in food security over 4 years with 10,000 users.</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Lanier & Weyl (2018)</strong> - Data dignity. When communities negotiate collectively for their data, they earn $20-50/user/year vs nearly nothing as individuals.</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee;"><strong>Ostrom (1990)</strong> - 8 principles for managing shared resources without top-down control. Our community governance model follows these principles.</li>
+                <li style="padding: 8px 0;"><strong>Mondragon Cooperative (1956-present)</strong> - 70+ years of worker-owned governance with 80,000+ members. Proof that community-owned economies can last generations.</li>
             </ul>
         </div>
 
-        <!-- Impact Data -->
-        <div class="summary-box">
-            <h2>Unidos Field Data (2018-2026)</h2>
-            <p>All research is grounded in real outcomes from Nakivale Refugee Settlement. These are the numbers behind the models.</p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px;">
-                <div style="text-align: center; padding: 20px; background: #f0f7f0; border-radius: 8px;">
-                    <div style="font-size: 28px; font-weight: 700; color: #2a5934;">501</div>
-                    <div style="font-size: 14px; color: #666;">Farmers trained in regenerative agriculture</div>
-                </div>
-                <div style="text-align: center; padding: 20px; background: #f0f7f0; border-radius: 8px;">
-                    <div style="font-size: 28px; font-weight: 700; color: #2a5934;">45%</div>
-                    <div style="font-size: 14px; color: #666;">Yield increase (vermicompost vs control plots)</div>
-                </div>
-                <div style="text-align: center; padding: 20px; background: #f0f7f0; border-radius: 8px;">
-                    <div style="font-size: 28px; font-weight: 700; color: #2a5934;">40%</div>
-                    <div style="font-size: 14px; color: #666;">Soil organic matter improvement</div>
-                </div>
-                <div style="text-align: center; padding: 20px; background: #f0f7f0; border-radius: 8px;">
-                    <div style="font-size: 28px; font-weight: 700; color: #2a5934;">7.8t</div>
-                    <div style="font-size: 14px; color: #666;">Vermicompost produced per year</div>
-                </div>
-                <div style="text-align: center; padding: 20px; background: #f0f7f0; border-radius: 8px;">
-                    <div style="font-size: 28px; font-weight: 700; color: #2a5934;">6</div>
-                    <div style="font-size: 14px; color: #666;">International awards (2022-2025)</div>
-                </div>
-                <div style="text-align: center; padding: 20px; background: #f0f7f0; border-radius: 8px;">
-                    <div style="font-size: 28px; font-weight: 700; color: #2a5934;">82%</div>
-                    <div style="font-size: 14px; color: #666;">Of Nakivale refugees remain unbanked</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Follow the Researchers -->
-        <div class="summary-box">
-            <h2>Follow the Research Team</h2>
-            <p>See the field work as it happens - training sessions, harvest results, and community updates from Nakivale.</p>
+        <!-- ============================================ -->
+        <!-- FOLLOW -->
+        <!-- ============================================ -->
+        <div class="research-card">
+            <h2>Follow the work</h2>
+            <p>See the field work as it happens - training sessions, harvests, and community updates from Nakivale.</p>
             <div class="social-bar">
                 <a href="https://www.instagram.com/unidosprojects/" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                     @unidosprojects
                 </a>
                 <a href="https://www.instagram.com/paulinhomz/" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    @paulinhomz (Paulinho)
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    @paulinhomz
                 </a>
                 <a href="https://www.instagram.com/mari_marie225/" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    @mari_marie225 (Maria)
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    @mari_marie225
                 </a>
                 <a href="https://www.youtube.com/@unidosprojects" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                     YouTube
                 </a>
             </div>
@@ -294,15 +397,10 @@
     </div>
 
     <script>
-        // Check auth
         if (!sessionStorage.getItem('unidosAuth')) {
             window.location.href = 'login.html';
         }
-
-        // Display user email
         document.getElementById('userEmail').textContent = sessionStorage.getItem('userEmail') || '';
-
-        // Logout
         function logout() {
             sessionStorage.clear();
             window.location.href = 'login.html';
