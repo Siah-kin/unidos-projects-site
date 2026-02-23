@@ -1704,8 +1704,9 @@ blockquote {
 
 .community-card-image img {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
+    object-position: center top;
 }
 
 .community-card-body {
