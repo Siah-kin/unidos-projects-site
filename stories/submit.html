@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../images/unidos-logo.png">
     <style>
-        .story-hero { background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%); color: white; padding: 60px 0; text-align: center; }
+        .story-hero { background: linear-gradient(135deg, #268575 0%, #176255 100%); color: white; padding: 60px 0; text-align: center; }
         .story-hero h1 { font-family: 'Vollkorn', serif; font-size: 2.5rem; margin-bottom: 12px; }
         .story-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
         .stories-section { padding: 60px 0; }
         .featured-stories { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px; }
         .story-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.3s; }
         .story-card:hover { transform: translateY(-4px); }
-        .story-card-image { height: 200px; background: #e8f5e9; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+        .story-card-image { height: 200px; background: #e0f2ef; display: flex; align-items: center; justify-content: center; font-size: 48px; }
         .story-card-body { padding: 24px; }
-        .story-card-body h3 { font-family: 'Vollkorn', serif; color: #2a5934; margin-bottom: 8px; }
+        .story-card-body h3 { font-family: 'Vollkorn', serif; color: #268575; margin-bottom: 8px; }
         .story-card-body .role { font-size: 14px; color: #268575; font-weight: 600; margin-bottom: 12px; }
         .story-card-body p { font-size: 15px; color: #666; line-height: 1.6; margin-bottom: 16px; }
         .story-card-body a { color: #268575; font-weight: 600; text-decoration: none; }
@@ -28,23 +28,36 @@
         .story-card .social-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888; margin-top: 8px; }
         .story-card .social-link:hover { color: #268575; }
         .submit-section { background: #f8f9fa; border-radius: 8px; padding: 48px; max-width: 700px; margin: 0 auto; }
-        .submit-section h2 { font-family: 'Vollkorn', serif; color: #2a5934; margin-bottom: 8px; }
+        .submit-section h2 { font-family: 'Vollkorn', serif; color: #268575; margin-bottom: 8px; }
         .submit-section .subtitle { color: #666; margin-bottom: 32px; }
         .submit-options { display: grid; gap: 16px; margin-bottom: 32px; }
         .submit-option { background: white; border: 2px solid #e0e0e0; border-radius: 8px; padding: 24px; text-decoration: none; color: inherit; transition: border-color 0.2s; display: block; }
         .submit-option:hover { border-color: #268575; }
-        .submit-option h3 { color: #2a5934; margin-bottom: 8px; font-size: 18px; }
+        .submit-option h3 { color: #268575; margin-bottom: 8px; font-size: 18px; }
         .submit-option p { color: #666; font-size: 14px; line-height: 1.5; margin: 0; }
-        .submit-option .method-tag { display: inline-block; background: #e8f5e9; color: #2e7d32; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
+        .submit-option .method-tag { display: inline-block; background: #e0f2ef; color: #268575; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
         .how-it-works { max-width: 700px; margin: 48px auto 0; }
-        .how-it-works h2 { font-family: 'Vollkorn', serif; color: #2a5934; margin-bottom: 24px; text-align: center; }
+        .how-it-works h2 { font-family: 'Vollkorn', serif; color: #268575; margin-bottom: 24px; text-align: center; }
         .steps { display: grid; gap: 16px; }
         .step { display: flex; gap: 16px; align-items: flex-start; }
         .step-number { background: #268575; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
-        .step-content h4 { color: #2a5934; margin-bottom: 4px; }
+        .step-content h4 { color: #268575; margin-bottom: 4px; }
         .step-content p { color: #666; font-size: 14px; }
         .update-note { background: #fff3cd; border-left: 4px solid #856404; padding: 16px 20px; border-radius: 8px; margin-top: 32px; }
         .update-note p { color: #856404; font-size: 14px; margin: 0; }
+
+        /* Social sharing widget */
+        .share-bar { display: flex; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #eee; }
+        .share-bar span { font-size: 12px; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; }
+        .share-btn { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s; }
+        .share-btn:hover { opacity: 0.8; }
+        .share-btn svg { width: 16px; height: 16px; }
+        .share-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .share-btn.facebook { background: #1877F2; }
+        .share-btn.x { background: #000; }
+        .share-btn.snapchat { background: #FFFC00; }
+        .share-btn.instagram svg, .share-btn.facebook svg, .share-btn.x svg { fill: white; }
+        .share-btn.snapchat svg { fill: #000; }
     </style>
 </head>
 <body>
@@ -77,7 +90,13 @@
                             <a href="../programs.html#education">Education & Training</a>
                         </div>
                     </li>
-                    <li><a href="../blog.html">Blog</a></li>
+                    <li>
+                        <a href="../blog.html">Blog</a>
+                        <div class="nav-dropdown">
+                            <a href="../blog.html">Latest Posts</a>
+                            <a href="../stories/submit.html">Share Your Story</a>
+                        </div>
+                    </li>
                     <li><a href="../research/login.html">Research</a></li>
                     <li>
                         <a href="../contact.html">Contact</a>
@@ -128,6 +147,13 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                             @paulinhomz
                         </a>
+                        <div class="share-bar">
+                            <span>Share</span>
+                            <a href="https://www.instagram.com/unidosprojects/" target="_blank" rel="noopener noreferrer" class="share-btn instagram" title="Share on Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                            <a class="share-btn facebook" title="Share on Facebook" data-share="facebook" data-url="../founders/paulinho.html" data-text="Read Paulinho's story - Unidos Projects"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                            <a class="share-btn x" title="Share on X" data-share="x" data-url="../founders/paulinho.html" data-text="Read Paulinho's story - from refugee to change maker @unidosprojects"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                            <a class="share-btn snapchat" title="Share on Snapchat" data-share="snapchat" data-url="../founders/paulinho.html"><svg viewBox="0 0 24 24"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.923-.24.164-.075.343-.105.502-.105.446 0 .776.27.776.69 0 .72-.957 1.11-1.594 1.305-.164.045-.389.105-.571.165-.494.149-.689.195-.781.435-.045.121-.03.27.015.404.135.39.39.84.645 1.29.329.59.72 1.245 1.035 1.695.195.27.42.54.66.795.36.36.54.63.54.945 0 .525-.6.795-1.17.945-.375.09-.72.165-1.185.24-.16.03-.33.06-.51.09-.239.03-.36.345-.45.72-.06.21-.18.72-.72.72-.12 0-.27-.03-.45-.06-.51-.12-1.185-.27-2.175-.27-1.02 0-1.665.15-2.235.27-.18.06-.33.06-.45.06-.48 0-.66-.39-.72-.72-.09-.375-.21-.69-.45-.72-.18-.03-.36-.06-.51-.09-.464-.075-.81-.15-1.185-.24-.57-.12-1.17-.42-1.17-.945 0-.315.18-.585.54-.945.24-.255.465-.525.66-.795.315-.45.705-1.11 1.035-1.695.255-.45.51-.9.645-1.29.045-.135.06-.284.015-.404-.09-.24-.285-.285-.78-.435-.181-.06-.406-.12-.57-.165-.63-.195-1.594-.585-1.594-1.305 0-.42.33-.69.776-.69.159 0 .338.03.502.105.264.12.624.224.923.24.198 0 .327-.045.4-.09-.007-.165-.017-.33-.029-.51l-.004-.06c-.104-1.628-.229-3.654.3-4.847C7.847 1.069 11.216.793 12.206.793z"/></svg></a>
+                        </div>
                     </div>
                 </div>
 
@@ -145,12 +171,19 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                             @mari_marie225
                         </a>
+                        <div class="share-bar">
+                            <span>Share</span>
+                            <a href="https://www.instagram.com/unidosprojects/" target="_blank" rel="noopener noreferrer" class="share-btn instagram" title="Share on Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                            <a class="share-btn facebook" title="Share on Facebook" data-share="facebook" data-url="../founders/maria.html" data-text="Read Maria's story - Unidos Projects"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                            <a class="share-btn x" title="Share on X" data-share="x" data-url="../founders/maria.html" data-text="Read Maria's story - empowering women in Nakivale @unidosprojects"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                            <a class="share-btn snapchat" title="Share on Snapchat" data-share="snapchat" data-url="../founders/maria.html"><svg viewBox="0 0 24 24"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12.923-.24.164-.075.343-.105.502-.105.446 0 .776.27.776.69 0 .72-.957 1.11-1.594 1.305-.164.045-.389.105-.571.165-.494.149-.689.195-.781.435-.045.121-.03.27.015.404.135.39.39.84.645 1.29.329.59.72 1.245 1.035 1.695.195.27.42.54.66.795.36.36.54.63.54.945 0 .525-.6.795-1.17.945-.375.09-.72.165-1.185.24-.16.03-.33.06-.51.09-.239.03-.36.345-.45.72-.06.21-.18.72-.72.72-.12 0-.27-.03-.45-.06-.51-.12-1.185-.27-2.175-.27-1.02 0-1.665.15-2.235.27-.18.06-.33.06-.45.06-.48 0-.66-.39-.72-.72-.09-.375-.21-.69-.45-.72-.18-.03-.36-.06-.51-.09-.464-.075-.81-.15-1.185-.24-.57-.12-1.17-.42-1.17-.945 0-.315.18-.585.54-.945.24-.255.465-.525.66-.795.315-.45.705-1.11 1.035-1.695.255-.45.51-.9.645-1.29.045-.135.06-.284.015-.404-.09-.24-.285-.285-.78-.435-.181-.06-.406-.12-.57-.165-.63-.195-1.594-.585-1.594-1.305 0-.42.33-.69.776-.69.159 0 .338.03.502.105.264.12.624.224.923.24.198 0 .327-.045.4-.09-.007-.165-.017-.33-.029-.51l-.004-.06c-.104-1.628-.229-3.654.3-4.847C7.847 1.069 11.216.793 12.206.793z"/></svg></a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Your Story -->
                 <div class="story-card" style="border: 2px dashed #268575;">
-                    <div class="story-card-image" style="background: #e8f5e9; font-size: 48px; display: flex; align-items: center; justify-content: center;">
+                    <div class="story-card-image" style="background: #e0f2ef; font-size: 48px; display: flex; align-items: center; justify-content: center;">
                         &#43;
                     </div>
                     <div class="story-card-body">
@@ -278,5 +311,30 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+        // Social sharing - construct URLs from data attributes
+        document.querySelectorAll('.share-btn[data-share]').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var platform = this.getAttribute('data-share');
+                var path = this.getAttribute('data-url') || '';
+                var text = this.getAttribute('data-text') || 'Unidos Projects';
+                var base = window.location.origin + '/stories/';
+                var url = base + path.replace('../', '');
+
+                var shareUrl = '';
+                if (platform === 'facebook') {
+                    shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+                } else if (platform === 'x') {
+                    shareUrl = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(text);
+                } else if (platform === 'snapchat') {
+                    shareUrl = 'https://www.snapchat.com/scan?attachmentUrl=' + encodeURIComponent(url);
+                }
+                if (shareUrl) {
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
