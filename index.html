@@ -53,6 +53,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Vollkorn:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/language-switcher.css">
     <link rel="icon" type="image/png" href="images/unidos-logo.png">
 
     <!-- SEO: Structured Data (Schema.org JSON-LD) -->
@@ -114,15 +115,15 @@
             <nav class="nav" id="nav">
                 <ul class="nav-list">
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="about.html" data-i18n="nav.about">About</a>
                         <div class="nav-dropdown">
                             <a href="about.html">Our Story</a>
-                            <a href="history.html">History</a>
-                            <a href="awards.html">Awards</a>
+                            <a href="history.html" data-i18n="nav.history">History</a>
+                            <a href="awards.html" data-i18n="nav.awards">Awards</a>
                         </div>
                     </li>
                     <li>
-                        <a href="programs.html">Programs</a>
+                        <a href="programs.html" data-i18n="nav.programs">Programs</a>
                         <div class="nav-dropdown">
                             <a href="programs.html">Overview</a>
                             <a href="programs.html#biochar">Biochar</a>
@@ -132,7 +133,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="blog.html">Blog</a>
+                        <a href="blog.html" data-i18n="nav.blog">Blog</a>
                         <div class="nav-dropdown">
                             <a href="blog.html">Latest Posts</a>
                             <a href="stories/submit.html">Share Your Story</a>
@@ -140,15 +141,16 @@
                     </li>
                     <li><a href="research/login.html">Research</a></li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.html" data-i18n="nav.contact">Contact</a>
                         <div class="nav-dropdown">
                             <a href="contact.html">Get in Touch</a>
-                            <a href="donate.html">Donate</a>
+                            <a href="donate.html" data-i18n="nav.donate">Donate</a>
                         </div>
                     </li>
                 </ul>
             </nav>
-            <a href="donate.html" class="btn btn-accent">Donate</a>
+            <div id="language-switcher-placeholder"></div>
+            <a href="donate.html" class="btn btn-accent" data-i18n="nav.donate">Donate</a>
             <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -161,12 +163,12 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1>Unidos Social Innovation Center</h1>
-            <p class="hero-subtitle">Award-winning refugee-led organization in Nakivale, Uganda. Recognized by UNHCR, Ockenden International, and Lush Spring Prize. Since 2018: trained 3,000+ farmers in food forest design, processed 800 kg food waste weekly into worm compost, taught 700 women to grow oyster mushrooms and make organic soap.</p>
+            <h1 data-i18n="home.hero_title">Unidos Social Innovation Center</h1>
+            <p class="hero-subtitle" data-i18n="home.hero_subtitle">Award-winning refugee-led organization in Nakivale, Uganda. Recognized by UNHCR, Ockenden International, and Lush Spring Prize. Since 2018: trained 3,000+ farmers in food forest design, processed 800 kg food waste weekly into worm compost, taught 700 women to grow oyster mushrooms and make organic soap.</p>
             <div class="hero-buttons">
-                <a href="#programs" class="btn btn-primary">Our Programs</a>
-                <a href="donate.html" class="btn btn-outline">Support Our Mission</a>
-                <a href="stories/submit.html" class="btn btn-accent" style="color: #fff;">Share Your Story</a>
+                <a href="#programs" class="btn btn-primary" data-i18n="home.our_programs">Our Programs</a>
+                <a href="donate.html" class="btn btn-outline" data-i18n="home.support_mission">Support Our Mission</a>
+                <a href="stories/submit.html" class="btn btn-accent" style="color: #fff;" data-i18n="home.share_your_story">Share Your Story</a>
             </div>
         </div>
     </section>
@@ -479,6 +481,17 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <!-- Footer Language Switcher -->
+            <div class="footer-language-switcher">
+                <span class="language-label" data-i18n="common.select_language">Language</span>
+                <div class="language-switcher-buttons">
+                    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">English</button>
+                    <button class="lang-btn" data-lang="fr" onclick="setLanguage('fr')">Francais</button>
+                    <button class="lang-btn" data-lang="sw" onclick="setLanguage('sw')">Kiswahili</button>
+                    <button class="lang-btn" data-lang="rw" onclick="setLanguage('rw')">Kinyarwanda</button>
+                </div>
+            </div>
+
             <div class="footer-grid">
                 <div class="footer-about">
                     <a href="index.html" class="footer-logo-link">
@@ -495,10 +508,10 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="programs.html">Programs</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="history.html">History</a></li>
-                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
+                        <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+                        <li><a href="history.html" data-i18n="nav.history">History</a></li>
+                        <li><a href="donate.html" data-i18n="nav.donate">Donate</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
                     </ul>
                 </div>
@@ -514,6 +527,7 @@
         </div>
     </footer>
 
+    <script src="js/i18n-enhanced.js"></script>
     <script src="js/main.js"></script>
     <script src="js/instagram-feed.js"></script>
 </body>
