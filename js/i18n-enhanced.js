@@ -258,11 +258,9 @@ const TRANSLATIONS = {
 // Language metadata
 const LANGUAGES = {
     en: { name: "English", nativeName: "English", flag: "🇬🇧" },
-    sw: { name: "Swahili", nativeName: "Kiswahili", flag: "🇹🇿" },
-    rw: { name: "Kinyarwanda", nativeName: "Ikinyarwanda", flag: "🇷🇼" },
     fr: { name: "French", nativeName: "Français", flag: "🇫🇷" },
-    rn: { name: "Kirundi", nativeName: "Ikirundi", flag: "🇧🇮" },
-    so: { name: "Somali", nativeName: "Soomaali", flag: "🇸🇴" }
+    sw: { name: "Swahili", nativeName: "Kiswahili", flag: "🇹🇿" },
+    rw: { name: "Kinyarwanda", nativeName: "Kinyarwanda", flag: "🇷🇼" }
 };
 
 // Current language (default to English)
@@ -283,7 +281,7 @@ function t(path, lang = currentLang) {
 
 // Set language
 function setLanguage(lang) {
-    if (!['en', 'sw', 'rw', 'fr', 'rn', 'so'].includes(lang)) {
+    if (!['en', 'fr', 'sw', 'rw'].includes(lang)) {
         console.error('Unsupported language:', lang);
         return;
     }
