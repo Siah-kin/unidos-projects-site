@@ -25,7 +25,7 @@
                     <li>
                         <a href="about.html" data-i18n="nav.about">About</a>
                         <div class="nav-dropdown">
-                            <a href="about.html">Our Story</a>
+                            <a href="about.html" data-i18n="nav.our_story">Our Story</a>
                             <a href="history.html" data-i18n="nav.history">History</a>
                             <a href="awards.html" data-i18n="nav.awards">Awards</a>
                         </div>
@@ -33,7 +33,7 @@
                     <li>
                         <a href="programs.html" data-i18n="nav.programs">Programs</a>
                         <div class="nav-dropdown">
-                            <a href="programs.html">Overview</a>
+                            <a href="programs.html" data-i18n="nav.overview">Overview</a>
                             <a href="programs.html#biochar">Biochar</a>
                             <a href="programs.html#mushroom-project">Mushroom Lab</a>
                             <a href="programs.html#regesoil">REGESOIL</a>
@@ -45,15 +45,15 @@
                     <li>
                         <a href="blog.html" data-i18n="nav.blog">Blog</a>
                         <div class="nav-dropdown">
-                            <a href="blog.html">Latest Posts</a>
-                            <a href="stories/submit.html">Share Your Story</a>
+                            <a href="blog.html" data-i18n="nav.latest_posts">Latest Posts</a>
+                            <a href="stories/submit.html" data-i18n="nav.share_story">Share Your Story</a>
                         </div>
                     </li>
-                    <li><a href="research/login.html">Research</a></li>
+                    <li><a href="research/login.html" data-i18n="nav.research">Research</a></li>
                     <li>
                         <a href="contact.html" class="active" data-i18n="nav.contact">Contact</a>
                         <div class="nav-dropdown">
-                            <a href="contact.html">Get in Touch</a>
+                            <a href="contact.html" data-i18n="nav.get_in_touch">Get in Touch</a>
                             <a href="donate.html" data-i18n="nav.donate">Donate</a>
                         </div>
                     </li>
@@ -73,8 +73,8 @@
     <section class="page-hero page-hero-small">
         <div class="hero-overlay"></div>
         <div class="container">
-            <h1>Contact <span class="highlight">Us</span></h1>
-            <p>We'd love to hear from you.</p>
+            <h1 data-i18n="contact.page_title">Contact <span class="highlight">Us</span></h1>
+            <p data-i18n="contact.hero_subtitle">We'd love to hear from you.</p>
         </div>
     </section>
 
@@ -83,22 +83,22 @@
         <div class="container">
             <div class="two-column">
                 <div class="column-text">
-                    <span class="section-label">Get in Touch</span>
-                    <h2>Let's Start a <span class="highlight">Conversation</span></h2>
-                    <p>Have questions about our programs? Want to partner with us or learn more about our work? We'd love to hear from you.</p>
+                    <span class="section-label" data-i18n="contact.section_label">Get in Touch</span>
+                    <h2 data-i18n="contact.section_title">Let's Start a <span class="highlight">Conversation</span></h2>
+                    <p data-i18n="contact.section_desc">Have questions about our programs? Want to partner with us or learn more about our work? We'd love to hear from you.</p>
 
                     <div class="contact-info">
                         <div class="contact-item">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             <div>
-                                <strong>Location</strong>
-                                <p>Nakivale Refugee Settlement<br>Isingiro District, South West Uganda</p>
+                                <strong data-i18n="contact.location_label">Location</strong>
+                                <p data-i18n="contact.location">Nakivale Refugee Settlement<br>Isingiro District, South West Uganda</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                             <div>
-                                <strong>Email</strong>
+                                <strong data-i18n="contact.email_label">Email</strong>
                                 <p><a href="mailto:info@unidosprojects.org">info@unidosprojects.org</a></p>
                             </div>
                         </div>
@@ -112,28 +112,28 @@
                 <div class="column-form">
                     <form class="contact-form" id="contact-form">
                         <div class="form-group">
-                            <label for="name">Name *</label>
+                            <label for="name" data-i18n="contact.name_label">Name *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email *</label>
+                            <label for="email" data-i18n="contact.email_label">Email *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="subject">Subject</label>
+                            <label for="subject" data-i18n="contact.subject_label">Subject</label>
                             <select id="subject" name="subject">
-                                <option value="general">General Inquiry</option>
-                                <option value="donate">Donation Questions</option>
-                                <option value="partner">Partnership Opportunities</option>
-                                <option value="volunteer">Volunteering</option>
-                                <option value="media">Media/Press</option>
+                                <option value="general" data-i18n="contact.subject_general">General Inquiry</option>
+                                <option value="donate" data-i18n="contact.subject_donate">Donation Questions</option>
+                                <option value="partner" data-i18n="contact.subject_partner">Partnership Opportunities</option>
+                                <option value="volunteer" data-i18n="contact.subject_volunteer">Volunteering</option>
+                                <option value="media" data-i18n="contact.subject_media">Media/Press</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message *</label>
+                            <label for="message" data-i18n="contact.message_label">Message *</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        <button type="submit" class="btn btn-primary btn-full" data-i18n="contact.send_button">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -144,8 +144,8 @@
     <section class="section alt-bg">
         <div class="container">
             <div class="section-header centered">
-                <span class="section-label">Watch</span>
-                <h2>Our Mission in Action</h2>
+                <span class="section-label" data-i18n="contact.video_label">Watch</span>
+                <h2 data-i18n="contact.video_title">Our Mission in Action</h2>
             </div>
             <div class="video-container">
                 <iframe width="100%" height="500" src="https://www.youtube.com/embed/4TCKZITGuaU" title="Unidos Mission description @2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -157,25 +157,25 @@
     <section class="section">
         <div class="container">
             <div class="section-header centered">
-                <span class="section-label">FAQ</span>
-                <h2>Frequently Asked Questions</h2>
+                <span class="section-label" data-i18n="contact.faq_label">FAQ</span>
+                <h2 data-i18n="contact.faq_title">Frequently Asked Questions</h2>
             </div>
             <div class="faq-list">
                 <div class="faq-item">
-                    <h3>How can I donate to Unidos?</h3>
-                    <p>You can donate through our website or contact us directly for bank transfer details. Every contribution directly supports our training programs and community development initiatives.</p>
+                    <h3 data-i18n="contact.faq1_question">How can I donate to Unidos?</h3>
+                    <p data-i18n="contact.faq1_answer">You can donate through our website or contact us directly for bank transfer details. Every contribution directly supports our training programs and community development initiatives.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Can I visit Nakivale Refugee Settlement?</h3>
-                    <p>Yes, we welcome visitors who want to see our work firsthand. Please contact us in advance to arrange a visit and ensure proper coordination with settlement authorities.</p>
+                    <h3 data-i18n="contact.faq2_question">Can I visit Nakivale Refugee Settlement?</h3>
+                    <p data-i18n="contact.faq2_answer">Yes, we welcome visitors who want to see our work firsthand. Please contact us in advance to arrange a visit and ensure proper coordination with settlement authorities.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>How can my organization partner with Unidos?</h3>
-                    <p>We're always open to partnerships that align with our mission. Contact us to discuss collaboration opportunities in agriculture, education, or community development.</p>
+                    <h3 data-i18n="contact.faq3_question">How can my organization partner with Unidos?</h3>
+                    <p data-i18n="contact.faq3_answer">We're always open to partnerships that align with our mission. Contact us to discuss collaboration opportunities in agriculture, education, or community development.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Do you accept volunteers?</h3>
-                    <p>We occasionally accept volunteers with specific skills that can benefit our programs. Please reach out with your background and how you'd like to contribute.</p>
+                    <h3 data-i18n="contact.faq4_question">Do you accept volunteers?</h3>
+                    <p data-i18n="contact.faq4_answer">We occasionally accept volunteers with specific skills that can benefit our programs. Please reach out with your background and how you'd like to contribute.</p>
                 </div>
             </div>
         </div>
@@ -201,36 +201,36 @@
                         <img src="images/unidos-logo.png" alt="Unidos" class="footer-logo-img">
                         <span class="footer-logo">Unidos</span>
                     </a>
-                    <p>Award-winning refugee-led organization in Nakivale, Uganda. Recognized by UNHCR, Ockenden International, and Lush Spring Prize. Since 2018: trained 3,000+ farmers in food forest design, processed 800 kg food waste weekly into worm compost, taught 700 women to grow oyster mushrooms and make organic soap.</p>
+                    <p data-i18n="footer.about_text">Award-winning refugee-led organization in Nakivale, Uganda. Recognized by UNHCR, Ockenden International, and Lush Spring Prize. Since 2018: trained 3,000+ farmers in food forest design, processed 800 kg food waste weekly into worm compost, taught 700 women to grow oyster mushrooms and make organic soap.</p>
                     <div style="margin-top: 1rem; display: flex; gap: 1rem;">
-                        <a href="programs.html" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">Our Programs</a>
-                        <a href="donate.html" class="btn btn-accent" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">Support Our Mission</a>
+                        <a href="programs.html" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;" data-i18n="footer.our_programs">Our Programs</a>
+                        <a href="donate.html" class="btn btn-accent" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;" data-i18n="footer.support_mission">Support Our Mission</a>
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4 data-i18n="footer.quick_links">Quick Links</h4>
                     <ul>
-                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="about.html" data-i18n="footer.about_us">About Us</a></li>
                         <li><a href="programs.html" data-i18n="nav.programs">Programs</a></li>
-                    <li><a href="founders/paulinho.html">REGESOIL</a></li>
-                    <li><a href="founders/maria.html">Women's Circle</a></li>
+                        <li><a href="founders/paulinho.html" data-i18n="footer.regesoil">REGESOIL</a></li>
+                        <li><a href="founders/maria.html" data-i18n="footer.womens_circle">Women's Circle</a></li>
                         <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
                         <li><a href="history.html" data-i18n="nav.history">History</a></li>
-                    <li><a href="awards.html" data-i18n="nav.awards">Awards</a></li>
-                    <li><a href="research/login.html">Research</a></li>
-                    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                        <li><a href="awards.html" data-i18n="nav.awards">Awards</a></li>
+                        <li><a href="research/login.html" data-i18n="footer.research">Research</a></li>
+                        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
                         <li><a href="donate.html" data-i18n="nav.donate">Donate</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="privacy.html" data-i18n="footer.privacy_policy">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <p>Nakivale Refugee Settlement<br>Isingiro District, Uganda</p>
+                    <h4 data-i18n="footer.contact_heading">Contact</h4>
+                    <p data-i18n="footer.location">Nakivale Refugee Settlement<br>Isingiro District, Uganda</p>
                     <p><a href="mailto:info@unidosprojects.org">info@unidosprojects.org</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Unidos Projects. All rights reserved.</p>
+                <p data-i18n="footer.copyright">&copy; 2026 Unidos Projects. All rights reserved.</p>
             </div>
         </div>
     </footer>
