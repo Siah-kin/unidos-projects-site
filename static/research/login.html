@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Portal Login - Unidos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #2a5934 0%, #1a3d24 100%);
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -23,76 +20,108 @@
 
         .login-container {
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
             max-width: 440px;
             width: 100%;
-            padding: 48px 40px;
+            padding: 0;
+            overflow: hidden;
         }
 
-        .logo {
+        .brand-bar {
+            background: linear-gradient(135deg, #268575 0%, #176255 100%);
+            padding: 32px 40px 28px;
             text-align: center;
-            margin-bottom: 32px;
+            border-bottom: 4px solid #ffa62b;
         }
 
-        .logo h1 {
-            color: #2a5934;
-            font-size: 28px;
+        .brand-bar img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            background: white;
+            padding: 4px;
+        }
+
+        .brand-bar h1 {
+            font-family: 'Vollkorn', serif;
+            color: white;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
-        .logo p {
-            color: #666;
-            font-size: 14px;
+        .brand-bar p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+        }
+
+        .member-badge {
+            background: #ffa62b;
+            color: #212421;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .form-area {
+            padding: 36px 40px 40px;
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
 
         label {
             display: block;
-            color: #333;
+            color: #212421;
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 8px;
         }
 
         input[type="email"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="text"] {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 15px;
+            font-family: 'Lato', sans-serif;
             transition: all 0.3s ease;
         }
 
-        input[type="email"]:focus,
-        input[type="password"]:focus {
+        input:focus {
             outline: none;
-            border-color: #2a5934;
-            box-shadow: 0 0 0 4px rgba(42, 89, 52, 0.1);
+            border-color: #268575;
+            box-shadow: 0 0 0 4px rgba(38, 133, 117, 0.1);
         }
 
         .btn {
             width: 100%;
             padding: 14px;
-            background: #2a5934;
-            color: white;
+            background: #ffa62b;
+            color: #212421;
             border: none;
             border-radius: 8px;
             font-size: 16px;
-            font-weight: 600;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .btn:hover {
-            background: #1f4327;
+            background: #e8951f;
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(42, 89, 52, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 166, 43, 0.35);
         }
 
         .btn:active {
@@ -121,13 +150,8 @@
             background: #e0e0e0;
         }
 
-        .divider::before {
-            left: 0;
-        }
-
-        .divider::after {
-            right: 0;
-        }
+        .divider::before { left: 0; }
+        .divider::after { right: 0; }
 
         .divider span {
             background: white;
@@ -139,17 +163,18 @@
         .toggle-link {
             text-align: center;
             margin-top: 24px;
-            color: #666;
+            color: #5b5c61;
             font-size: 14px;
         }
 
         .toggle-link a {
-            color: #2a5934;
+            color: #268575;
             text-decoration: none;
             font-weight: 600;
         }
 
         .toggle-link a:hover {
+            color: #176255;
             text-decoration: underline;
         }
 
@@ -173,74 +198,84 @@
             display: none;
         }
 
-        .member-badge {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
+        .info-text {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 13px;
+            color: #5b5c61;
+        }
+
+        .info-text a {
+            color: #268575;
+            text-decoration: none;
             font-weight: 600;
-            display: inline-block;
-            margin-bottom: 16px;
+        }
+
+        .info-text a:hover {
+            color: #176255;
+            text-decoration: underline;
         }
 
         @media (max-width: 480px) {
-            .login-container {
-                padding: 32px 24px;
-            }
-
-            .logo h1 {
-                font-size: 24px;
-            }
+            .brand-bar { padding: 24px 24px 20px; }
+            .form-area { padding: 28px 24px 32px; }
+            .brand-bar h1 { font-size: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <div class="logo">
-            <div class="member-badge">🔒 MEMBERS ONLY</div>
+        <div class="brand-bar">
+            <img src="../images/unidos-logo.png" alt="Unidos Logo">
+            <div class="member-badge">MEMBERS ONLY</div>
             <h1>Unidos Research Portal</h1>
             <p>DAO Transformation Research Access</p>
         </div>
 
-        <div class="error-message" id="errorMessage"></div>
-        <div class="success-message" id="successMessage"></div>
+        <div class="form-area">
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
 
-        <!-- Login Form -->
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="loginEmail">Email Address</label>
-                <input type="email" id="loginEmail" name="email" placeholder="your@email.com" required>
-            </div>
-            <div class="form-group">
-                <label for="loginPassword">Password</label>
-                <input type="password" id="loginPassword" name="password" placeholder="••••••••" required>
-            </div>
-            <button type="submit" class="btn" id="loginBtn">Sign In</button>
-        </form>
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn" id="loginBtn">Sign In</button>
+            </form>
 
-        <div class="divider"><span>OR</span></div>
+            <div class="divider"><span>OR</span></div>
 
-        <!-- Sign Up Form (Hidden by default) -->
-        <form id="signupForm" style="display: none;">
-            <div class="form-group">
-                <label for="signupEmail">Email Address</label>
-                <input type="email" id="signupEmail" name="email" placeholder="your@email.com" required>
-            </div>
-            <div class="form-group">
-                <label for="signupPassword">Password</label>
-                <input type="password" id="signupPassword" name="password" placeholder="Min. 8 characters" required minlength="8">
-            </div>
-            <div class="form-group">
-                <label for="signupName">Full Name (Optional)</label>
-                <input type="text" id="signupName" name="name" placeholder="Your name">
-            </div>
-            <button type="submit" class="btn" id="signupBtn">Create Account</button>
-        </form>
+            <!-- Sign Up Form (Hidden by default) -->
+            <form id="signupForm" style="display: none;">
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" placeholder="Min. 8 characters" required minlength="8">
+                </div>
+                <div class="form-group">
+                    <label for="signupName">Full Name (Optional)</label>
+                    <input type="text" id="signupName" name="name" placeholder="Your name">
+                </div>
+                <button type="submit" class="btn" id="signupBtn">Create Account</button>
+            </form>
 
-        <div class="toggle-link">
-            <span id="toggleText">Need an account?</span>
-            <a href="member-registration.html" id="toggleForm">Complete registration form →</a>
+            <div class="toggle-link">
+                <span id="toggleText">Need an account?</span>
+                <a href="member-registration.html" id="toggleForm">Complete registration form</a>
+            </div>
+
+            <div class="info-text">
+                <a href="../index.html">&larr; Back to main site</a>
+            </div>
         </div>
     </div>
 
@@ -250,7 +285,6 @@
 
     <script>
         // Firebase configuration (REPLACE WITH YOUR CONFIG)
-        // Get this from Firebase Console: Project Settings > Your apps > Firebase SDK snippet
         const firebaseConfig = {
             apiKey: "YOUR_API_KEY",
             authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -267,7 +301,6 @@
         // Check if user is already logged in
         auth.onAuthStateChanged(user => {
             if (user) {
-                // User is logged in, redirect to research portal
                 window.location.href = '/research/index.html';
             }
         });
@@ -312,7 +345,6 @@
 
             try {
                 await auth.signInWithEmailAndPassword(email, password);
-                // Redirect handled by onAuthStateChanged
             } catch (error) {
                 showError(getErrorMessage(error.code));
                 btn.disabled = false;
@@ -336,13 +368,11 @@
             try {
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
 
-                // Update profile with name if provided
                 if (name) {
                     await userCredential.user.updateProfile({ displayName: name });
                 }
 
                 showSuccess('Account created successfully! Redirecting...');
-                // Redirect handled by onAuthStateChanged
             } catch (error) {
                 showError(getErrorMessage(error.code));
                 btn.disabled = false;
@@ -350,7 +380,6 @@
             }
         });
 
-        // Helper functions
         function showError(message) {
             const errorEl = document.getElementById('errorMessage');
             errorEl.textContent = message;
