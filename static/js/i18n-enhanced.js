@@ -283,7 +283,7 @@ function t(path, lang = currentLang) {
 
 // Set language
 function setLanguage(lang) {
-    if (!['en', 'sw', 'rw', 'fr', 'rn', 'so'].includes(lang)) {
+    if (!Object.keys(LANGUAGES).includes(lang)) {
         console.error('Unsupported language:', lang);
         return;
     }
