@@ -261,7 +261,8 @@ const LANGUAGES = {
     rw: { name: "Kinyarwanda", nativeName: "Ikinyarwanda", flag: "🇷🇼" },
     fr: { name: "French", nativeName: "Français", flag: "🇫🇷" },
     rn: { name: "Kirundi", nativeName: "Ikirundi", flag: "🇧🇮" },
-    so: { name: "Somali", nativeName: "Soomaali", flag: "🇸🇴" }
+    so: { name: "Somali", nativeName: "Soomaali", flag: "🇸🇴" },
+    lg: { name: "Luganda", nativeName: "Luganda", flag: "🇺🇬" }
 };
 
 // Current language (default to English)

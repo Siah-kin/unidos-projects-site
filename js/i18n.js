@@ -144,6 +144,7 @@ function createLanguageSwitcher() {
             <button class="lang-btn" data-lang="fr" onclick="setLanguage('fr')">Français</button>
             <button class="lang-btn" data-lang="rn" onclick="setLanguage('rn')">Kirundi</button>
             <button class="lang-btn" data-lang="so" onclick="setLanguage('so')">Soomaali</button>
+            <button class="lang-btn" data-lang="lg" onclick="setLanguage('lg')">Luganda</button>
         </div>
     `;
 }

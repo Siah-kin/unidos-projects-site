@@ -316,6 +316,58 @@ const translations = {
         footer_date: "Xarunta Cilmi-baarista • Febraayo 2026",
         
         select: "-- Dooro --"
+    },
+
+    lg: { // Luganda
+        portal_title: "Ekifo ky'Okunoonyereza kya Unidos",
+        portal_subtitle: "Okunoonya DAO • Ebirowoozo by'Abantu",
+        welcome: "Tukusanyukidde mu Kunoonya kwa DAO",
+        welcome_subtitle: "Tuyambe okunoonyereza engeri y'okutegeka Unidos nga DAO ne bantu bo",
+        sign_out: "Fuluma",
+
+        members_only: "Bannamemba",
+        voting_open: "Okulonda Kwagguddwa",
+
+        topic1_title: "DAO ki?",
+        topic1_desc: "Yiga ku bitongole eby'okwefuga ebyasamala n'engeri bye byayamba Unidos",
+        topic2_title: "Tutegeke Tutya?",
+        topic2_desc: "Londa ku ngeri ez'enjawulo ez'okufuga Unidos DAO",
+
+        your_feedback: "📱 Ebirowoozo Byo",
+        submit_feedback: "Weereza Ebirowoozo",
+        submit_vote: "Weereza Okulonda",
+        success_message: "✅ Weebale! Ebirowoozo byo biwandiikiddwa.",
+        success_vote: "✅ Weebale! Okulonda kwo kuwandiikiddwa.",
+
+        q_phone_access: "Osobola okutuuka ku lupapula luno ne simu yo?",
+        a_yes_works: "✅ Yee, lukola bulungi",
+        a_slow: "🐌 Yee, naye lunyweeza nnyo",
+        a_no_doesnt: "❌ Nedda, tekola",
+
+        q_understand: "Otegedde DAO ky'eki oluvannyuma lw'okusoma?",
+        a_yes_clearly: "Yee, bulungi",
+        a_somewhat: "Katono",
+        a_no_confused: "Nedda, nkyatabudde",
+
+        q_comments: "Ebibuuzo byo oba okweraliikira (si kya buwaze):",
+
+        q_platform: "Katale ki kwe tusaanye okukozesa okukubaganya ku DAO?",
+        a_telegram: "✈️ Telegram (ya bwereere, ekola ne bw'otoli ku mutimbagano)",
+        a_whatsapp: "💬 WhatsApp (abantu abasinga balina)",
+        a_both: "🤝 Byombi - kozesa byombi",
+
+        q_meeting_freq: "Emirundi emeka gy'osobola okwetaba mu nkiiko ez'oku mutimbagano?",
+        a_weekly: "Buli wiiki",
+        a_monthly: "Buli mwezi",
+        a_rarely: "Lutono",
+
+        about_title: "📚 Ebikwata ku Kunoonya Kuno",
+        about_text: "Tunoonyereza engeri y'okukyusa Unidos okuva mu NGO ey'ennono okudda mu DAO (Ekitongole eky'Okwefuga Ekyasamala). Ebirowoozo byo bituyamba okutegeera ekikola obulungi mu bantu ba Nakivale.",
+
+        footer_org: "Ekifo ky'Ebyobuzimbe Obupya kya Unidos • Ekyamagero ky'Ababudamo e Nakivale, Uganda",
+        footer_date: "Ekifo ky'Okunoonyereza • Febwali 2026",
+
+        select: "-- Londa --"
     }
 };
 
