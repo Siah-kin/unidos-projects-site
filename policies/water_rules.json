@@ -1,0 +1,133 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-03-08",
+  "source": "policies/WATER_PROMPT.md",
+  "adapted_from": "Bonzi_v5 water_rules.json",
+  "description": "Water Prompt vocabulary rules for Unidos website — blocks NGO buzzwords and vague impact language",
+
+  "banned_vocabulary": {
+    "fire_language": [
+      "revolutionary",
+      "revolutionize",
+      "transform",
+      "transforms",
+      "transformed",
+      "transforming",
+      "transformative",
+      "transformation",
+      "innovate",
+      "innovates",
+      "innovating",
+      "innovative",
+      "innovation",
+      "cutting-edge",
+      "cutting edge",
+      "game-changer",
+      "game changer",
+      "groundbreaking",
+      "pioneering",
+      "trailblazing",
+      "world-class",
+      "world class",
+      "best-in-class"
+    ],
+
+    "ai_fingerprints": [
+      "leverage",
+      "leverages",
+      "leveraged",
+      "leveraging",
+      "utilize",
+      "utilizes",
+      "utilized",
+      "utilizing",
+      "unlock",
+      "unlocks",
+      "unlocked",
+      "unlocking",
+      "synergy",
+      "synergies",
+      "seamlessly",
+      "holistic",
+      "holistically",
+      "comprehensive",
+      "robust",
+      "empower",
+      "empowers",
+      "empowered",
+      "empowering",
+      "empowerment"
+    ],
+
+    "filler_adverbs": [
+      "fundamentally",
+      "essentially",
+      "arguably",
+      "notably",
+      "significantly",
+      "inherently",
+      "incredibly",
+      "truly",
+      "deeply",
+      "profoundly"
+    ],
+
+    "ngo_buzzwords": [
+      "sustainable development",
+      "capacity building",
+      "stakeholders",
+      "beneficiaries",
+      "vulnerable populations",
+      "at-risk communities",
+      "food security",
+      "marginalized communities"
+    ],
+
+    "vague_impact": [
+      "making a difference",
+      "changing lives",
+      "creating impact",
+      "building resilience",
+      "fostering growth",
+      "driving change",
+      "making an impact"
+    ]
+  },
+
+  "replacement_suggestions": {
+    "empower": ["support", "train", "equip", "(describe what's taught)"],
+    "empowering": ["training", "supporting", "equipping", "(describe the program)"],
+    "transform": ["improve", "change", "shift", "(describe the mechanic)"],
+    "innovative": ["new", "different", "(describe what's new)"],
+    "holistic": ["complete", "full", "(list the components)"],
+    "comprehensive": ["full", "complete", "(list what's included)"],
+    "leverage": ["use", "apply", "build with"],
+    "utilize": ["use"],
+    "sustainable development": ["(name the specific program and location)"],
+    "capacity building": ["(describe what skills are taught)"],
+    "stakeholders": ["farmers", "refugees", "women", "participants", "(name them)"],
+    "beneficiaries": ["participants", "members", "farmers", "families"],
+    "food security": ["(describe what people grow and eat)"],
+    "building resilience": ["(describe the specific skills or infrastructure)"]
+  },
+
+  "style_guide": {
+    "voice": {
+      "do": [
+        "State what the program does, not what it achieves",
+        "Use specific numbers: participants, hectares, tonnes, dates",
+        "Name places: Nakivale, Kyangwali, Kampala",
+        "Name crops: cassava, mushrooms, beans, not 'agricultural products'",
+        "Name methods: Kon-Tiki kilns, vermicomposting, companion planting",
+        "Short sentences. Varied length."
+      ],
+      "dont": [
+        "Mission statements as headings",
+        "Stock photo captions as descriptions",
+        "Benefit stacking ('healthier, happier, more resilient')",
+        "Savior framing ('Unidos empowers...' — center the participants)",
+        "Vague geography ('communities in East Africa')"
+      ]
+    }
+  }
+}
